@@ -1,0 +1,169 @@
+\doxysection{s21\+::Snake\+Controller Class Reference}
+\hypertarget{classs21_1_1_snake_controller}{}\label{classs21_1_1_snake_controller}\index{s21::SnakeController@{s21::SnakeController}}
+
+
+Контроллер для управления игрой "{}Змейка"{}. Связывает модель (логику) и представление, обрабатывает ввод и обновляет состояние.  
+
+
+
+
+{\ttfamily \#include $<$controller.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classs21_1_1_snake_controller_aa2b24c37754ed8123a266bfb381900a5}{init\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Инициализирует игру через модель. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_controller_afc8b27db2db80be926d0903c5b1de882}{set\+Game\+State}} (\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}} state)
+\begin{DoxyCompactList}\small\item\em Устанавливает текущее состояние игры. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}} \mbox{\hyperlink{classs21_1_1_snake_controller_a75cf9d2a6f7c779477109b29924b25ae}{get\+Game\+State}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает текущее состояние игры. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} \mbox{\hyperlink{classs21_1_1_snake_controller_a6aed9915dd841b34c0244e578818aa94}{get\+Game\+Info}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает игровую информацию (счет, уровень и т.\+д.). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classs21_1_1_snake_controller_af3eb7f039583b189b626c57e6c668851}{Snake\+Controller}} (\mbox{\hyperlink{classs21_1_1_snake_logic}{Snake\+Logic}} \&model)
+\begin{DoxyCompactList}\small\item\em Конструктор, связывающий контроллер с моделью. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e}{User\+Action\+Button}} \mbox{\hyperlink{classs21_1_1_snake_controller_ae0a7c16150a50f729674c5cbcf5017c8}{handle\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Обрабатывает ввод пользователя (клавиши). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_controller_a3c9adaa3ff2d84f3241868cdc6f5c659}{user\+InputS}} (\mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e}{User\+Action\+Button}} action, bool hold)
+\begin{DoxyCompactList}\small\item\em Применяет действие пользователя к игре. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_controller_a82de61c4731db267dc61904197bc6d5d}{update\+Game\+State}} ()
+\begin{DoxyCompactList}\small\item\em Обновляет игровое состояние на основе логики. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Контроллер для управления игрой "{}Змейка"{}. Связывает модель (логику) и представление, обрабатывает ввод и обновляет состояние. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classs21_1_1_snake_controller_af3eb7f039583b189b626c57e6c668851}\index{s21::SnakeController@{s21::SnakeController}!SnakeController@{SnakeController}}
+\index{SnakeController@{SnakeController}!s21::SnakeController@{s21::SnakeController}}
+\doxysubsubsection{\texorpdfstring{SnakeController()}{SnakeController()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_controller_af3eb7f039583b189b626c57e6c668851} 
+s21\+::\+Snake\+Controller\+::\+Snake\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classs21_1_1_snake_logic}{Snake\+Logic}} \&}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Конструктор, связывающий контроллер с моделью. 
+
+Конструктор контроллера, связывающий его с игровой логикой.
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & Ссылка на экземпляр игровой логики (\doxylink{classs21_1_1_snake_logic}{Snake\+Logic}). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classs21_1_1_snake_controller_a6aed9915dd841b34c0244e578818aa94}\index{s21::SnakeController@{s21::SnakeController}!getGameInfo@{getGameInfo}}
+\index{getGameInfo@{getGameInfo}!s21::SnakeController@{s21::SnakeController}}
+\doxysubsubsection{\texorpdfstring{getGameInfo()}{getGameInfo()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_controller_a6aed9915dd841b34c0244e578818aa94} 
+\mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} s21\+::\+Snake\+Controller\+::get\+Game\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Возвращает игровую информацию (счет, уровень и т.\+д.). 
+
+\Hypertarget{classs21_1_1_snake_controller_a75cf9d2a6f7c779477109b29924b25ae}\index{s21::SnakeController@{s21::SnakeController}!getGameState@{getGameState}}
+\index{getGameState@{getGameState}!s21::SnakeController@{s21::SnakeController}}
+\doxysubsubsection{\texorpdfstring{getGameState()}{getGameState()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_controller_a75cf9d2a6f7c779477109b29924b25ae} 
+\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}} s21\+::\+Snake\+Controller\+::get\+Game\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Возвращает текущее состояние игры. 
+
+\Hypertarget{classs21_1_1_snake_controller_ae0a7c16150a50f729674c5cbcf5017c8}\index{s21::SnakeController@{s21::SnakeController}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!s21::SnakeController@{s21::SnakeController}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_controller_ae0a7c16150a50f729674c5cbcf5017c8} 
+\mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e}{User\+Action\+Button}} s21\+::\+Snake\+Controller\+::handle\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Обрабатывает ввод пользователя (клавиши). 
+
+Обрабатывает ввод пользователя и преобразует его в действия.
+
+\begin{DoxyReturn}{Returns}
+User\+Action\+Button — действие (направление движения, старт, пауза и т.\+д.). 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Использует библиотеку ncurses (getch()) для получения кода клавиши.
+\begin{DoxyItemize}
+\item Стрелки\+: управление направлением.
+\item \textquotesingle{}s\textquotesingle{}\+: старт игры.
+\item \textquotesingle{}p\textquotesingle{}\+: пауза/продолжение.
+\item \textquotesingle{}q\textquotesingle{}\+: выход из игры. 
+\end{DoxyItemize}
+\end{DoxyNote}
+\Hypertarget{classs21_1_1_snake_controller_aa2b24c37754ed8123a266bfb381900a5}\index{s21::SnakeController@{s21::SnakeController}!initGame@{initGame}}
+\index{initGame@{initGame}!s21::SnakeController@{s21::SnakeController}}
+\doxysubsubsection{\texorpdfstring{initGame()}{initGame()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_controller_aa2b24c37754ed8123a266bfb381900a5} 
+void s21\+::\+Snake\+Controller\+::init\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Инициализирует игру через модель. 
+
+\Hypertarget{classs21_1_1_snake_controller_afc8b27db2db80be926d0903c5b1de882}\index{s21::SnakeController@{s21::SnakeController}!setGameState@{setGameState}}
+\index{setGameState@{setGameState}!s21::SnakeController@{s21::SnakeController}}
+\doxysubsubsection{\texorpdfstring{setGameState()}{setGameState()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_controller_afc8b27db2db80be926d0903c5b1de882} 
+void s21\+::\+Snake\+Controller\+::set\+Game\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}}}]{state}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Устанавливает текущее состояние игры. 
+
+\Hypertarget{classs21_1_1_snake_controller_a82de61c4731db267dc61904197bc6d5d}\index{s21::SnakeController@{s21::SnakeController}!updateGameState@{updateGameState}}
+\index{updateGameState@{updateGameState}!s21::SnakeController@{s21::SnakeController}}
+\doxysubsubsection{\texorpdfstring{updateGameState()}{updateGameState()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_controller_a82de61c4731db267dc61904197bc6d5d} 
+void s21\+::\+Snake\+Controller\+::update\+Game\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Обновляет игровое состояние на основе логики. 
+
+Обновляет игровое состояние на основе текущей логики.
+
+Этапы\+:
+\begin{DoxyEnumerate}
+\item GAME\+\_\+\+START → Инициализация игры (\doxylink{classs21_1_1_snake_controller_aa2b24c37754ed8123a266bfb381900a5}{init\+Game()}).
+\item GAME\+\_\+\+SPAWN → Генерация яблока.
+\item GAME\+\_\+\+MOVING → Движение змейки, проверка коллизий и победы.
+\item GAME\+\_\+\+OVER → Сохранение рекорда (если счет побил предыдущий). 
+\end{DoxyEnumerate}\Hypertarget{classs21_1_1_snake_controller_a3c9adaa3ff2d84f3241868cdc6f5c659}\index{s21::SnakeController@{s21::SnakeController}!userInputS@{userInputS}}
+\index{userInputS@{userInputS}!s21::SnakeController@{s21::SnakeController}}
+\doxysubsubsection{\texorpdfstring{userInputS()}{userInputS()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_controller_a3c9adaa3ff2d84f3241868cdc6f5c659} 
+void s21\+::\+Snake\+Controller\+::user\+InputS (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e}{User\+Action\+Button}}}]{action}{, }\item[{bool}]{hold}{}\end{DoxyParamCaption})}
+
+
+
+Применяет действие пользователя к игре. 
+
+Обрабатывает действие пользователя в зависимости от состояния игры.
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & Действие (из User\+Action\+Button). \\
+\hline
+{\em hold} & Флаг удержания клавиши (не используется в текущей реализации).\\
+\hline
+\end{DoxyParams}
+Логика\+:
+\begin{DoxyItemize}
+\item Start\+: Переводит игру из состояния GAME\+\_\+\+PRESTART в GAME\+\_\+\+START.
+\item Pause\+: Переключает между GAME\+\_\+\+MOVING и GAME\+\_\+\+PAUSED.
+\item Направления\+: Изменяет направление змейки (с проверкой на разворот на 180°).
+\item Terminate\+: Завершает игру в разрешенных состояниях (пауза, завершение и т.\+д.). 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+brick\+\_\+game/snake/\mbox{\hyperlink{controller_8h}{controller.\+h}}\item 
+brick\+\_\+game/snake/\mbox{\hyperlink{controller_8cc}{controller.\+cc}}\end{DoxyCompactItemize}

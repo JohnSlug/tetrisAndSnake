@@ -1,0 +1,642 @@
+\doxysection{brick\+\_\+game/tetris/tetris\+\_\+logic.c File Reference}
+\hypertarget{tetris__logic_8c}{}\label{tetris__logic_8c}\index{brick\_game/tetris/tetris\_logic.c@{brick\_game/tetris/tetris\_logic.c}}
+{\ttfamily \#include "{}tetris.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{tetris__logic_8c_ad0f71eeaf9afee93fa35d4848dd17997}{is\+Block\+Beyond\+Limit}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block, \mbox{\hyperlink{structcoordinate}{coordinate}} block\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em Проверяет, находится ли блок за верхней границей игрового поля. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris__logic_8c_aa669174071419620564eec9e7302373d}{get\+Reward\+By\+Complete\+Lines}} (int number\+\_\+lines)
+\begin{DoxyCompactList}\small\item\em Вычисляет необходимую награду по заполненным строкам. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a28fc86a867835082b95e5751d2894d86}{tetris\+Info\+Storage}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}}, bool remove)
+\begin{DoxyCompactList}\small\item\em Является хранилищем для структуры \doxylink{structtetris__t}{tetris\+\_\+t}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_afd0b7cde40ecfc40568d0c28396806ee}{get\+All\+Tetramino}} (int blocks\mbox{[}\mbox{\hyperlink{tetris_8h_a8b7771bbb0e029e9200b3a7ec9816204}{BLOCK\+\_\+\+COUNT}}\mbox{]}\mbox{[}\mbox{\hyperlink{tetris_8h_ad51ded0bbd705f02f73fc60c0b721ced}{BLOCK\+\_\+\+SIZE}}\mbox{]}\mbox{[}\mbox{\hyperlink{tetris_8h_ad51ded0bbd705f02f73fc60c0b721ced}{BLOCK\+\_\+\+SIZE}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Хранит в себе все виды блоков(Тетромино) и возвращает их при необходимости. Для того, чтобы различать фигуры в фронтенде \textquotesingle{}заполнение\textquotesingle{} фигур отличается НО всегда является положительным числом. mem\+\_\+cpy Копирование из одного массива в другой всех блоков. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris__logic_8c_a1fe6401b323a9b773e312acffe5a1639}{get\+Random\+Tetramino}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block)
+\begin{DoxyCompactList}\small\item\em Возвращает случайный блок из доступных в функции \textquotesingle{}get\+All\+Tetramino\textquotesingle{}. НЕ выделяет память. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris__logic_8c_aa0107255a66f54654ac5f32d3e926f54}{crt\+Tetramino}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block)
+\begin{DoxyCompactList}\small\item\em Создание блока. Выделяем память для массива строк, затем выделяем память для строки. Проверяем на выделение памяти, если ошибка, то освобождаем память \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a67f544c1b8f0ded48916f84180072c2b}{rmv\+Tetramino}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block)
+\begin{DoxyCompactList}\small\item\em Освобождение памяти, выделенной под тетрамино. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_ad8b274feaa362413eedf251c8105a2e4}{cp\+Tetramino}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block\+\_\+copy)
+\begin{DoxyCompactList}\small\item\em Копирование блока. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris__logic_8c_a173891a9231d3d6aab82c4a5d70208a2}{rotate\+Tetramino}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block, char left)
+\begin{DoxyCompactList}\small\item\em Поворот блока. Проверяем на != NULL. Через буферный блок поворочиваем блок \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris__logic_8c_ac1065b96f74a43cc7b1e7e87b92970f5}{crt\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field)
+\begin{DoxyCompactList}\small\item\em Cоздание игрового поля. Выделяем память для массива строк, затем выделяем память для строки. Проверяем на выделение \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a64973bd823955a41cdb5ad29639c10c5}{rmv\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field)
+\begin{DoxyCompactList}\small\item\em свобождение памяти, выделенное под поле \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{tetris__logic_8c_a4ffe46c7901aa5e2209e7bb53995596f}{checking\+Block\+Collision\+With\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block, \mbox{\hyperlink{structcoordinate}{coordinate}} block\+\_\+pos, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field)
+\begin{DoxyCompactList}\small\item\em Проверяет коллизию блока с игровым полем(с его границами и с внутренними блоками). В зависимости от того, с чем столкнулся блок, возвращает положительное число. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a78c5257fc0f0770c93fc24f81c244d3b}{copy\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field\+\_\+copy)
+\begin{DoxyCompactList}\small\item\em Делает копию \textquotesingle{}field\textquotesingle{} и возвращает эту копию в \textquotesingle{}field\+\_\+copy\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a75f95b5f595f3229d182898b644e0e3c}{add\+Block\+In\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block, \mbox{\hyperlink{structcoordinate}{coordinate}} block\+\_\+pos, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field)
+\begin{DoxyCompactList}\small\item\em Вставляет блок внутрь игрового поля. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris__logic_8c_a3f99bb458c2f224a283e9662eaf830ff}{complete\+Line\+In\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field)
+\begin{DoxyCompactList}\small\item\em Считает количество заполненных строк на игровом поле. Если строка была заполнена то она обнуляется и все строки сверху сдвигаются на неё. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris__logic_8c_a2ede2ed4c8bc8648c70b36a8fcdcfb78}{select\+Next\+State}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Вычисляет следующее состояние игры. Главная функция, в которой происходят все процессы. Каждая стадия вынесена в отдельную функцию. Вычисление последующих состояний происходит внутри этих функций. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a7286a28a5c74e2c99d93254ef6b4f91a}{start\+State}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em START\+\_\+\+STATE = Подготовка к новой игре. Обнуление уровня и очков. Очистка игрового поля. Вычисление следующего блока. Переход возможен в \textquotesingle{}SPAWN\+\_\+\+STATE\textquotesingle{} Переход будет ТОЛЬКО после нажатия кнопки \textquotesingle{}Start\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_ad8288fc80094ab482119cee783c08bc1}{spawn\+Tetramino}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em SPAWNTetramino = Создание нового блока. Перемещение нового блока в следующий(next), а следующий в нынешний\+: new -\/\texorpdfstring{$>$}{>} next -\/\texorpdfstring{$>$}{>} current. Обнуление всех действий. А также вычисление будущей скорости падения по уровню. Переход возможен в \textquotesingle{}MOVING\+\_\+\+STATE\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_ad5aca1a56b64397a8fb63111c73f60e7}{moving\+State}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em MOVING\+\_\+\+STATE = Перемещение блока по игровому полю а также считывание пользовательских действий. Если блок не может упасть то он закрепляется -\/ переносится внутрь игрового поля и игра либо заканчивается либо спавнится новый блок. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a6985a0b0f46fe0cde8366f9df3f84186}{mv\+Left}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Сдвгигает Блок по оси X влево. Далее проверяет на столкновение с с границами поля. Если было касание -\/ обратно сдвигает блок по X вправо \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a4694b38ce8ad86d71e2f6ba89df5cf78}{mv\+Right}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Сдвгигает Блок по оси X вправо. Далее проверяет на столкновение с с границами поля. Если было касание -\/ обратно сдвигает блок по X влево \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_ae2e23982a596ed4e68b7bfea7ccd2824}{mv\+Down}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Если is\+\_\+fall\+\_\+time = true, двигает блок вниз \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_ae1c80bd76fe989e545d3f0a9c18cdd54}{mv\+Action}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em В зависимости от return checking\+Block\+Collision\+With\+Field перемещает блок вправо, влево, вниз или поворачивает \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a8679c2bca82258ab076b9347b691dbda}{attaching\+State}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em ATTACHING\+\_\+\+STATE = Закрепление блока. Блок упал вниз насколько возможно. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a42238787f7de0f585976c34d937cc665}{end\+Game\+State}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em END\+\_\+\+GAME\+\_\+\+STATE = Игра окончена. Игровое поле было заполнено до верхней линии. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris__logic_8c_a6f25b707f2158d21946584887d27c959}{init\+Tetris}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Создание экземпляра структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Инициализируем rand() В программе может быть ТОЛЬКО один инициализированный экземпляр \doxylink{structtetris__t}{tetris\+\_\+t}. Так как во время инициализации указатель на данный экземпляр сохраняется \textquotesingle{}глобально\textquotesingle{} и используется во всех функциях, где необходимо. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a23e59dfdec59cc8374f27d64eedd9e2c}{remove\+Tetris}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Удаление экземпляра структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Заносим в хранилище \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_afddeb813ef98c12af777b5a3e1154b56}{user\+Input}} (\mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e}{User\+Action\+Button}} action, bool hold)
+\begin{DoxyCompactList}\small\item\em Принимается пользовательский ввод. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} \mbox{\hyperlink{tetris__logic_8c_af98e285588d8be9f0a920efa781dc59f}{upd\+Curr\+State}} (void)
+\begin{DoxyCompactList}\small\item\em Обновление состаяния игры \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} \mbox{\hyperlink{tetris__logic_8c_ad87815d213b39f9ab531cb8c55f62188}{crt\+Game\+Info\+Tetris}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Создание/составление структуры \doxylink{struct_game_info__tetris}{Game\+Info\+\_\+tetris} c помощью главной структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Перенос необходимой информации из одной структуры в другую. Является частью функции \textquotesingle{}upd\+Curr\+State\textquotesingle{}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{tetris__logic_8c_a4231a60db7d0820c8d9683998b17bd03}{is\+Game\+End}} (void)
+\begin{DoxyCompactList}\small\item\em Проверка на конец игры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a155abc56eef030dbc8106d86fa2e0e27}{game\+Start}} (void)
+\begin{DoxyCompactList}\small\item\em Иницилизация начало игры. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris__logic_8c_a14c79875545bcfb6fb8f0dd320e7a8a0}{set\+High\+Score}} (int score)
+\begin{DoxyCompactList}\small\item\em Обновление рекорда \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris__logic_8c_a7459f3202963cea60e744efcedf0404b}{get\+High\+Score}} (void)
+\begin{DoxyCompactList}\small\item\em Работа с рекордом \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{tetris__logic_8c_a03c9ab792457e6dc47c9e11ff957d195}{is\+Pause}} (void)
+\begin{DoxyCompactList}\small\item\em pause true\textbackslash{}false \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tetris__logic_8c_a75f95b5f595f3229d182898b644e0e3c}\index{tetris\_logic.c@{tetris\_logic.c}!addBlockInField@{addBlockInField}}
+\index{addBlockInField@{addBlockInField}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{addBlockInField()}{addBlockInField()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a75f95b5f595f3229d182898b644e0e3c} 
+void add\+Block\+In\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{, }\item[{\mbox{\hyperlink{structcoordinate}{coordinate}}}]{block\+\_\+pos}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})}
+
+
+
+Вставляет блок внутрь игрового поля. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Указатель на двумерный массив(матрицу) тетрамино \\
+\hline
+{\em field} & Указатель на двумерный массив(матрицу) поле \\
+\hline
+{\em block\+\_\+pos} & -\/ координаты тетрмины x,y \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_a8679c2bca82258ab076b9347b691dbda}\index{tetris\_logic.c@{tetris\_logic.c}!attachingState@{attachingState}}
+\index{attachingState@{attachingState}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{attachingState()}{attachingState()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a8679c2bca82258ab076b9347b691dbda} 
+void attaching\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+ATTACHING\+\_\+\+STATE = Закрепление блока. Блок упал вниз насколько возможно. 
+
+Блок \textquotesingle{}вставляется\textquotesingle{} внутрь игрового поля. Поле обновляется и убираются заполненные строки. Прибавляются очки \textquotesingle{}score\textquotesingle{} и, если необходимо, обновляется \textquotesingle{}High\+Score\textquotesingle{}. Обновляется уровень по \textquotesingle{}score\textquotesingle{}.
+
+
+\begin{DoxyItemize}
+\item Переход возможен в \textquotesingle{}SPAWN\+\_\+\+STATE\textquotesingle{} или \textquotesingle{}END\+\_\+\+GAME\+\_\+\+STATE\textquotesingle{} Переход в следущее состояние НЕ обязателен. Если блок находился за верхней линией то состояние переходит в \textquotesingle{}END\+\_\+\+GAME\+\_\+\+STATE\textquotesingle{}, если нет, то в \textquotesingle{}SPAWN\+\_\+\+STATE\textquotesingle{}.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Экземпляр стуктуры логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_a4ffe46c7901aa5e2209e7bb53995596f}\index{tetris\_logic.c@{tetris\_logic.c}!checkingBlockCollisionWithField@{checkingBlockCollisionWithField}}
+\index{checkingBlockCollisionWithField@{checkingBlockCollisionWithField}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{checkingBlockCollisionWithField()}{checkingBlockCollisionWithField()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a4ffe46c7901aa5e2209e7bb53995596f} 
+char checking\+Block\+Collision\+With\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{, }\item[{\mbox{\hyperlink{structcoordinate}{coordinate}}}]{block\+\_\+pos}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})}
+
+
+
+Проверяет коллизию блока с игровым полем(с его границами и с внутренними блоками). В зависимости от того, с чем столкнулся блок, возвращает положительное число. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Указатель на двумерный массив(матрицу) тетрамино \\
+\hline
+{\em field} & Указатель на двумерный массив(матрицу) поле \\
+\hline
+{\em block\+\_\+pos} & -\/ координаты тетрмины x,y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 == false / 1 == true, 2 == left\+Board, 3 == right\+Board, 4 == buttom\+Board. 
+\end{DoxyReturn}
+\Hypertarget{tetris__logic_8c_a3f99bb458c2f224a283e9662eaf830ff}\index{tetris\_logic.c@{tetris\_logic.c}!completeLineInField@{completeLineInField}}
+\index{completeLineInField@{completeLineInField}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{completeLineInField()}{completeLineInField()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a3f99bb458c2f224a283e9662eaf830ff} 
+int complete\+Line\+In\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})}
+
+
+
+Считает количество заполненных строк на игровом поле. Если строка была заполнена то она обнуляется и все строки сверху сдвигаются на неё. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & Указатель на двумерный массив(матрицу) поле \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+количество строк. 
+\end{DoxyReturn}
+\Hypertarget{tetris__logic_8c_a78c5257fc0f0770c93fc24f81c244d3b}\index{tetris\_logic.c@{tetris\_logic.c}!copyField@{copyField}}
+\index{copyField@{copyField}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{copyField()}{copyField()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a78c5257fc0f0770c93fc24f81c244d3b} 
+void copy\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field\+\_\+copy}{}\end{DoxyParamCaption})}
+
+
+
+Делает копию \textquotesingle{}field\textquotesingle{} и возвращает эту копию в \textquotesingle{}field\+\_\+copy\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & Оригинальное игровое поле. \\
+\hline
+{\em field\+\_\+copy} & Копия игрового поля. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_ad8b274feaa362413eedf251c8105a2e4}\index{tetris\_logic.c@{tetris\_logic.c}!cpTetramino@{cpTetramino}}
+\index{cpTetramino@{cpTetramino}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{cpTetramino()}{cpTetramino()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_ad8b274feaa362413eedf251c8105a2e4} 
+void cp\+Tetramino (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block\+\_\+copy}{}\end{DoxyParamCaption})}
+
+
+
+Копирование блока. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Указатель на двумерный массив(матрицу), который копируем. \\
+\hline
+{\em block\+\_\+copy} & Указатель на двумерный массив(матрицу), куда копируем. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_ac1065b96f74a43cc7b1e7e87b92970f5}\index{tetris\_logic.c@{tetris\_logic.c}!crtField@{crtField}}
+\index{crtField@{crtField}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{crtField()}{crtField()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_ac1065b96f74a43cc7b1e7e87b92970f5} 
+int crt\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})}
+
+
+
+Cоздание игрового поля. Выделяем память для массива строк, затем выделяем память для строки. Проверяем на выделение 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & Указатель на двумерный массив(матрицу). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris__logic_8c_ad87815d213b39f9ab531cb8c55f62188}\index{tetris\_logic.c@{tetris\_logic.c}!crtGameInfoTetris@{crtGameInfoTetris}}
+\index{crtGameInfoTetris@{crtGameInfoTetris}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{crtGameInfoTetris()}{crtGameInfoTetris()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_ad87815d213b39f9ab531cb8c55f62188} 
+\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} crt\+Game\+Info\+Tetris (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Создание/составление структуры \doxylink{struct_game_info__tetris}{Game\+Info\+\_\+tetris} c помощью главной структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Перенос необходимой информации из одной структуры в другую. Является частью функции \textquotesingle{}upd\+Curr\+State\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Главная структура логики игры. Хранит всю необходимую информацию. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_aa0107255a66f54654ac5f32d3e926f54}\index{tetris\_logic.c@{tetris\_logic.c}!crtTetramino@{crtTetramino}}
+\index{crtTetramino@{crtTetramino}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{crtTetramino()}{crtTetramino()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_aa0107255a66f54654ac5f32d3e926f54} 
+int crt\+Tetramino (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{}\end{DoxyParamCaption})}
+
+
+
+Создание блока. Выделяем память для массива строк, затем выделяем память для строки. Проверяем на выделение памяти, если ошибка, то освобождаем память 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & В данном случае -\/ указатель на двумерный массив(матрицу). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris__logic_8c_a42238787f7de0f585976c34d937cc665}\index{tetris\_logic.c@{tetris\_logic.c}!endGameState@{endGameState}}
+\index{endGameState@{endGameState}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{endGameState()}{endGameState()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a42238787f7de0f585976c34d937cc665} 
+void end\+Game\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+END\+\_\+\+GAME\+\_\+\+STATE = Игра окончена. Игровое поле было заполнено до верхней линии. 
+
+
+\begin{DoxyItemize}
+\item Переход возможен в \textquotesingle{}START\+\_\+\+STATE\textquotesingle{} или \textquotesingle{}TERMINATE\+\_\+\+STATE\textquotesingle{} 
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Экземпляр стуктуры логики тетриса. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{tetris__logic_8c_a155abc56eef030dbc8106d86fa2e0e27}\index{tetris\_logic.c@{tetris\_logic.c}!gameStart@{gameStart}}
+\index{gameStart@{gameStart}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{gameStart()}{gameStart()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a155abc56eef030dbc8106d86fa2e0e27} 
+void game\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Иницилизация начало игры. 
+
+\Hypertarget{tetris__logic_8c_afd0b7cde40ecfc40568d0c28396806ee}\index{tetris\_logic.c@{tetris\_logic.c}!getAllTetramino@{getAllTetramino}}
+\index{getAllTetramino@{getAllTetramino}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{getAllTetramino()}{getAllTetramino()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_afd0b7cde40ecfc40568d0c28396806ee} 
+void get\+All\+Tetramino (\begin{DoxyParamCaption}\item[{int}]{blocks}{\mbox{[}\+BLOCK\+\_\+\+COUNT\mbox{]}\mbox{[}\+BLOCK\+\_\+\+SIZE\mbox{]}\mbox{[}\+BLOCK\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Хранит в себе все виды блоков(Тетромино) и возвращает их при необходимости. Для того, чтобы различать фигуры в фронтенде \textquotesingle{}заполнение\textquotesingle{} фигур отличается НО всегда является положительным числом. mem\+\_\+cpy Копирование из одного массива в другой всех блоков. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blocks} & Массив двумерных фигур(блоков) тетромино. Используется для возвращения в него из функции всех блоков. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_a7459f3202963cea60e744efcedf0404b}\index{tetris\_logic.c@{tetris\_logic.c}!getHighScore@{getHighScore}}
+\index{getHighScore@{getHighScore}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{getHighScore()}{getHighScore()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a7459f3202963cea60e744efcedf0404b} 
+int get\+High\+Score (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Работа с рекордом 
+
+\Hypertarget{tetris__logic_8c_a1fe6401b323a9b773e312acffe5a1639}\index{tetris\_logic.c@{tetris\_logic.c}!getRandomTetramino@{getRandomTetramino}}
+\index{getRandomTetramino@{getRandomTetramino}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{getRandomTetramino()}{getRandomTetramino()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a1fe6401b323a9b773e312acffe5a1639} 
+int get\+Random\+Tetramino (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{}\end{DoxyParamCaption})}
+
+
+
+Возвращает случайный блок из доступных в функции \textquotesingle{}get\+All\+Tetramino\textquotesingle{}. НЕ выделяет память. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Используется для возвращения случайно выбранного блока. Не должно быть NULL. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris__logic_8c_aa669174071419620564eec9e7302373d}\index{tetris\_logic.c@{tetris\_logic.c}!getRewardByCompleteLines@{getRewardByCompleteLines}}
+\index{getRewardByCompleteLines@{getRewardByCompleteLines}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{getRewardByCompleteLines()}{getRewardByCompleteLines()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_aa669174071419620564eec9e7302373d} 
+int get\+Reward\+By\+Complete\+Lines (\begin{DoxyParamCaption}\item[{int}]{number\+\_\+lines}{}\end{DoxyParamCaption})}
+
+
+
+Вычисляет необходимую награду по заполненным строкам. 
+
+Вычисляет количество очков (reward), зависящее от количества уничтоженных линий.
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\+\_\+lines} & Количество уничтоженных линий. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Количество очков (reward). 
+\end{DoxyReturn}
+\Hypertarget{tetris__logic_8c_a6f25b707f2158d21946584887d27c959}\index{tetris\_logic.c@{tetris\_logic.c}!initTetris@{initTetris}}
+\index{initTetris@{initTetris}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{initTetris()}{initTetris()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a6f25b707f2158d21946584887d27c959} 
+int init\+Tetris (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Создание экземпляра структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Инициализируем rand() В программе может быть ТОЛЬКО один инициализированный экземпляр \doxylink{structtetris__t}{tetris\+\_\+t}. Так как во время инициализации указатель на данный экземпляр сохраняется \textquotesingle{}глобально\textquotesingle{} и используется во всех функциях, где необходимо. 
+
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris__logic_8c_ad0f71eeaf9afee93fa35d4848dd17997}\index{tetris\_logic.c@{tetris\_logic.c}!isBlockBeyondLimit@{isBlockBeyondLimit}}
+\index{isBlockBeyondLimit@{isBlockBeyondLimit}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{isBlockBeyondLimit()}{isBlockBeyondLimit()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_ad0f71eeaf9afee93fa35d4848dd17997} 
+bool is\+Block\+Beyond\+Limit (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{, }\item[{\mbox{\hyperlink{structcoordinate}{coordinate}}}]{block\+\_\+pos}{}\end{DoxyParamCaption})}
+
+
+
+Проверяет, находится ли блок за верхней границей игрового поля. 
+
+Проверяет, находится ли блок за пределами верхней границы игрового поля.
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Указатель на двумерный массив (матрицу) тетрамино. \\
+\hline
+{\em block\+\_\+pos} & Координаты x,y тетрамино. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если блок находится за верхней границей, false в противном случае. 
+\end{DoxyReturn}
+\Hypertarget{tetris__logic_8c_a4231a60db7d0820c8d9683998b17bd03}\index{tetris\_logic.c@{tetris\_logic.c}!isGameEnd@{isGameEnd}}
+\index{isGameEnd@{isGameEnd}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{isGameEnd()}{isGameEnd()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a4231a60db7d0820c8d9683998b17bd03} 
+bool is\+Game\+End (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Проверка на конец игры 
+
+\Hypertarget{tetris__logic_8c_a03c9ab792457e6dc47c9e11ff957d195}\index{tetris\_logic.c@{tetris\_logic.c}!isPause@{isPause}}
+\index{isPause@{isPause}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{isPause()}{isPause()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a03c9ab792457e6dc47c9e11ff957d195} 
+bool is\+Pause (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+pause true\textbackslash{}false 
+
+\Hypertarget{tetris__logic_8c_ad5aca1a56b64397a8fb63111c73f60e7}\index{tetris\_logic.c@{tetris\_logic.c}!movingState@{movingState}}
+\index{movingState@{movingState}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{movingState()}{movingState()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_ad5aca1a56b64397a8fb63111c73f60e7} 
+void moving\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+MOVING\+\_\+\+STATE = Перемещение блока по игровому полю а также считывание пользовательских действий. Если блок не может упасть то он закрепляется -\/ переносится внутрь игрового поля и игра либо заканчивается либо спавнится новый блок. 
+
+
+\begin{DoxyItemize}
+\item Переход возможен в \textquotesingle{}ATTACHING\+\_\+\+STATE\textquotesingle{} или \textquotesingle{}TERMINATE\+\_\+\+STATE\textquotesingle{} Переход в следущее состояние НЕ обязателен. Если блок упал вниз насколько возможно то состояние переходит в \textquotesingle{}ATTACHING\+\_\+\+STATE\textquotesingle{}. Если пользователь нажал \textquotesingle{}Terminate\textquotesingle{} то состояние переходит в \textquotesingle{}TERMINATE\+\_\+\+STATE\textquotesingle{}. 
+\begin{DoxyParams}{Parameters}
+{\em tetris} & основная стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{tetris__logic_8c_ae1c80bd76fe989e545d3f0a9c18cdd54}\index{tetris\_logic.c@{tetris\_logic.c}!mvAction@{mvAction}}
+\index{mvAction@{mvAction}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{mvAction()}{mvAction()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_ae1c80bd76fe989e545d3f0a9c18cdd54} 
+void mv\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+В зависимости от return checking\+Block\+Collision\+With\+Field перемещает блок вправо, влево, вниз или поворачивает 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & основная стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_ae2e23982a596ed4e68b7bfea7ccd2824}\index{tetris\_logic.c@{tetris\_logic.c}!mvDown@{mvDown}}
+\index{mvDown@{mvDown}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{mvDown()}{mvDown()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_ae2e23982a596ed4e68b7bfea7ccd2824} 
+void mv\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Если is\+\_\+fall\+\_\+time = true, двигает блок вниз 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & основная стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_a6985a0b0f46fe0cde8366f9df3f84186}\index{tetris\_logic.c@{tetris\_logic.c}!mvLeft@{mvLeft}}
+\index{mvLeft@{mvLeft}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{mvLeft()}{mvLeft()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a6985a0b0f46fe0cde8366f9df3f84186} 
+void mv\+Left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Сдвгигает Блок по оси X влево. Далее проверяет на столкновение с с границами поля. Если было касание -\/ обратно сдвигает блок по X вправо 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & основная стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_a4694b38ce8ad86d71e2f6ba89df5cf78}\index{tetris\_logic.c@{tetris\_logic.c}!mvRight@{mvRight}}
+\index{mvRight@{mvRight}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{mvRight()}{mvRight()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a4694b38ce8ad86d71e2f6ba89df5cf78} 
+void mv\+Right (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Сдвгигает Блок по оси X вправо. Далее проверяет на столкновение с с границами поля. Если было касание -\/ обратно сдвигает блок по X влево 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & основная стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_a23e59dfdec59cc8374f27d64eedd9e2c}\index{tetris\_logic.c@{tetris\_logic.c}!removeTetris@{removeTetris}}
+\index{removeTetris@{removeTetris}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{removeTetris()}{removeTetris()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a23e59dfdec59cc8374f27d64eedd9e2c} 
+void remove\+Tetris (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Удаление экземпляра структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Заносим в хранилище 
+
+\Hypertarget{tetris__logic_8c_a64973bd823955a41cdb5ad29639c10c5}\index{tetris\_logic.c@{tetris\_logic.c}!rmvField@{rmvField}}
+\index{rmvField@{rmvField}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{rmvField()}{rmvField()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a64973bd823955a41cdb5ad29639c10c5} 
+void rmv\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})}
+
+
+
+свобождение памяти, выделенное под поле 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & Указатель на двумерный массив(матрицу). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_a67f544c1b8f0ded48916f84180072c2b}\index{tetris\_logic.c@{tetris\_logic.c}!rmvTetramino@{rmvTetramino}}
+\index{rmvTetramino@{rmvTetramino}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{rmvTetramino()}{rmvTetramino()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a67f544c1b8f0ded48916f84180072c2b} 
+void rmv\+Tetramino (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{}\end{DoxyParamCaption})}
+
+
+
+Освобождение памяти, выделенной под тетрамино. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Указатель на двумерный массив(матрицу). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_a173891a9231d3d6aab82c4a5d70208a2}\index{tetris\_logic.c@{tetris\_logic.c}!rotateTetramino@{rotateTetramino}}
+\index{rotateTetramino@{rotateTetramino}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{rotateTetramino()}{rotateTetramino()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a173891a9231d3d6aab82c4a5d70208a2} 
+int rotate\+Tetramino (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{, }\item[{char}]{left}{}\end{DoxyParamCaption})}
+
+
+
+Поворот блока. Проверяем на != NULL. Через буферный блок поворочиваем блок 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left} & Если == true то влево. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris__logic_8c_a2ede2ed4c8bc8648c70b36a8fcdcfb78}\index{tetris\_logic.c@{tetris\_logic.c}!selectNextState@{selectNextState}}
+\index{selectNextState@{selectNextState}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{selectNextState()}{selectNextState()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a2ede2ed4c8bc8648c70b36a8fcdcfb78} 
+int select\+Next\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Вычисляет следующее состояние игры. Главная функция, в которой происходят все процессы. Каждая стадия вынесена в отдельную функцию. Вычисление последующих состояний происходит внутри этих функций. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Главная структура логики игры. Хранит всю необходимую информацию. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris__logic_8c_a14c79875545bcfb6fb8f0dd320e7a8a0}\index{tetris\_logic.c@{tetris\_logic.c}!setHighScore@{setHighScore}}
+\index{setHighScore@{setHighScore}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{setHighScore()}{setHighScore()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a14c79875545bcfb6fb8f0dd320e7a8a0} 
+void set\+High\+Score (\begin{DoxyParamCaption}\item[{int}]{score}{}\end{DoxyParamCaption})}
+
+
+
+Обновление рекорда 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score} & если рекорд не обновлён то ничего не делает \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_ad8288fc80094ab482119cee783c08bc1}\index{tetris\_logic.c@{tetris\_logic.c}!spawnTetramino@{spawnTetramino}}
+\index{spawnTetramino@{spawnTetramino}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{spawnTetramino()}{spawnTetramino()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_ad8288fc80094ab482119cee783c08bc1} 
+void spawn\+Tetramino (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+SPAWNTetramino = Создание нового блока. Перемещение нового блока в следующий(next), а следующий в нынешний\+: new -\/\texorpdfstring{$>$}{>} next -\/\texorpdfstring{$>$}{>} current. Обнуление всех действий. А также вычисление будущей скорости падения по уровню. Переход возможен в \textquotesingle{}MOVING\+\_\+\+STATE\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_a7286a28a5c74e2c99d93254ef6b4f91a}\index{tetris\_logic.c@{tetris\_logic.c}!startState@{startState}}
+\index{startState@{startState}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{startState()}{startState()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a7286a28a5c74e2c99d93254ef6b4f91a} 
+void start\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+START\+\_\+\+STATE = Подготовка к новой игре. Обнуление уровня и очков. Очистка игрового поля. Вычисление следующего блока. Переход возможен в \textquotesingle{}SPAWN\+\_\+\+STATE\textquotesingle{} Переход будет ТОЛЬКО после нажатия кнопки \textquotesingle{}Start\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & структура логики игры. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_a28fc86a867835082b95e5751d2894d86}\index{tetris\_logic.c@{tetris\_logic.c}!tetrisInfoStorage@{tetrisInfoStorage}}
+\index{tetrisInfoStorage@{tetrisInfoStorage}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{tetrisInfoStorage()}{tetrisInfoStorage()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_a28fc86a867835082b95e5751d2894d86} 
+void tetris\+Info\+Storage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{tetris}{, }\item[{bool}]{remove}{}\end{DoxyParamCaption})}
+
+
+
+Является хранилищем для структуры \doxylink{structtetris__t}{tetris\+\_\+t}. 
+
+При передаче НЕнулевого указателя структура сохраняется. А при передачи NULL сохранённая структура отдаётся. Функция необходима для передачи информации во фронтенд.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Указатель на основную структуру логики игры. \\
+\hline
+{\em remove} & Параметр для удаления сохранённой структуры. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris__logic_8c_af98e285588d8be9f0a920efa781dc59f}\index{tetris\_logic.c@{tetris\_logic.c}!updCurrState@{updCurrState}}
+\index{updCurrState@{updCurrState}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{updCurrState()}{updCurrState()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_af98e285588d8be9f0a920efa781dc59f} 
+\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} upd\+Curr\+State (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Обновление состаяния игры 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Главная структура логики игры. Хранит всю необходимую информацию. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Структура, которая хранит краткое сведение об игре и необходима для отображения текущего состояния игры. 
+\end{DoxyReturn}
+\Hypertarget{tetris__logic_8c_afddeb813ef98c12af777b5a3e1154b56}\index{tetris\_logic.c@{tetris\_logic.c}!userInput@{userInput}}
+\index{userInput@{userInput}!tetris\_logic.c@{tetris\_logic.c}}
+\doxysubsubsection{\texorpdfstring{userInput()}{userInput()}}
+{\footnotesize\ttfamily \label{tetris__logic_8c_afddeb813ef98c12af777b5a3e1154b56} 
+void user\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e}{User\+Action\+Button}}}]{action}{, }\item[{bool}]{hold}{}\end{DoxyParamCaption})}
+
+
+
+Принимается пользовательский ввод. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hold} & Нажата ли сейчас клавиша \\
+\hline
+\end{DoxyParams}

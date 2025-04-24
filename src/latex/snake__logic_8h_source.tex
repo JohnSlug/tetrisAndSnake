@@ -1,0 +1,67 @@
+\doxysection{snake\+\_\+logic.\+h}
+\hypertarget{snake__logic_8h_source}{}\label{snake__logic_8h_source}\index{brick\_game/snake/snake\_logic.h@{brick\_game/snake/snake\_logic.h}}
+\mbox{\hyperlink{snake__logic_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SNAKE\_LOGIC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SNAKE\_LOGIC\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tetris_8h}{../tetris/tetris.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaces21}{s21}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ FIELD\_WIDTH\ 10}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ FIELD\_HEIGHT\ 20}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ SIZE\_FIGURE\ 4}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ NUM\_FIGURE\ 7}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ VALUE\_X\ FIELD\_WIDTH\ /\ 2\ -\/\ SIZE\_FIGURE\ /\ 2}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ VALUE\_Y\ 0}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ KEY\_SPACE\ 32}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structs21_1_1_coordinates}{Coordinates}}\ \{}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structs21_1_1_coordinates_a2db4de16251c33808f0f42ef6032eacd}{x}};}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structs21_1_1_coordinates_a8dec232f04814c9b4477ac9499625584}{y}};}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00035\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classs21_1_1_snake_logic}{SnakeLogic}}\ \{}
+\DoxyCodeLine{00036\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00037\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{struct_game_info__t}{GameInfo\_t}}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a19aebf9f812e4cb85591eb7e2f0573a7}{gameInfo\_}};\ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{GameState\_t}}\ \mbox{\hyperlink{classs21_1_1_snake_logic_ad2ec08c1069be664aefc20c57642fb82}{gameState\_}};\ \ }
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{classs21_1_1_snake_logic_ad285ffc2e22af34a8ef3c15a62469084}{SnakeLogic}}();}
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{classs21_1_1_snake_logic_ad1d3bac90a0a9993227096a0575585a7}{\string~SnakeLogic}}();}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{int}**\ \mbox{\hyperlink{classs21_1_1_snake_logic_a30e8b93fc08473ff23fcf3696479f2fc}{createMatrixField}}();}
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a009fe0b543d4d427aa39045c5beeb0d2}{initGame}}();}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a96b76cb9d7e544966360aa492687e1a4}{resetMatrixField}}();}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classs21_1_1_snake_logic_ae926fe5444bbdf3e35d3f9cad4a3797c}{moveSnake}}();}
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a0a062a194a51cb44ed907192df0beb11}{rotateDirection}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classs21_1_1_snake_logic_ac41778c148cdba19eeb2c28f3752b7b7}{checkCollision}}();}
+\DoxyCodeLine{00055\ \ \ \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{GameState\_t}}\&\ \mbox{\hyperlink{classs21_1_1_snake_logic_a5127655a470de05c3fa9608b0ab7ca9b}{getGameState}}();}
+\DoxyCodeLine{00057\ \ \ \mbox{\hyperlink{struct_game_info__t}{GameInfo\_t}}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a81f5c988d19125b9e38248d6140135a9}{getGameInfo}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a5704ccc09ba8409c131f6d0f9e1eea4a}{setGameState}}(\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{GameState\_t}}\ state);}
+\DoxyCodeLine{00059\ \ \ std::vector<Coordinates>\ \mbox{\hyperlink{classs21_1_1_snake_logic_a11751ce390295bd690981b1b97b8026b}{body}};}
+\DoxyCodeLine{00060\ \ \ std::vector<Coordinates>\&\ \mbox{\hyperlink{classs21_1_1_snake_logic_ad8e1c7ed776fd6cd77162ed323b030ba}{getSnake}}()\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a11751ce390295bd690981b1b97b8026b}{body}};\ \}}
+\DoxyCodeLine{00061\ \ \ \mbox{\hyperlink{structs21_1_1_coordinates}{Coordinates}}\ \mbox{\hyperlink{classs21_1_1_snake_logic_acf85302daf5ca59cef515271b53c198e}{apple}};}
+\DoxyCodeLine{00062\ \ \ \mbox{\hyperlink{structs21_1_1_coordinates}{Coordinates}}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a10e12b982336b0ced58801164bef90df}{getApple}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classs21_1_1_snake_logic_acf85302daf5ca59cef515271b53c198e}{apple}};\ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a2ab2f61c56b3c45d66eef6f734688f86}{generateSnake}}();}
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classs21_1_1_snake_logic_acbd40d77e615da0b3caa61f13b3b83e1}{generateApple}}();}
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a317121d382ca82db33ac77cbef0c20c1}{updateLevel}}();}
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classs21_1_1_snake_logic_ab3ee2e42d15d857d62869b56634f24ea}{checkVictory}}();}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a1e3e511ecb89f69e9b80e9bc786d0c8f}{saveGameScore}}();}
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a5f2d40a5786c58b30975a85d16b74e76}{readGameScore}}();}
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classs21_1_1_snake_logic_a392761ce26527e4fc0a9df68ae91ff59}{direction\_}};}
+\DoxyCodeLine{00073\ \};}
+\DoxyCodeLine{00074\ \}\ \ \textcolor{comment}{//\ namespace\ s21}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{snake__logic_8h_aebf943a9033cbe0a64f1aaae41d22987}{snake}}();}
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{snake__logic_8h_ab13e858612c64eeef73aff1d8a03945e}{printMenu}}();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ SNAKE\_LOGIC\_H}}
+
+\end{DoxyCode}

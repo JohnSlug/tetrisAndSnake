@@ -1,0 +1,137 @@
+\doxysection{tetris\+\_\+t Struct Reference}
+\hypertarget{structtetris__t}{}\label{structtetris__t}\index{tetris\_t@{tetris\_t}}
+
+
+Эта структура хранит всю информацию о игровой логике is\+\_\+game\+\_\+start -\/ true/false началась ли игра tetris\+State state -\/ Текущее состояние игры \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field -\/ Основное игровое поле \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}preview\+\_\+field -\/ Временное игровое поле, которое используется для того, чтобы отдавать в фронтенд. (Соединяя с блоком на каждом кадре) \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}current\+\_\+block -\/ Текущий блок (Блок не привязан к игровому полю и не находится в нём) \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}current\+\_\+block -\/ Позиция текущего блока (Блок не привязан к игровому полю и не находится в нём) \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}next\+\_\+block; -\/ Следующий блок (Просто отображение) \doxylink{struct_user_input__t}{User\+Input\+\_\+t} last\+\_\+user\+\_\+input -\/ Последние действия пользователя bool is\+\_\+fall\+\_\+time -\/ Нужно ли в следующем кадре упасть блоку.  
+
+
+
+
+{\ttfamily \#include $<$tetris.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{structtetris__t_a96cc8540bdef250c66c06d378f617f1a}{is\+\_\+game\+\_\+start}}
+\item 
+\mbox{\hyperlink{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d}{tetris\+State}} \mbox{\hyperlink{structtetris__t_a26ea3f5a9915b3ebbebc4ac18072c682}{state}}
+\item 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtetris__t_ad7d60de24688e6766d6de3cbe61bc964}{field}}
+\item 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtetris__t_af058663122407a04f02091606f9c9b91}{preview\+\_\+field}}
+\item 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtetris__t_a1f554d9e53787744b3edb1ea0cbf287b}{current\+\_\+block}}
+\item 
+\mbox{\hyperlink{structcoordinate}{coordinate}} \mbox{\hyperlink{structtetris__t_a1bdc6a87bda02844c2f23eae21a21672}{current\+\_\+block\+\_\+pos}}
+\item 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtetris__t_ae9642c0e3d0400f4f569ae9233e5814b}{next\+\_\+block}}
+\item 
+int \mbox{\hyperlink{structtetris__t_a4a320fcd6bb5c6ac57498c5a906bdcf4}{score}}
+\item 
+int \mbox{\hyperlink{structtetris__t_a8832d4a5b742da3270bae8070f172cac}{high\+\_\+score}}
+\item 
+int \mbox{\hyperlink{structtetris__t_a963fd87141f814331157cceca8457b89}{level}}
+\item 
+int \mbox{\hyperlink{structtetris__t_aab35d0a68c74891703f3dd3e6122817b}{speed}}
+\item 
+int \mbox{\hyperlink{structtetris__t_ade59f42b84cf6130619476d791626432}{pause}}
+\item 
+\mbox{\hyperlink{struct_user_input__t}{User\+Input\+\_\+t}} \mbox{\hyperlink{structtetris__t_ac771308ccf575fbf75809eec6629d4e1}{last\+\_\+user\+\_\+input}}
+\item 
+bool \mbox{\hyperlink{structtetris__t_a222bed833d011871449952cc82c08e01}{is\+\_\+fall\+\_\+time}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Эта структура хранит всю информацию о игровой логике is\+\_\+game\+\_\+start -\/ true/false началась ли игра tetris\+State state -\/ Текущее состояние игры \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field -\/ Основное игровое поле \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}preview\+\_\+field -\/ Временное игровое поле, которое используется для того, чтобы отдавать в фронтенд. (Соединяя с блоком на каждом кадре) \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}current\+\_\+block -\/ Текущий блок (Блок не привязан к игровому полю и не находится в нём) \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}current\+\_\+block -\/ Позиция текущего блока (Блок не привязан к игровому полю и не находится в нём) \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}next\+\_\+block; -\/ Следующий блок (Просто отображение) \doxylink{struct_user_input__t}{User\+Input\+\_\+t} last\+\_\+user\+\_\+input -\/ Последние действия пользователя bool is\+\_\+fall\+\_\+time -\/ Нужно ли в следующем кадре упасть блоку. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structtetris__t_a1f554d9e53787744b3edb1ea0cbf287b}\index{tetris\_t@{tetris\_t}!current\_block@{current\_block}}
+\index{current\_block@{current\_block}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{current\_block}{current\_block}}
+{\footnotesize\ttfamily \label{structtetris__t_a1f554d9e53787744b3edb1ea0cbf287b} 
+int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} tetris\+\_\+t\+::current\+\_\+block}
+
+\Hypertarget{structtetris__t_a1bdc6a87bda02844c2f23eae21a21672}\index{tetris\_t@{tetris\_t}!current\_block\_pos@{current\_block\_pos}}
+\index{current\_block\_pos@{current\_block\_pos}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{current\_block\_pos}{current\_block\_pos}}
+{\footnotesize\ttfamily \label{structtetris__t_a1bdc6a87bda02844c2f23eae21a21672} 
+\mbox{\hyperlink{structcoordinate}{coordinate}} tetris\+\_\+t\+::current\+\_\+block\+\_\+pos}
+
+\Hypertarget{structtetris__t_ad7d60de24688e6766d6de3cbe61bc964}\index{tetris\_t@{tetris\_t}!field@{field}}
+\index{field@{field}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{field}{field}}
+{\footnotesize\ttfamily \label{structtetris__t_ad7d60de24688e6766d6de3cbe61bc964} 
+int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} tetris\+\_\+t\+::field}
+
+\Hypertarget{structtetris__t_a8832d4a5b742da3270bae8070f172cac}\index{tetris\_t@{tetris\_t}!high\_score@{high\_score}}
+\index{high\_score@{high\_score}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{high\_score}{high\_score}}
+{\footnotesize\ttfamily \label{structtetris__t_a8832d4a5b742da3270bae8070f172cac} 
+int tetris\+\_\+t\+::high\+\_\+score}
+
+\Hypertarget{structtetris__t_a222bed833d011871449952cc82c08e01}\index{tetris\_t@{tetris\_t}!is\_fall\_time@{is\_fall\_time}}
+\index{is\_fall\_time@{is\_fall\_time}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{is\_fall\_time}{is\_fall\_time}}
+{\footnotesize\ttfamily \label{structtetris__t_a222bed833d011871449952cc82c08e01} 
+bool tetris\+\_\+t\+::is\+\_\+fall\+\_\+time}
+
+\Hypertarget{structtetris__t_a96cc8540bdef250c66c06d378f617f1a}\index{tetris\_t@{tetris\_t}!is\_game\_start@{is\_game\_start}}
+\index{is\_game\_start@{is\_game\_start}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{is\_game\_start}{is\_game\_start}}
+{\footnotesize\ttfamily \label{structtetris__t_a96cc8540bdef250c66c06d378f617f1a} 
+bool tetris\+\_\+t\+::is\+\_\+game\+\_\+start}
+
+\Hypertarget{structtetris__t_ac771308ccf575fbf75809eec6629d4e1}\index{tetris\_t@{tetris\_t}!last\_user\_input@{last\_user\_input}}
+\index{last\_user\_input@{last\_user\_input}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{last\_user\_input}{last\_user\_input}}
+{\footnotesize\ttfamily \label{structtetris__t_ac771308ccf575fbf75809eec6629d4e1} 
+\mbox{\hyperlink{struct_user_input__t}{User\+Input\+\_\+t}} tetris\+\_\+t\+::last\+\_\+user\+\_\+input}
+
+\Hypertarget{structtetris__t_a963fd87141f814331157cceca8457b89}\index{tetris\_t@{tetris\_t}!level@{level}}
+\index{level@{level}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{level}{level}}
+{\footnotesize\ttfamily \label{structtetris__t_a963fd87141f814331157cceca8457b89} 
+int tetris\+\_\+t\+::level}
+
+\Hypertarget{structtetris__t_ae9642c0e3d0400f4f569ae9233e5814b}\index{tetris\_t@{tetris\_t}!next\_block@{next\_block}}
+\index{next\_block@{next\_block}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{next\_block}{next\_block}}
+{\footnotesize\ttfamily \label{structtetris__t_ae9642c0e3d0400f4f569ae9233e5814b} 
+int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} tetris\+\_\+t\+::next\+\_\+block}
+
+\Hypertarget{structtetris__t_ade59f42b84cf6130619476d791626432}\index{tetris\_t@{tetris\_t}!pause@{pause}}
+\index{pause@{pause}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{pause}{pause}}
+{\footnotesize\ttfamily \label{structtetris__t_ade59f42b84cf6130619476d791626432} 
+int tetris\+\_\+t\+::pause}
+
+\Hypertarget{structtetris__t_af058663122407a04f02091606f9c9b91}\index{tetris\_t@{tetris\_t}!preview\_field@{preview\_field}}
+\index{preview\_field@{preview\_field}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{preview\_field}{preview\_field}}
+{\footnotesize\ttfamily \label{structtetris__t_af058663122407a04f02091606f9c9b91} 
+int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} tetris\+\_\+t\+::preview\+\_\+field}
+
+\Hypertarget{structtetris__t_a4a320fcd6bb5c6ac57498c5a906bdcf4}\index{tetris\_t@{tetris\_t}!score@{score}}
+\index{score@{score}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily \label{structtetris__t_a4a320fcd6bb5c6ac57498c5a906bdcf4} 
+int tetris\+\_\+t\+::score}
+
+\Hypertarget{structtetris__t_aab35d0a68c74891703f3dd3e6122817b}\index{tetris\_t@{tetris\_t}!speed@{speed}}
+\index{speed@{speed}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily \label{structtetris__t_aab35d0a68c74891703f3dd3e6122817b} 
+int tetris\+\_\+t\+::speed}
+
+\Hypertarget{structtetris__t_a26ea3f5a9915b3ebbebc4ac18072c682}\index{tetris\_t@{tetris\_t}!state@{state}}
+\index{state@{state}!tetris\_t@{tetris\_t}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{structtetris__t_a26ea3f5a9915b3ebbebc4ac18072c682} 
+\mbox{\hyperlink{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d}{tetris\+State}} tetris\+\_\+t\+::state}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+brick\+\_\+game/tetris/\mbox{\hyperlink{tetris_8h}{tetris.\+h}}\end{DoxyCompactItemize}

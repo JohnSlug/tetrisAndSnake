@@ -1,0 +1,156 @@
+\doxysection{gui/cli/interface\+\_\+tetris.c File Reference}
+\hypertarget{interface__tetris_8c}{}\label{interface__tetris_8c}\index{gui/cli/interface\_tetris.c@{gui/cli/interface\_tetris.c}}
+{\ttfamily \#include "{}../../brick\+\_\+game/tetris/tetris.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface__tetris_8c_a3ebfd13ad57ad1d675aee45a746eff9f}{crt\+Win}} (WINDOW \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{structcoordinate}{coordinate}} window\+\_\+size, \mbox{\hyperlink{structcoordinate}{coordinate}} window\+\_\+pos)
+\item 
+void \mbox{\hyperlink{interface__tetris_8c_aa5ab3a2de5e1c9eff67a54a00c6ed4bf}{print\+Start\+Preview}} ()
+\begin{DoxyCompactList}\small\item\em Отрисовка старотового окна \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface__tetris_8c_a6afa947ba8c86daf80a33ad11f3943db}{print\+End\+Preview}} ()
+\begin{DoxyCompactList}\small\item\em Прорисовка Конца игры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface__tetris_8c_a33b28f2fc189f3b61dc6d11c67141da6}{print\+Pause\+Preview}} ()
+\begin{DoxyCompactList}\small\item\em Экран Паузы \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface__tetris_8c_aee4c437eeecaa43a4c0c0700c7c84796}{print\+Field\+Ceil}} (WINDOW \texorpdfstring{$\ast$}{*}win, chtype symbol)
+\begin{DoxyCompactList}\small\item\em Прорисовка одной ячейки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface__tetris_8c_a9bcae211345c73e1d1222410cc599781}{sli\+Info\+Storage}} (\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}cli, bool remove)
+\begin{DoxyCompactList}\small\item\em Является хранилищем для структуры \doxylink{structcli_tetris}{cli\+Tetris}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface__tetris_8c_a48ea59a5184c52a1ccc91bcc37390aa6}{Init\+Cli}} (\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}cli)
+\begin{DoxyCompactList}\small\item\em Создание экземпляра структуры \doxylink{structcli_tetris}{cli\+Tetris}. Существует только один элемент и обращение происходит по ссылке на него. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface__tetris_8c_af5d6593fd1d811199f32059f1f3f16f1}{init\+Curses}} (void)
+\begin{DoxyCompactList}\small\item\em ncurses установки. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface__tetris_8c_a3fc593adf848e4420ff95c00556fd9bb}{remove\+Cli}} (\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}cli)
+\begin{DoxyCompactList}\small\item\em Удаление элемент структуры \doxylink{structcli_tetris}{cli\+Tetris}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_user_input__t}{User\+Input\+\_\+t}} \mbox{\hyperlink{interface__tetris_8c_ae2239c58a5ff0db3330a0472a67076a6}{get\+User\+Input}} (void)
+\begin{DoxyCompactList}\small\item\em Нажатие игрока. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface__tetris_8c_a8eaf38a823706a9d44c3ec5855d1ed0a}{print\+Current\+State}} (\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} game\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Отрисовка текущего состояния игры. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface__tetris_8c_a8237cbda1783b9a3bad52bcd8222d748}{stat\+Win\+Print}} (\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}cli, \mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} \texorpdfstring{$\ast$}{*}game\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Окно Статитстики \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{interface__tetris_8c_a3ebfd13ad57ad1d675aee45a746eff9f}\index{interface\_tetris.c@{interface\_tetris.c}!crtWin@{crtWin}}
+\index{crtWin@{crtWin}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{crtWin()}{crtWin()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_a3ebfd13ad57ad1d675aee45a746eff9f} 
+void crt\+Win (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{window}{, }\item[{\mbox{\hyperlink{structcoordinate}{coordinate}}}]{window\+\_\+size}{, }\item[{\mbox{\hyperlink{structcoordinate}{coordinate}}}]{window\+\_\+pos}{}\end{DoxyParamCaption})}
+
+\Hypertarget{interface__tetris_8c_ae2239c58a5ff0db3330a0472a67076a6}\index{interface\_tetris.c@{interface\_tetris.c}!getUserInput@{getUserInput}}
+\index{getUserInput@{getUserInput}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{getUserInput()}{getUserInput()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_ae2239c58a5ff0db3330a0472a67076a6} 
+\mbox{\hyperlink{struct_user_input__t}{User\+Input\+\_\+t}} get\+User\+Input (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Нажатие игрока. 
+
+\Hypertarget{interface__tetris_8c_a48ea59a5184c52a1ccc91bcc37390aa6}\index{interface\_tetris.c@{interface\_tetris.c}!InitCli@{InitCli}}
+\index{InitCli@{InitCli}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{InitCli()}{InitCli()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_a48ea59a5184c52a1ccc91bcc37390aa6} 
+void Init\+Cli (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}}]{cli}{}\end{DoxyParamCaption})}
+
+
+
+Создание экземпляра структуры \doxylink{structcli_tetris}{cli\+Tetris}. Существует только один элемент и обращение происходит по ссылке на него. 
+
+\Hypertarget{interface__tetris_8c_af5d6593fd1d811199f32059f1f3f16f1}\index{interface\_tetris.c@{interface\_tetris.c}!initCurses@{initCurses}}
+\index{initCurses@{initCurses}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{initCurses()}{initCurses()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_af5d6593fd1d811199f32059f1f3f16f1} 
+void init\+Curses (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+ncurses установки. 
+
+\Hypertarget{interface__tetris_8c_a8eaf38a823706a9d44c3ec5855d1ed0a}\index{interface\_tetris.c@{interface\_tetris.c}!printCurrentState@{printCurrentState}}
+\index{printCurrentState@{printCurrentState}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{printCurrentState()}{printCurrentState()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_a8eaf38a823706a9d44c3ec5855d1ed0a} 
+void print\+Current\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}}}]{game\+\_\+info}{}\end{DoxyParamCaption})}
+
+
+
+Отрисовка текущего состояния игры. 
+
+\Hypertarget{interface__tetris_8c_a6afa947ba8c86daf80a33ad11f3943db}\index{interface\_tetris.c@{interface\_tetris.c}!printEndPreview@{printEndPreview}}
+\index{printEndPreview@{printEndPreview}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{printEndPreview()}{printEndPreview()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_a6afa947ba8c86daf80a33ad11f3943db} 
+void print\+End\+Preview (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Прорисовка Конца игры 
+
+\Hypertarget{interface__tetris_8c_aee4c437eeecaa43a4c0c0700c7c84796}\index{interface\_tetris.c@{interface\_tetris.c}!printFieldCeil@{printFieldCeil}}
+\index{printFieldCeil@{printFieldCeil}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{printFieldCeil()}{printFieldCeil()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_aee4c437eeecaa43a4c0c0700c7c84796} 
+void print\+Field\+Ceil (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{win}{, }\item[{chtype}]{symbol}{}\end{DoxyParamCaption})}
+
+
+
+Прорисовка одной ячейки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & Окно в котором нужно вывести. \\
+\hline
+{\em symbol} & Символ, которым будет заполнена ячейка. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{interface__tetris_8c_a33b28f2fc189f3b61dc6d11c67141da6}\index{interface\_tetris.c@{interface\_tetris.c}!printPausePreview@{printPausePreview}}
+\index{printPausePreview@{printPausePreview}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{printPausePreview()}{printPausePreview()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_a33b28f2fc189f3b61dc6d11c67141da6} 
+void print\+Pause\+Preview (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Экран Паузы 
+
+\Hypertarget{interface__tetris_8c_aa5ab3a2de5e1c9eff67a54a00c6ed4bf}\index{interface\_tetris.c@{interface\_tetris.c}!printStartPreview@{printStartPreview}}
+\index{printStartPreview@{printStartPreview}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{printStartPreview()}{printStartPreview()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_aa5ab3a2de5e1c9eff67a54a00c6ed4bf} 
+void print\+Start\+Preview (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Отрисовка старотового окна 
+
+\Hypertarget{interface__tetris_8c_a3fc593adf848e4420ff95c00556fd9bb}\index{interface\_tetris.c@{interface\_tetris.c}!removeCli@{removeCli}}
+\index{removeCli@{removeCli}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{removeCli()}{removeCli()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_a3fc593adf848e4420ff95c00556fd9bb} 
+void remove\+Cli (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}}]{cli}{}\end{DoxyParamCaption})}
+
+
+
+Удаление элемент структуры \doxylink{structcli_tetris}{cli\+Tetris}. 
+
+\Hypertarget{interface__tetris_8c_a9bcae211345c73e1d1222410cc599781}\index{interface\_tetris.c@{interface\_tetris.c}!sliInfoStorage@{sliInfoStorage}}
+\index{sliInfoStorage@{sliInfoStorage}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{sliInfoStorage()}{sliInfoStorage()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_a9bcae211345c73e1d1222410cc599781} 
+void sli\+Info\+Storage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{cli}{, }\item[{bool}]{remove}{}\end{DoxyParamCaption})}
+
+
+
+Является хранилищем для структуры \doxylink{structcli_tetris}{cli\+Tetris}. 
+
+\Hypertarget{interface__tetris_8c_a8237cbda1783b9a3bad52bcd8222d748}\index{interface\_tetris.c@{interface\_tetris.c}!statWinPrint@{statWinPrint}}
+\index{statWinPrint@{statWinPrint}!interface\_tetris.c@{interface\_tetris.c}}
+\doxysubsubsection{\texorpdfstring{statWinPrint()}{statWinPrint()}}
+{\footnotesize\ttfamily \label{interface__tetris_8c_a8237cbda1783b9a3bad52bcd8222d748} 
+void stat\+Win\+Print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}}]{cli}{, }\item[{\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} \texorpdfstring{$\ast$}{*}}]{game\+\_\+info}{}\end{DoxyParamCaption})}
+
+
+
+Окно Статитстики 
+

@@ -1,0 +1,143 @@
+\doxysection{Snake\+Widget Class Reference}
+\hypertarget{class_snake_widget}{}\label{class_snake_widget}\index{SnakeWidget@{SnakeWidget}}
+
+
+Виджет для отображения игры "{}Змейка"{} в Qt. Отрисовывает поле, обрабатывает ввод и обновляет состояние.  
+
+
+
+
+{\ttfamily \#include $<$snakewidget.\+h$>$}
+
+Inheritance diagram for Snake\+Widget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_snake_widget}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_snake_widget_a536f53e6f32760ebcb0d829179201cff}{game\+Over}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_snake_widget_a17360db32a53d0dbf1f4151ba903e60f}{Snake\+Widget}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор виджета "{}Змейка"{}. Инициализирует таймер, устанавливает интервал обновления и запускает игру. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_snake_widget_aaa4dafc4f1964cad9ccd5f8e16faf741}{\texorpdfstring{$\sim$}{\string~}\+Snake\+Widget}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор виджета "{}Змейка"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_snake_widget_afe22ff94c0e345398b253e508be40a5d}{paint\+Event}} (QPaint\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Отрисовывает игровое поле и элементы. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_snake_widget_a093ca771aac8a9c11c75ed8bbeb02405}{key\+Press\+Event}} (QKey\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Обрабатывает клавиши управления змейкой. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_snake_widget_a0cede43e77c7dff6f0e5c3123f21167c}{update\+Game\+State}} ()
+\begin{DoxyCompactList}\small\item\em Обновляет игровое состояние (движение, коллизии). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Виджет для отображения игры "{}Змейка"{} в Qt. Отрисовывает поле, обрабатывает ввод и обновляет состояние. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_snake_widget_a17360db32a53d0dbf1f4151ba903e60f}\index{SnakeWidget@{SnakeWidget}!SnakeWidget@{SnakeWidget}}
+\index{SnakeWidget@{SnakeWidget}!SnakeWidget@{SnakeWidget}}
+\doxysubsubsection{\texorpdfstring{SnakeWidget()}{SnakeWidget()}}
+{\footnotesize\ttfamily \label{class_snake_widget_a17360db32a53d0dbf1f4151ba903e60f} 
+Snake\+Widget\+::\+Snake\+Widget (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Конструктор виджета "{}Змейка"{}. Инициализирует таймер, устанавливает интервал обновления и запускает игру. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & Родительский виджет. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_snake_widget_aaa4dafc4f1964cad9ccd5f8e16faf741}\index{SnakeWidget@{SnakeWidget}!````~SnakeWidget@{\texorpdfstring{$\sim$}{\string~}SnakeWidget}}
+\index{````~SnakeWidget@{\texorpdfstring{$\sim$}{\string~}SnakeWidget}!SnakeWidget@{SnakeWidget}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SnakeWidget()}{\string~SnakeWidget()}}
+{\footnotesize\ttfamily \label{class_snake_widget_aaa4dafc4f1964cad9ccd5f8e16faf741} 
+Snake\+Widget\+::\texorpdfstring{$\sim$}{\string~}\+Snake\+Widget (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Деструктор виджета "{}Змейка"{}. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_snake_widget_a536f53e6f32760ebcb0d829179201cff}\index{SnakeWidget@{SnakeWidget}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!SnakeWidget@{SnakeWidget}}
+\doxysubsubsection{\texorpdfstring{gameOver}{gameOver}}
+{\footnotesize\ttfamily \label{class_snake_widget_a536f53e6f32760ebcb0d829179201cff} 
+void Snake\+Widget\+::game\+Over (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_snake_widget_a093ca771aac8a9c11c75ed8bbeb02405}\index{SnakeWidget@{SnakeWidget}!keyPressEvent@{keyPressEvent}}
+\index{keyPressEvent@{keyPressEvent}!SnakeWidget@{SnakeWidget}}
+\doxysubsubsection{\texorpdfstring{keyPressEvent()}{keyPressEvent()}}
+{\footnotesize\ttfamily \label{class_snake_widget_a093ca771aac8a9c11c75ed8bbeb02405} 
+void Snake\+Widget\+::key\+Press\+Event (\begin{DoxyParamCaption}\item[{QKey\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Обрабатывает клавиши управления змейкой. 
+
+Обрабатывает нажатия клавиш для управления змейкой.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Событие нажатия клавиши.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyItemize}
+\item Стрелки\+: изменение направления змейки.
+\item \textquotesingle{}S\textquotesingle{}\+: старт игры.
+\item \textquotesingle{}P\textquotesingle{}\+: пауза/продолжение.
+\item \textquotesingle{}Q\textquotesingle{}\+: выход (в состоянии паузы или завершения). 
+\end{DoxyItemize}\Hypertarget{class_snake_widget_afe22ff94c0e345398b253e508be40a5d}\index{SnakeWidget@{SnakeWidget}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!SnakeWidget@{SnakeWidget}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}}
+{\footnotesize\ttfamily \label{class_snake_widget_afe22ff94c0e345398b253e508be40a5d} 
+void Snake\+Widget\+::paint\+Event (\begin{DoxyParamCaption}\item[{QPaint\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Отрисовывает игровое поле и элементы. 
+
+Отрисовывает игровое поле, змейку, яблоко и UI-\/элементы.
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Событие отрисовки. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_snake_widget_a0cede43e77c7dff6f0e5c3123f21167c}\index{SnakeWidget@{SnakeWidget}!updateGameState@{updateGameState}}
+\index{updateGameState@{updateGameState}!SnakeWidget@{SnakeWidget}}
+\doxysubsubsection{\texorpdfstring{updateGameState()}{updateGameState()}}
+{\footnotesize\ttfamily \label{class_snake_widget_a0cede43e77c7dff6f0e5c3123f21167c} 
+void Snake\+Widget\+::update\+Game\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Обновляет игровое состояние (движение, коллизии). 
+
+Обновляет игровое состояние\+:
+
+
+\begin{DoxyItemize}
+\item Перемещает змейку.
+\item Проверяет съедение яблока и коллизии.
+\item Обновляет уровень и скорость.
+\item Сохраняет рекорд при завершении игры. 
+\end{DoxyItemize}
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+gui/desktop/view/\mbox{\hyperlink{snakewidget_8h}{snakewidget.\+h}}\item 
+gui/desktop/view/build/view\+\_\+autogen/\+EWIEGA46\+WW/\mbox{\hyperlink{moc__snakewidget_8cpp}{moc\+\_\+snakewidget.\+cpp}}\item 
+gui/desktop/view/\mbox{\hyperlink{snakewidget_8cpp}{snakewidget.\+cpp}}\end{DoxyCompactItemize}

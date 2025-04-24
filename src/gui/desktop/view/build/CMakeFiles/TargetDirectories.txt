@@ -1,0 +1,9 @@
+/Users/danil/Documents/Project/CPP3_BrickGame_v2.0-1/src/gui/desktop/view/build/CMakeFiles/view.dir
+/Users/danil/Documents/Project/CPP3_BrickGame_v2.0-1/src/gui/desktop/view/build/CMakeFiles/edit_cache.dir
+/Users/danil/Documents/Project/CPP3_BrickGame_v2.0-1/src/gui/desktop/view/build/CMakeFiles/rebuild_cache.dir
+/Users/danil/Documents/Project/CPP3_BrickGame_v2.0-1/src/gui/desktop/view/build/CMakeFiles/list_install_components.dir
+/Users/danil/Documents/Project/CPP3_BrickGame_v2.0-1/src/gui/desktop/view/build/CMakeFiles/install.dir
+/Users/danil/Documents/Project/CPP3_BrickGame_v2.0-1/src/gui/desktop/view/build/CMakeFiles/install/local.dir
+/Users/danil/Documents/Project/CPP3_BrickGame_v2.0-1/src/gui/desktop/view/build/CMakeFiles/install/strip.dir
+/Users/danil/Documents/Project/CPP3_BrickGame_v2.0-1/src/gui/desktop/view/build/CMakeFiles/view_autogen_timestamp_deps.dir
+/Users/danil/Documents/Project/CPP3_BrickGame_v2.0-1/src/gui/desktop/view/build/CMakeFiles/view_autogen.dir

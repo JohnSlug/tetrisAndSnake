@@ -1,0 +1,115 @@
+\doxysection{brick\+\_\+game/snake/snake\+\_\+logic.h File Reference}
+\hypertarget{snake__logic_8h}{}\label{snake__logic_8h}\index{brick\_game/snake/snake\_logic.h@{brick\_game/snake/snake\_logic.h}}
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include "{}../tetris/tetris.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs21_1_1_coordinates}{s21\+::\+Coordinates}}
+\begin{DoxyCompactList}\small\item\em Хранит координаты объекта на игровом поле. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classs21_1_1_snake_logic}{s21\+::\+Snake\+Logic}}
+\begin{DoxyCompactList}\small\item\em Логика игры "{}Змейка"{}. Управляет состоянием игры, змейкой, яблоками, счетом и уровнями. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespaces21}{s21}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{snake__logic_8h_a313353b53d609b3b2b37e1aecf98bf4c}{FIELD\+\_\+\+WIDTH}}~10
+\item 
+\#define \mbox{\hyperlink{snake__logic_8h_a90b3ddaf01d4c39af0567b4500e9c4c6}{FIELD\+\_\+\+HEIGHT}}~20
+\item 
+\#define \mbox{\hyperlink{snake__logic_8h_a6918cb39942314e449218e6a5adebf9e}{SIZE\+\_\+\+FIGURE}}~4
+\item 
+\#define \mbox{\hyperlink{snake__logic_8h_ac09b46359f82365354ed78e4f54972b8}{NUM\+\_\+\+FIGURE}}~7
+\item 
+\#define \mbox{\hyperlink{snake__logic_8h_a2f8d13f2bfd9520f90499bc6363d44e7}{VALUE\+\_\+X}}~\mbox{\hyperlink{snake__logic_8h_a313353b53d609b3b2b37e1aecf98bf4c}{FIELD\+\_\+\+WIDTH}} / 2 -\/ \mbox{\hyperlink{snake__logic_8h_a6918cb39942314e449218e6a5adebf9e}{SIZE\+\_\+\+FIGURE}} / 2
+\item 
+\#define \mbox{\hyperlink{snake__logic_8h_af174fc6f28439f1bc41807c5a9a2fe90}{VALUE\+\_\+Y}}~0
+\item 
+\#define \mbox{\hyperlink{snake__logic_8h_a8a5ff83d21dfa704c1c3eff56d5b3a4b}{KEY\+\_\+\+SPACE}}~32
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{snake__logic_8h_aebf943a9033cbe0a64f1aaae41d22987}{snake}} ()
+\begin{DoxyCompactList}\small\item\em Основная функция для запуска игры "{}Змейка"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{snake__logic_8h_ab13e858612c64eeef73aff1d8a03945e}{print\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Отображает главное меню выбора игры. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{snake__logic_8h_a90b3ddaf01d4c39af0567b4500e9c4c6}\index{snake\_logic.h@{snake\_logic.h}!FIELD\_HEIGHT@{FIELD\_HEIGHT}}
+\index{FIELD\_HEIGHT@{FIELD\_HEIGHT}!snake\_logic.h@{snake\_logic.h}}
+\doxysubsubsection{\texorpdfstring{FIELD\_HEIGHT}{FIELD\_HEIGHT}}
+{\footnotesize\ttfamily \label{snake__logic_8h_a90b3ddaf01d4c39af0567b4500e9c4c6} 
+\#define FIELD\+\_\+\+HEIGHT~20}
+
+\Hypertarget{snake__logic_8h_a313353b53d609b3b2b37e1aecf98bf4c}\index{snake\_logic.h@{snake\_logic.h}!FIELD\_WIDTH@{FIELD\_WIDTH}}
+\index{FIELD\_WIDTH@{FIELD\_WIDTH}!snake\_logic.h@{snake\_logic.h}}
+\doxysubsubsection{\texorpdfstring{FIELD\_WIDTH}{FIELD\_WIDTH}}
+{\footnotesize\ttfamily \label{snake__logic_8h_a313353b53d609b3b2b37e1aecf98bf4c} 
+\#define FIELD\+\_\+\+WIDTH~10}
+
+\Hypertarget{snake__logic_8h_a8a5ff83d21dfa704c1c3eff56d5b3a4b}\index{snake\_logic.h@{snake\_logic.h}!KEY\_SPACE@{KEY\_SPACE}}
+\index{KEY\_SPACE@{KEY\_SPACE}!snake\_logic.h@{snake\_logic.h}}
+\doxysubsubsection{\texorpdfstring{KEY\_SPACE}{KEY\_SPACE}}
+{\footnotesize\ttfamily \label{snake__logic_8h_a8a5ff83d21dfa704c1c3eff56d5b3a4b} 
+\#define KEY\+\_\+\+SPACE~32}
+
+\Hypertarget{snake__logic_8h_ac09b46359f82365354ed78e4f54972b8}\index{snake\_logic.h@{snake\_logic.h}!NUM\_FIGURE@{NUM\_FIGURE}}
+\index{NUM\_FIGURE@{NUM\_FIGURE}!snake\_logic.h@{snake\_logic.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_FIGURE}{NUM\_FIGURE}}
+{\footnotesize\ttfamily \label{snake__logic_8h_ac09b46359f82365354ed78e4f54972b8} 
+\#define NUM\+\_\+\+FIGURE~7}
+
+\Hypertarget{snake__logic_8h_a6918cb39942314e449218e6a5adebf9e}\index{snake\_logic.h@{snake\_logic.h}!SIZE\_FIGURE@{SIZE\_FIGURE}}
+\index{SIZE\_FIGURE@{SIZE\_FIGURE}!snake\_logic.h@{snake\_logic.h}}
+\doxysubsubsection{\texorpdfstring{SIZE\_FIGURE}{SIZE\_FIGURE}}
+{\footnotesize\ttfamily \label{snake__logic_8h_a6918cb39942314e449218e6a5adebf9e} 
+\#define SIZE\+\_\+\+FIGURE~4}
+
+\Hypertarget{snake__logic_8h_a2f8d13f2bfd9520f90499bc6363d44e7}\index{snake\_logic.h@{snake\_logic.h}!VALUE\_X@{VALUE\_X}}
+\index{VALUE\_X@{VALUE\_X}!snake\_logic.h@{snake\_logic.h}}
+\doxysubsubsection{\texorpdfstring{VALUE\_X}{VALUE\_X}}
+{\footnotesize\ttfamily \label{snake__logic_8h_a2f8d13f2bfd9520f90499bc6363d44e7} 
+\#define VALUE\+\_\+X~\mbox{\hyperlink{snake__logic_8h_a313353b53d609b3b2b37e1aecf98bf4c}{FIELD\+\_\+\+WIDTH}} / 2 -\/ \mbox{\hyperlink{snake__logic_8h_a6918cb39942314e449218e6a5adebf9e}{SIZE\+\_\+\+FIGURE}} / 2}
+
+\Hypertarget{snake__logic_8h_af174fc6f28439f1bc41807c5a9a2fe90}\index{snake\_logic.h@{snake\_logic.h}!VALUE\_Y@{VALUE\_Y}}
+\index{VALUE\_Y@{VALUE\_Y}!snake\_logic.h@{snake\_logic.h}}
+\doxysubsubsection{\texorpdfstring{VALUE\_Y}{VALUE\_Y}}
+{\footnotesize\ttfamily \label{snake__logic_8h_af174fc6f28439f1bc41807c5a9a2fe90} 
+\#define VALUE\+\_\+Y~0}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{snake__logic_8h_ab13e858612c64eeef73aff1d8a03945e}\index{snake\_logic.h@{snake\_logic.h}!printMenu@{printMenu}}
+\index{printMenu@{printMenu}!snake\_logic.h@{snake\_logic.h}}
+\doxysubsubsection{\texorpdfstring{printMenu()}{printMenu()}}
+{\footnotesize\ttfamily \label{snake__logic_8h_ab13e858612c64eeef73aff1d8a03945e} 
+void print\+Menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Отображает главное меню выбора игры. 
+
+Показывает варианты "{}\+Tetris"{} и "{}\+Snake"{}, а также кнопку для выхода. \Hypertarget{snake__logic_8h_aebf943a9033cbe0a64f1aaae41d22987}\index{snake\_logic.h@{snake\_logic.h}!snake@{snake}}
+\index{snake@{snake}!snake\_logic.h@{snake\_logic.h}}
+\doxysubsubsection{\texorpdfstring{snake()}{snake()}}
+{\footnotesize\ttfamily \label{snake__logic_8h_aebf943a9033cbe0a64f1aaae41d22987} 
+void snake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Основная функция для запуска игры "{}Змейка"{}. 
+
+Настраивает окружение ncurses (цвета, ввод), инициализирует MVC-\/компоненты и запускает игровой цикл. Завершает работу при выходе из игры. 

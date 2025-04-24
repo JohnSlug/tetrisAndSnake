@@ -1,0 +1,64 @@
+\doxysection{tetriswidget.\+h}
+\hypertarget{tetriswidget_8h_source}{}\label{tetriswidget_8h_source}\index{gui/desktop/view/tetriswidget.h@{gui/desktop/view/tetriswidget.h}}
+\mbox{\hyperlink{tetriswidget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TETRISWIDGET\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TETRISWIDGET\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QPainter>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QKeyEvent>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QDebug>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QStandardPaths>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QDir>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{tetris_8h}{../../../brick\_game/tetris/tetris.h}}"{}}}
+\DoxyCodeLine{00016\ \}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ SIZE\_FIGURE\ 4}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ FIELD\_HEIGHT\ 20}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ FIELD\_WIDTH\ 10}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tetris_widget}{TetrisWidget}}\ :\ \textcolor{keyword}{public}\ QWidget\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_tetris_widget_af3e4b28e9383a245fdac30009c8f02c1}{TetrisWidget}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{class_tetris_widget_a60278a3195ac89e116014951b9182e95}{\string~TetrisWidget}}();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ signals:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tetris_widget_aba252ad3d96374baefc27321c0baa5b5}{gameOver}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tetris_widget_ab25523f739348a21c0ad1537e8cea471}{paintEvent}}(QPaintEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tetris_widget_a8b7a53f66e92baaa6dacae68fc6081f5}{keyPressEvent}}(QKeyEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ updateGameState();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ initHighScore();}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ loadHighScore();}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ saveHighScore(\textcolor{keywordtype}{int}\ score);}
+\DoxyCodeLine{00049\ \ \ \ \ QString\ getHighScorePath();}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ initGame();}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ drawField(QPainter\ \&painter);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ drawNextFigure(QPainter\ \&painter);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ drawFigure(QPainter\ \&painter);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ drawSidePanel(QPainter\ \&painter);}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ moveFigureHorizontal(\mbox{\hyperlink{struct_figure}{Figure}}\ *figure,\ \textcolor{keywordtype}{int}\ direction,\ \mbox{\hyperlink{struct_game_info__t}{GameInfo\_t}}\ *gameInfo);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ drawCurrentFigure(QPainter\ \&painter);}
+\DoxyCodeLine{00057\ \ \ \ \ QTimer\ *timer;}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{structtetris__t}{tetris\_t}}\ *tetris;}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{struct_game_info__t}{GameInfo\_t}}\ *gameInfo;}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{GameState\_t}}\ *gameState;}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{struct_figure}{Figure}}\ *figure;}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ interval;}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ TETRISWIDGET\_H}}
+
+\end{DoxyCode}

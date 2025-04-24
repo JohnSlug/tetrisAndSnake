@@ -1,0 +1,47 @@
+\doxysection{gui/desktop/view/tetriswidget.h File Reference}
+\hypertarget{tetriswidget_8h}{}\label{tetriswidget_8h}\index{gui/desktop/view/tetriswidget.h@{gui/desktop/view/tetriswidget.h}}
+{\ttfamily \#include $<$QWidget$>$}\newline
+{\ttfamily \#include $<$QTimer$>$}\newline
+{\ttfamily \#include $<$QPainter$>$}\newline
+{\ttfamily \#include $<$QKey\+Event$>$}\newline
+{\ttfamily \#include $<$QDebug$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$QStandard\+Paths$>$}\newline
+{\ttfamily \#include $<$QDir$>$}\newline
+{\ttfamily \#include "{}../../../brick\+\_\+game/tetris/tetris.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_tetris_widget}{Tetris\+Widget}}
+\begin{DoxyCompactList}\small\item\em Виджет для отображения игры "{}Тетрис"{} в Qt. Управляет логикой, отрисовкой фигур и интерфейсом. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tetriswidget_8h_a6918cb39942314e449218e6a5adebf9e}{SIZE\+\_\+\+FIGURE}}~4
+\item 
+\#define \mbox{\hyperlink{tetriswidget_8h_a90b3ddaf01d4c39af0567b4500e9c4c6}{FIELD\+\_\+\+HEIGHT}}~20
+\item 
+\#define \mbox{\hyperlink{tetriswidget_8h_a313353b53d609b3b2b37e1aecf98bf4c}{FIELD\+\_\+\+WIDTH}}~10
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{tetriswidget_8h_a90b3ddaf01d4c39af0567b4500e9c4c6}\index{tetriswidget.h@{tetriswidget.h}!FIELD\_HEIGHT@{FIELD\_HEIGHT}}
+\index{FIELD\_HEIGHT@{FIELD\_HEIGHT}!tetriswidget.h@{tetriswidget.h}}
+\doxysubsubsection{\texorpdfstring{FIELD\_HEIGHT}{FIELD\_HEIGHT}}
+{\footnotesize\ttfamily \label{tetriswidget_8h_a90b3ddaf01d4c39af0567b4500e9c4c6} 
+\#define FIELD\+\_\+\+HEIGHT~20}
+
+\Hypertarget{tetriswidget_8h_a313353b53d609b3b2b37e1aecf98bf4c}\index{tetriswidget.h@{tetriswidget.h}!FIELD\_WIDTH@{FIELD\_WIDTH}}
+\index{FIELD\_WIDTH@{FIELD\_WIDTH}!tetriswidget.h@{tetriswidget.h}}
+\doxysubsubsection{\texorpdfstring{FIELD\_WIDTH}{FIELD\_WIDTH}}
+{\footnotesize\ttfamily \label{tetriswidget_8h_a313353b53d609b3b2b37e1aecf98bf4c} 
+\#define FIELD\+\_\+\+WIDTH~10}
+
+\Hypertarget{tetriswidget_8h_a6918cb39942314e449218e6a5adebf9e}\index{tetriswidget.h@{tetriswidget.h}!SIZE\_FIGURE@{SIZE\_FIGURE}}
+\index{SIZE\_FIGURE@{SIZE\_FIGURE}!tetriswidget.h@{tetriswidget.h}}
+\doxysubsubsection{\texorpdfstring{SIZE\_FIGURE}{SIZE\_FIGURE}}
+{\footnotesize\ttfamily \label{tetriswidget_8h_a6918cb39942314e449218e6a5adebf9e} 
+\#define SIZE\+\_\+\+FIGURE~4}
+

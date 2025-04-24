@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['tblock_0',['TBLOCK',['../tetris_8h.html#a2ef8324ef5c1106efe2ab3b088bd763bacdb67a61cd04dec706bc9963eaa26488',1,'tetris.h']]],
+  ['terminate_1',['Terminate',['../tetris_8h.html#a3a828fa966cd03c6b431f82c942fe58eaaf166713f3d14b30bee8f0ad5a09c4cb',1,'tetris.h']]],
+  ['terminate_5fstate_2',['TERMINATE_STATE',['../tetris_8h.html#ae837e42a19d0e4a28e5b3f60fb81d22daa6273910c7ec35335e9abb4f4ef65c9c',1,'tetris.h']]],
+  ['test_3',['TEST',['../test__snake_8cc.html#a8d3888a2d60a15384b349ca034a9dbf9',1,'TEST(SnakeLogicTest, InitGame):&#160;test_snake.cc'],['../test__snake_8cc.html#abac3231b3555790a84f0c8774fce944e',1,'TEST(SnakeLogicTest, CreateMatrixField):&#160;test_snake.cc'],['../test__snake_8cc.html#a609af071c8d38c31b0d436fb89be5d15',1,'TEST(SnakeLogicTest, MoveSnake):&#160;test_snake.cc'],['../test__snake_8cc.html#ae7218fa1e554c97a98be876331b42a2c',1,'TEST(SnakeLogicTest, GenerateApple):&#160;test_snake.cc'],['../test__snake_8cc.html#ae04e6f049b6c27654ba607a88980c70e',1,'TEST(SnakeLogicTest, CheckCollision):&#160;test_snake.cc'],['../test__snake_8cc.html#acff91a7eef928c0e2abf28f187789cf1',1,'TEST(SnakeLogicTest, CheckCollision2):&#160;test_snake.cc'],['../test__snake_8cc.html#ad3e3dcbad7783f0067ecff0e882a90aa',1,'TEST(SnakeLogicTest, CheckCollisionWithBorders):&#160;test_snake.cc'],['../test__snake_8cc.html#a2d49eeb7e4fe4119c8a9a9a04c7f7ac2',1,'TEST(SnakeLogicTest, CheckVictory):&#160;test_snake.cc'],['../test__snake_8cc.html#aa6c0455276cf211032e08168e821748a',1,'TEST(SnakeLogicTest, UpdateLevel):&#160;test_snake.cc'],['../test__snake_8cc.html#a290631f5973402a573720f9171459514',1,'TEST(SnakeLogicTest, SaveGameScore):&#160;test_snake.cc'],['../test__snake_8cc.html#a892422b29f95b311a0501da2506d178c',1,'TEST(SnakeLogicTest, SetGameState):&#160;test_snake.cc'],['../test__snake_8cc.html#aa3e2516d3fa8879fd923f50762783da7',1,'TEST(SnakeLogicTest, ReadGameScore):&#160;test_snake.cc']]],
+  ['test_5fsnake_2ecc_4',['test_snake.cc',['../test__snake_8cc.html',1,'']]],
+  ['test_5fsnake_2eh_5',['test_snake.h',['../test__snake_8h.html',1,'']]],
+  ['test_5ftetris_2ec_6',['test_tetris.c',['../test__tetris_8c.html',1,'']]],
+  ['test_5ftetris_2eh_7',['test_tetris.h',['../test__tetris_8h.html',1,'']]],
+  ['tetris_8',['tetris',['../main_8cc.html#a56df6c8c4fc0ab752fc8b0595a15a2c3',1,'tetris():&#160;tetris.c'],['../tetris_8c.html#a56df6c8c4fc0ab752fc8b0595a15a2c3',1,'tetris():&#160;tetris.c']]],
+  ['tetris_20краткое_20руководство_20пользователя_9',['BrickGame V. 1.0: Tetris. Краткое руководство пользователя',['../md__read_me.html',1,'']]],
+  ['tetris_2ec_10',['tetris.c',['../tetris_8c.html',1,'']]],
+  ['tetris_2eh_11',['tetris.h',['../tetris_8h.html',1,'']]],
+  ['tetris_5flogic_2ec_12',['tetris_logic.c',['../tetris__logic_8c.html',1,'']]],
+  ['tetris_5flogic_2ec_2eo_2ed_13',['tetris_logic.c.o.d',['../_documents_2_project_2_c_p_p3___brick_game__v2_80-1_2src_2brick__game_2tetris_2tetris__logic_8c_8o_8d.html',1,'(Global Namespace)'],['../_downloads_2_telegram___desktop_2_c_p_p3___brick_game__v2_80-1-develop_2src_2brick__game_2tetris_2tetris__logic_8c_8o_8d.html',1,'(Global Namespace)']]],
+  ['tetris_5ft_14',['tetris_t',['../structtetris__t.html',1,'']]],
+  ['tetriserror_15',['tetrisError',['../tetris_8h.html#ac2c640134ea95ca5bb7a7d6e621b9d6a',1,'tetris.h']]],
+  ['tetrisinfostorage_16',['tetrisInfoStorage',['../tetris_8h.html#a28fc86a867835082b95e5751d2894d86',1,'tetrisInfoStorage(tetris_t **tetris, bool remove):&#160;tetris_logic.c'],['../tetris__logic_8c.html#a28fc86a867835082b95e5751d2894d86',1,'tetrisInfoStorage(tetris_t **tetris, bool remove):&#160;tetris_logic.c']]],
+  ['tetrisstate_17',['tetrisState',['../tetris_8h.html#ae837e42a19d0e4a28e5b3f60fb81d22d',1,'tetris.h']]],
+  ['tetriswidget_18',['TetrisWidget',['../class_tetris_widget.html',1,'TetrisWidget'],['../class_tetris_widget.html#af3e4b28e9383a245fdac30009c8f02c1',1,'TetrisWidget::TetrisWidget()']]],
+  ['tetriswidget_2ecpp_19',['tetriswidget.cpp',['../tetriswidget_8cpp.html',1,'']]],
+  ['tetriswidget_2ecpp_2eo_2ed_20',['tetriswidget.cpp.o.d',['../tetriswidget_8cpp_8o_8d.html',1,'']]],
+  ['tetriswidget_2eh_21',['tetriswidget.h',['../tetriswidget_8h.html',1,'']]]
+];

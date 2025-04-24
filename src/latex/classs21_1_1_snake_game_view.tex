@@ -1,0 +1,135 @@
+\doxysection{s21\+::Snake\+Game\+View Class Reference}
+\hypertarget{classs21_1_1_snake_game_view}{}\label{classs21_1_1_snake_game_view}\index{s21::SnakeGameView@{s21::SnakeGameView}}
+
+
+{\ttfamily \#include $<$interface\+\_\+snake.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classs21_1_1_snake_game_view_af4d943d36c229ffc72be082af4e95b6e}{Snake\+Game\+View}} (\mbox{\hyperlink{classs21_1_1_snake_controller}{Snake\+Controller}} \&controller)
+\begin{DoxyCompactList}\small\item\em Конструктор, связывающий представление с контроллером. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_game_view_a8e671728afb6b3d0dab4d5c84595854c}{draw\+Field}} ()
+\begin{DoxyCompactList}\small\item\em Отрисовывает игровое поле. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_game_view_ac65dbf2ba8f849c56d22c5401dbfe31a}{pause\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Отображает экран паузы. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_game_view_a572df8ac078ec1a7b30237da962594e8}{prestart\+Game\+State}} ()
+\begin{DoxyCompactList}\small\item\em Показывает стартовое меню. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_game_view_a1a3cc3454b0c9fdc7e254cd5c68d25cc}{game\+Over}} ()
+\begin{DoxyCompactList}\small\item\em Отображает экран завершения игры (поражение). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_game_view_adf360359c89c1180e9271c04c8ba17f2}{game\+Victory}} ()
+\begin{DoxyCompactList}\small\item\em Отображает экран победы. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_game_view_adbaac2efbd9968712f08c64e6972216a}{draw\+Side\+Panel}} ()
+\begin{DoxyCompactList}\small\item\em Отрисовывает боковую панель с информацией. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_game_view_ac32e8366a6624f02994f031dd688bd1f}{redraw\+Field}} ()
+\begin{DoxyCompactList}\small\item\em Обновляет интерфейс (поле + панель). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_game_view_a9ac473e8a46ed6439e6ff9c13056ccca}{game\+LoopS}} ()
+\begin{DoxyCompactList}\small\item\em Запускает игровой цикл. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classs21_1_1_snake_game_view_af4d943d36c229ffc72be082af4e95b6e}\index{s21::SnakeGameView@{s21::SnakeGameView}!SnakeGameView@{SnakeGameView}}
+\index{SnakeGameView@{SnakeGameView}!s21::SnakeGameView@{s21::SnakeGameView}}
+\doxysubsubsection{\texorpdfstring{SnakeGameView()}{SnakeGameView()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_game_view_af4d943d36c229ffc72be082af4e95b6e} 
+s21\+::\+Snake\+Game\+View\+::\+Snake\+Game\+View (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classs21_1_1_snake_controller}{Snake\+Controller}} \&}]{controller}{}\end{DoxyParamCaption})}
+
+
+
+Конструктор, связывающий представление с контроллером. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classs21_1_1_snake_game_view_a8e671728afb6b3d0dab4d5c84595854c}\index{s21::SnakeGameView@{s21::SnakeGameView}!drawField@{drawField}}
+\index{drawField@{drawField}!s21::SnakeGameView@{s21::SnakeGameView}}
+\doxysubsubsection{\texorpdfstring{drawField()}{drawField()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_game_view_a8e671728afb6b3d0dab4d5c84595854c} 
+void s21\+::\+Snake\+Game\+View\+::draw\+Field (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Отрисовывает игровое поле. 
+
+Проходит по всем ячейкам поля и отображает их в зависимости от содержимого\+: пустое пространство, яблоко или тело змейки. Использует цветовые пары ncurses. \Hypertarget{classs21_1_1_snake_game_view_adbaac2efbd9968712f08c64e6972216a}\index{s21::SnakeGameView@{s21::SnakeGameView}!drawSidePanel@{drawSidePanel}}
+\index{drawSidePanel@{drawSidePanel}!s21::SnakeGameView@{s21::SnakeGameView}}
+\doxysubsubsection{\texorpdfstring{drawSidePanel()}{drawSidePanel()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_game_view_adbaac2efbd9968712f08c64e6972216a} 
+void s21\+::\+Snake\+Game\+View\+::draw\+Side\+Panel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Отрисовывает боковую панель с информацией. 
+
+Отображает текущий счёт, рекорд, уровень и скорость игры. \Hypertarget{classs21_1_1_snake_game_view_a9ac473e8a46ed6439e6ff9c13056ccca}\index{s21::SnakeGameView@{s21::SnakeGameView}!gameLoopS@{gameLoopS}}
+\index{gameLoopS@{gameLoopS}!s21::SnakeGameView@{s21::SnakeGameView}}
+\doxysubsubsection{\texorpdfstring{gameLoopS()}{gameLoopS()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_game_view_a9ac473e8a46ed6439e6ff9c13056ccca} 
+void s21\+::\+Snake\+Game\+View\+::game\+LoopS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Запускает игровой цикл. 
+
+Основной игровой цикл для змейки.
+
+Инициализирует предстартовое состояние, обрабатывает ввод пользователя, обновляет состояние игры и перерисовывает поле. Управляет задержкой между кадрами в зависимости от уровня. Цикл продолжается до выхода из игры. \Hypertarget{classs21_1_1_snake_game_view_a1a3cc3454b0c9fdc7e254cd5c68d25cc}\index{s21::SnakeGameView@{s21::SnakeGameView}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!s21::SnakeGameView@{s21::SnakeGameView}}
+\doxysubsubsection{\texorpdfstring{gameOver()}{gameOver()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_game_view_a1a3cc3454b0c9fdc7e254cd5c68d25cc} 
+void s21\+::\+Snake\+Game\+View\+::game\+Over (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Отображает экран завершения игры (поражение). 
+
+Показывает итоговый счёт и предлагает выйти из игры. \Hypertarget{classs21_1_1_snake_game_view_adf360359c89c1180e9271c04c8ba17f2}\index{s21::SnakeGameView@{s21::SnakeGameView}!gameVictory@{gameVictory}}
+\index{gameVictory@{gameVictory}!s21::SnakeGameView@{s21::SnakeGameView}}
+\doxysubsubsection{\texorpdfstring{gameVictory()}{gameVictory()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_game_view_adf360359c89c1180e9271c04c8ba17f2} 
+void s21\+::\+Snake\+Game\+View\+::game\+Victory (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Отображает экран победы. 
+
+Показывает поздравление и итоговый счёт. Предлагает выйти из игры. \Hypertarget{classs21_1_1_snake_game_view_ac65dbf2ba8f849c56d22c5401dbfe31a}\index{s21::SnakeGameView@{s21::SnakeGameView}!pauseGame@{pauseGame}}
+\index{pauseGame@{pauseGame}!s21::SnakeGameView@{s21::SnakeGameView}}
+\doxysubsubsection{\texorpdfstring{pauseGame()}{pauseGame()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_game_view_ac65dbf2ba8f849c56d22c5401dbfe31a} 
+void s21\+::\+Snake\+Game\+View\+::pause\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Отображает экран паузы. 
+
+Показывает сообщение о паузе и инструкцию для возобновления игры. \Hypertarget{classs21_1_1_snake_game_view_a572df8ac078ec1a7b30237da962594e8}\index{s21::SnakeGameView@{s21::SnakeGameView}!prestartGameState@{prestartGameState}}
+\index{prestartGameState@{prestartGameState}!s21::SnakeGameView@{s21::SnakeGameView}}
+\doxysubsubsection{\texorpdfstring{prestartGameState()}{prestartGameState()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_game_view_a572df8ac078ec1a7b30237da962594e8} 
+void s21\+::\+Snake\+Game\+View\+::prestart\+Game\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Показывает стартовое меню. 
+
+Отображает предстартовое меню игры.
+
+Выводит приветственное сообщение, инструкции по управлению и кнопкам. Ожидает нажатия \textquotesingle{}s\textquotesingle{} для начала игры. \Hypertarget{classs21_1_1_snake_game_view_ac32e8366a6624f02994f031dd688bd1f}\index{s21::SnakeGameView@{s21::SnakeGameView}!redrawField@{redrawField}}
+\index{redrawField@{redrawField}!s21::SnakeGameView@{s21::SnakeGameView}}
+\doxysubsubsection{\texorpdfstring{redrawField()}{redrawField()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_game_view_ac32e8366a6624f02994f031dd688bd1f} 
+void s21\+::\+Snake\+Game\+View\+::redraw\+Field (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Обновляет интерфейс (поле + панель). 
+
+Обновляет экран игры.
+
+Перерисовывает поле, боковую панель и проверяет текущее состояние игры (пауза, поражение, победа) для отображения соответствующих экранов. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+gui/cli/\mbox{\hyperlink{interface__snake_8h}{interface\+\_\+snake.\+h}}\item 
+gui/cli/\mbox{\hyperlink{interface__snake_8cc}{interface\+\_\+snake.\+cc}}\end{DoxyCompactItemize}

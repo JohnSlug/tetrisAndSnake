@@ -1,0 +1,1386 @@
+\doxysection{brick\+\_\+game/tetris/tetris.h File Reference}
+\hypertarget{tetris_8h}{}\label{tetris_8h}\index{brick\_game/tetris/tetris.h@{brick\_game/tetris/tetris.h}}
+{\ttfamily \#include $<$ncurses.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcoordinate}{coordinate}}
+\begin{DoxyCompactList}\small\item\em Координаты объекта по x,y используется для логики и отображения тетрамино \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcli_tetris}{cli\+Tetris}}
+\item 
+struct \mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}}
+\begin{DoxyCompactList}\small\item\em Основная структура, в которой хранятся все данные о текущей игре \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_user_input__t}{User\+Input\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Структура для передачи "{}зажимания"{} клавишы пользователем \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Эта структура хранит всю информацию о игровой логике is\+\_\+game\+\_\+start -\/ true/false началась ли игра tetris\+State state -\/ Текущее состояние игры \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field -\/ Основное игровое поле \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}preview\+\_\+field -\/ Временное игровое поле, которое используется для того, чтобы отдавать в фронтенд. (Соединяя с блоком на каждом кадре) \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}current\+\_\+block -\/ Текущий блок (Блок не привязан к игровому полю и не находится в нём) \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}current\+\_\+block -\/ Позиция текущего блока (Блок не привязан к игровому полю и не находится в нём) \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}next\+\_\+block; -\/ Следующий блок (Просто отображение) \doxylink{struct_user_input__t}{User\+Input\+\_\+t} last\+\_\+user\+\_\+input -\/ Последние действия пользователя bool is\+\_\+fall\+\_\+time -\/ Нужно ли в следующем кадре упасть блоку. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{struct_figure}{Figure}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tetris_8h_ace9c05193722c184ca29a33af08660b1}{ROWS\+\_\+\+WIN}}~20
+\begin{DoxyCompactList}\small\item\em Общие константы \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{tetris_8h_aa77a610c14c42cb392f6f3a677f86898}{COLUMNS\+\_\+\+WIN}}~10
+\item 
+\#define \mbox{\hyperlink{tetris_8h_ad51ded0bbd705f02f73fc60c0b721ced}{BLOCK\+\_\+\+SIZE}}~4
+\item 
+\#define \mbox{\hyperlink{tetris_8h_a8b7771bbb0e029e9200b3a7ec9816204}{BLOCK\+\_\+\+COUNT}}~7
+\item 
+\#define \mbox{\hyperlink{tetris_8h_a46bad0e9a40ff7107f7b5504499b62eb}{LEVEL\+\_\+\+MIN}}~1
+\begin{DoxyCompactList}\small\item\em Уровни и "{}скорость"{}. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{tetris_8h_acd6016e0a67f465c8a444e1e50209760}{LEVEL\+\_\+\+START}}~-\/1
+\item 
+\#define \mbox{\hyperlink{tetris_8h_a8be8721552485041a329fac9a28c3ab7}{LEVEL\+\_\+\+END}}~-\/2
+\item 
+\#define \mbox{\hyperlink{tetris_8h_a2a6a55a8cbf516dd0fa8a95565c66a08}{DEFAULT\+\_\+\+FALL\+\_\+\+TIME\+\_\+\+MS}}~1070
+\item 
+\#define \mbox{\hyperlink{tetris_8h_acb28d93fc50acc7641a89dc07ca9b96c}{SPEED\+\_\+\+STEP\+\_\+\+TIME\+\_\+\+MS}}~70
+\item 
+\#define \mbox{\hyperlink{tetris_8h_a1253961de0491d22804fd53ca1e7c271}{SPAWN\+\_\+X}}~(\mbox{\hyperlink{tetris_8h_aa77a610c14c42cb392f6f3a677f86898}{COLUMNS\+\_\+\+WIN}} / 2 -\/ \mbox{\hyperlink{tetris_8h_ad51ded0bbd705f02f73fc60c0b721ced}{BLOCK\+\_\+\+SIZE}} / 2)
+\begin{DoxyCompactList}\small\item\em Бекенд константы \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{tetris_8h_a1fc0ea64f68d1d6840aaff196221cb9c}{SPAWN\+\_\+Y}}~-\/2
+\item 
+\#define \mbox{\hyperlink{tetris_8h_a73fd59bc0dfba50598e8ccec6e08a3cf}{LEVEL\+\_\+\+STEP}}~600
+\item 
+\#define \mbox{\hyperlink{tetris_8h_a5bb4257ca9fa4bfcf9391b7895b97761}{MAX\+\_\+\+LEVEL}}~10
+\item 
+\#define \mbox{\hyperlink{tetris_8h_a538d23e952af8ba2faa29e3e6975ca7e}{WIN\+\_\+X}}~1
+\begin{DoxyCompactList}\small\item\em Фронтенд константы \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{tetris_8h_a00eaa0048bb26f71afeb47ebe20cd656}{WIN\+\_\+Y}}~1
+\item 
+\#define \mbox{\hyperlink{tetris_8h_ab0b039a9d52b7a662e4417de74c8a2a8}{VIEW\+\_\+\+CHAR\+\_\+\+SIZE\+\_\+X}}~2
+\item 
+\#define \mbox{\hyperlink{tetris_8h_a8fb59bee2b5fb8052b975d34cadccd9a}{VIEW\+\_\+\+CHAR\+\_\+\+SIZE\+\_\+Y}}~1
+\item 
+\#define \mbox{\hyperlink{tetris_8h_ac215a1e069ad8fe687a0dd8d24b62c23}{EMPTY\+\_\+\+SYMBOL}}~\textquotesingle{} \textquotesingle{}
+\item 
+\#define \mbox{\hyperlink{tetris_8h_a46479693f2577b28ecbb7a585da3eef2}{FULL\+\_\+\+SYMBOL}}~\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e}{User\+Action\+Button}} \{ \newline
+\mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58eabd5f9c956752ce4dc707b4624b3a36f7}{Start}}
+, \mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58eadaba8aa0fcd8a87c25fec7d916c789e7}{Pause}}
+, \mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58eaaf166713f3d14b30bee8f0ad5a09c4cb}{Terminate}}
+, \mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58ea9d4d8b0b72fc2659da772d761a3c5ecb}{Left}}
+, \newline
+\mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58ead48f7af8c070184f3774c8e85854eb66}{Right}}
+, \mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58ea57a7edcbc04d6175683383cad5c3e0a2}{Up}}
+, \mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58eabcf8c79e9a5f5f9d606fb35645a0fb27}{Down}}
+, \mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58ea3887649be5130f60dd3e7a6eb8e9f142}{Action}}
+ \}
+\begin{DoxyCompactList}\small\item\em Все кнопки через которые происходит взаимодействия игрока с программой \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b}{cage\+Tetis}} \{ \newline
+\mbox{\hyperlink{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763bae117e3533122c80b262257b49b21cddf}{ZERO}} = 0
+, \mbox{\hyperlink{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763bad08f8ac0aa8dfb59589824359772459e}{FULL}} = 1
+, \mbox{\hyperlink{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763ba6860b2fc1668a0d82051434456b2e792}{IBLOCK}} = 2
+, \mbox{\hyperlink{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763ba2c669ef14f018fc72bbcfe46759e67c1}{OBLOCK}} = 3
+, \newline
+\mbox{\hyperlink{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763bacdb67a61cd04dec706bc9963eaa26488}{TBLOCK}} = 4
+, \mbox{\hyperlink{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763ba6a3c1a793b5c58144ca92fa4123d3d29}{JBLOCK}} = 5
+, \mbox{\hyperlink{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763ba392bd9f404d0d5141af0fe0ba073261d}{LBLOCK}} = 6
+, \mbox{\hyperlink{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763ba8c180fe33e7808398e8a56f9fa519134}{ZBLOCK}} = 7
+, \newline
+\mbox{\hyperlink{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763babfd7a6688860fc3780c97190540d74ae}{SBLOCK}} = 8
+ \}
+\begin{DoxyCompactList}\small\item\em Структура для заполнения тетрамино случайным паттерном \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d}{tetris\+State}} \{ \newline
+\mbox{\hyperlink{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22da399c982a0c65189d8b619a10443b9a8e}{START\+\_\+\+STATE}}
+, \mbox{\hyperlink{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22da865093318e5b0cac88dfb63850e23f8e}{SPAWN\+\_\+\+STATE}}
+, \mbox{\hyperlink{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22dacc99279eba28194518feed99218cbd53}{MOVING\+\_\+\+STATE}}
+, \mbox{\hyperlink{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22daa602190587a569272033e96c70a99958}{ATTACHING\+\_\+\+STATE}}
+, \newline
+\mbox{\hyperlink{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22dab1b4c5b053c27001ea6cdef722769b58}{END\+\_\+\+GAME\+\_\+\+STATE}}
+, \mbox{\hyperlink{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22daa6273910c7ec35335e9abb4f4ef65c9c}{TERMINATE\+\_\+\+STATE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Все состояния игры. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6a}{tetris\+Error}} \{ \mbox{\hyperlink{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6aac7f69f7c9e5aea9b8f54cf02870e2bf8}{SUCCESS}}
+, \mbox{\hyperlink{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6aa936c4a5547a9360243178f726f6b2715}{FAIL}}
+, \mbox{\hyperlink{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6aaa9a85b9773cd7cc1af624d61c300186e}{MEMORYFAIL}}
+ \}
+\begin{DoxyCompactList}\small\item\em Все виды ошибок. SUCCESS -\/ успех FAIL -\/ ошибка MEMORYFAIL -\/ ошибка памяти \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0}{cli\+\_\+colors\+\_\+t}} \{ \newline
+\mbox{\hyperlink{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0a491083eeb6f91a4030a7bd42d3a92e9d}{Color\+Gray}} = 100
+, \mbox{\hyperlink{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0a84b1843b445ff9b931d0a00de3f8b704}{Color\+Red}} = 101
+, \mbox{\hyperlink{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0aa9484cb2286fdda662d12c3db43957b6}{Color\+Orange}} = 102
+, \mbox{\hyperlink{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0aefc715d025222e25494198273082c13e}{Color\+Yellow}} = 103
+, \newline
+\mbox{\hyperlink{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0aae1cbbb23e34a7ff6f5df69bc99244cf}{Color\+Pink}} = 104
+, \mbox{\hyperlink{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0a8922c082778fd71bfb48d16964ce9be9}{Color\+Green}} = 105
+, \mbox{\hyperlink{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0a1989ed448afc76bc56051028bcc0c3d0}{Color\+Blue}} = 106
+, \mbox{\hyperlink{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0a87ab026dbb20110d2c17d5a06dd936fc}{Color\+Purple}} = 107
+ \}
+\begin{DoxyCompactList}\small\item\em Эта структура хранит всю информацию о отображении игры в консоли. WINDOW \texorpdfstring{$\ast$}{*}game\+\_\+win -\/ окно игрового поля WINDOW \texorpdfstring{$\ast$}{*}stat\+\_\+win -\/ окно статистики игры \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}} \{ \newline
+\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2a9cab5e790d8514f5bb96f1935d9005a3}{GAME\+\_\+\+PRESTART}}
+, \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2a06dc2c041ca25d7638a9a74e181800f2}{GAME\+\_\+\+START}}
+, \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2ab79efe9354d80471419df79c197ed424}{GAME\+\_\+\+SPAWN}}
+, \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2ab39e2e7ffd9bc983560c5dfc5d6bbfc6}{GAME\+\_\+\+MOVING}}
+, \newline
+\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2acb6fd8e7ebfd00b8bbdf6ece79d6d729}{GAME\+\_\+\+ATTACHING}}
+, \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2a871723195985a4ae22d7e10d99bf8a00}{GAME\+\_\+\+OVER}}
+, \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2a263d613b5188d0c835659517bccbde72}{GAME\+\_\+\+PAUSED}}
+, \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2ae601d1e9c9e0ba93d00a18048fa19feb}{GAME\+\_\+\+EXIT}}
+, \newline
+\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2a31fcc94800fd6d897c76e7c37da13c40}{GAME\+\_\+\+WON}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tetris_8h_aee59c0e75399082cda60abe9d106467c}{rotate\+\_\+figure}} (\mbox{\hyperlink{struct_figure}{Figure}} \texorpdfstring{$\ast$}{*}figure, \mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} \texorpdfstring{$\ast$}{*}game\+Info)
+\item 
+int \mbox{\hyperlink{tetris_8h_a6f25b707f2158d21946584887d27c959}{init\+Tetris}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Создание экземпляра структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Инициализируем rand() В программе может быть ТОЛЬКО один инициализированный экземпляр \doxylink{structtetris__t}{tetris\+\_\+t}. Так как во время инициализации указатель на данный экземпляр сохраняется \textquotesingle{}глобально\textquotesingle{} и используется во всех функциях, где необходимо. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a23e59dfdec59cc8374f27d64eedd9e2c}{remove\+Tetris}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Удаление экземпляра структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Заносим в хранилище \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a155abc56eef030dbc8106d86fa2e0e27}{game\+Start}} (void)
+\begin{DoxyCompactList}\small\item\em Иницилизация начало игры. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{tetris_8h_a4231a60db7d0820c8d9683998b17bd03}{is\+Game\+End}} (void)
+\begin{DoxyCompactList}\small\item\em Проверка на конец игры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_afddeb813ef98c12af777b5a3e1154b56}{user\+Input}} (\mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e}{User\+Action\+Button}} action, bool hold)
+\begin{DoxyCompactList}\small\item\em Принимается пользовательский ввод. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} \mbox{\hyperlink{tetris_8h_af98e285588d8be9f0a920efa781dc59f}{upd\+Curr\+State}} (void)
+\begin{DoxyCompactList}\small\item\em Обновление состаяния игры \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} \mbox{\hyperlink{tetris_8h_ad87815d213b39f9ab531cb8c55f62188}{crt\+Game\+Info\+Tetris}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Создание/составление структуры \doxylink{struct_game_info__tetris}{Game\+Info\+\_\+tetris} c помощью главной структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Перенос необходимой информации из одной структуры в другую. Является частью функции \textquotesingle{}upd\+Curr\+State\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a14c79875545bcfb6fb8f0dd320e7a8a0}{set\+High\+Score}} (int score)
+\begin{DoxyCompactList}\small\item\em Обновление рекорда \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris_8h_a7459f3202963cea60e744efcedf0404b}{get\+High\+Score}} (void)
+\begin{DoxyCompactList}\small\item\em Работа с рекордом \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{tetris_8h_a03c9ab792457e6dc47c9e11ff957d195}{is\+Pause}} (void)
+\begin{DoxyCompactList}\small\item\em pause true\textbackslash{}false \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris_8h_aa0107255a66f54654ac5f32d3e926f54}{crt\+Tetramino}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block)
+\begin{DoxyCompactList}\small\item\em Создание блока. Выделяем память для массива строк, затем выделяем память для строки. Проверяем на выделение памяти, если ошибка, то освобождаем память \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a67f544c1b8f0ded48916f84180072c2b}{rmv\+Tetramino}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block)
+\begin{DoxyCompactList}\small\item\em Освобождение памяти, выделенной под тетрамино. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_ad8b274feaa362413eedf251c8105a2e4}{cp\+Tetramino}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block\+\_\+copy)
+\begin{DoxyCompactList}\small\item\em Копирование блока. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris_8h_a173891a9231d3d6aab82c4a5d70208a2}{rotate\+Tetramino}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block, char left)
+\begin{DoxyCompactList}\small\item\em Поворот блока. Проверяем на != NULL. Через буферный блок поворочиваем блок \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_afd0b7cde40ecfc40568d0c28396806ee}{get\+All\+Tetramino}} (int blocks\mbox{[}\mbox{\hyperlink{tetris_8h_a8b7771bbb0e029e9200b3a7ec9816204}{BLOCK\+\_\+\+COUNT}}\mbox{]}\mbox{[}\mbox{\hyperlink{tetris_8h_ad51ded0bbd705f02f73fc60c0b721ced}{BLOCK\+\_\+\+SIZE}}\mbox{]}\mbox{[}\mbox{\hyperlink{tetris_8h_ad51ded0bbd705f02f73fc60c0b721ced}{BLOCK\+\_\+\+SIZE}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Хранит в себе все виды блоков(Тетромино) и возвращает их при необходимости. Для того, чтобы различать фигуры в фронтенде \textquotesingle{}заполнение\textquotesingle{} фигур отличается НО всегда является положительным числом. mem\+\_\+cpy Копирование из одного массива в другой всех блоков. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris_8h_a1fe6401b323a9b773e312acffe5a1639}{get\+Random\+Tetramino}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block)
+\begin{DoxyCompactList}\small\item\em Возвращает случайный блок из доступных в функции \textquotesingle{}get\+All\+Tetramino\textquotesingle{}. НЕ выделяет память. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris_8h_ac1065b96f74a43cc7b1e7e87b92970f5}{crt\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field)
+\begin{DoxyCompactList}\small\item\em Cоздание игрового поля. Выделяем память для массива строк, затем выделяем память для строки. Проверяем на выделение \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a64973bd823955a41cdb5ad29639c10c5}{rmv\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field)
+\begin{DoxyCompactList}\small\item\em свобождение памяти, выделенное под поле \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a78c5257fc0f0770c93fc24f81c244d3b}{copy\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field\+\_\+copy)
+\begin{DoxyCompactList}\small\item\em Делает копию \textquotesingle{}field\textquotesingle{} и возвращает эту копию в \textquotesingle{}field\+\_\+copy\textquotesingle{}. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{tetris_8h_a4ffe46c7901aa5e2209e7bb53995596f}{checking\+Block\+Collision\+With\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block, \mbox{\hyperlink{structcoordinate}{coordinate}} block\+\_\+pos, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field)
+\begin{DoxyCompactList}\small\item\em Проверяет коллизию блока с игровым полем(с его границами и с внутренними блоками). В зависимости от того, с чем столкнулся блок, возвращает положительное число. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a75f95b5f595f3229d182898b644e0e3c}{add\+Block\+In\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block, \mbox{\hyperlink{structcoordinate}{coordinate}} block\+\_\+pos, int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field)
+\begin{DoxyCompactList}\small\item\em Вставляет блок внутрь игрового поля. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris_8h_a3f99bb458c2f224a283e9662eaf830ff}{complete\+Line\+In\+Field}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}field)
+\begin{DoxyCompactList}\small\item\em Считает количество заполненных строк на игровом поле. Если строка была заполнена то она обнуляется и все строки сверху сдвигаются на неё. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris_8h_aa669174071419620564eec9e7302373d}{get\+Reward\+By\+Complete\+Lines}} (int number\+\_\+lines)
+\begin{DoxyCompactList}\small\item\em Вычисляет необходимую награду по заполненным строкам. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{tetris_8h_ad0f71eeaf9afee93fa35d4848dd17997}{is\+Block\+Beyond\+Limit}} (int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}block, \mbox{\hyperlink{structcoordinate}{coordinate}} block\+\_\+pos)
+\begin{DoxyCompactList}\small\item\em Проверяет, находится ли блок за верхней границей игрового поля. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a28fc86a867835082b95e5751d2894d86}{tetris\+Info\+Storage}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}}, bool remove)
+\begin{DoxyCompactList}\small\item\em Является хранилищем для структуры \doxylink{structtetris__t}{tetris\+\_\+t}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{tetris_8h_a2ede2ed4c8bc8648c70b36a8fcdcfb78}{select\+Next\+State}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Вычисляет следующее состояние игры. Главная функция, в которой происходят все процессы. Каждая стадия вынесена в отдельную функцию. Вычисление последующих состояний происходит внутри этих функций. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a7286a28a5c74e2c99d93254ef6b4f91a}{start\+State}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em START\+\_\+\+STATE = Подготовка к новой игре. Обнуление уровня и очков. Очистка игрового поля. Вычисление следующего блока. Переход возможен в \textquotesingle{}SPAWN\+\_\+\+STATE\textquotesingle{} Переход будет ТОЛЬКО после нажатия кнопки \textquotesingle{}Start\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_ad8288fc80094ab482119cee783c08bc1}{spawn\+Tetramino}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em SPAWNTetramino = Создание нового блока. Перемещение нового блока в следующий(next), а следующий в нынешний\+: new -\/\texorpdfstring{$>$}{>} next -\/\texorpdfstring{$>$}{>} current. Обнуление всех действий. А также вычисление будущей скорости падения по уровню. Переход возможен в \textquotesingle{}MOVING\+\_\+\+STATE\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_ad5aca1a56b64397a8fb63111c73f60e7}{moving\+State}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em MOVING\+\_\+\+STATE = Перемещение блока по игровому полю а также считывание пользовательских действий. Если блок не может упасть то он закрепляется -\/ переносится внутрь игрового поля и игра либо заканчивается либо спавнится новый блок. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a6985a0b0f46fe0cde8366f9df3f84186}{mv\+Left}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Сдвгигает Блок по оси X влево. Далее проверяет на столкновение с с границами поля. Если было касание -\/ обратно сдвигает блок по X вправо \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a4694b38ce8ad86d71e2f6ba89df5cf78}{mv\+Right}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Сдвгигает Блок по оси X вправо. Далее проверяет на столкновение с с границами поля. Если было касание -\/ обратно сдвигает блок по X влево \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_ae2e23982a596ed4e68b7bfea7ccd2824}{mv\+Down}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em Если is\+\_\+fall\+\_\+time = true, двигает блок вниз \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_ae1c80bd76fe989e545d3f0a9c18cdd54}{mv\+Action}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em В зависимости от return checking\+Block\+Collision\+With\+Field перемещает блок вправо, влево, вниз или поворачивает \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a8679c2bca82258ab076b9347b691dbda}{attaching\+State}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em ATTACHING\+\_\+\+STATE = Закрепление блока. Блок упал вниз насколько возможно. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a42238787f7de0f585976c34d937cc665}{end\+Game\+State}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\begin{DoxyCompactList}\small\item\em END\+\_\+\+GAME\+\_\+\+STATE = Игра окончена. Игровое поле было заполнено до верхней линии. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a48ea59a5184c52a1ccc91bcc37390aa6}{Init\+Cli}} (\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}cli)
+\begin{DoxyCompactList}\small\item\em Создание экземпляра структуры \doxylink{structcli_tetris}{cli\+Tetris}. Существует только один элемент и обращение происходит по ссылке на него. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_af5d6593fd1d811199f32059f1f3f16f1}{init\+Curses}} (void)
+\begin{DoxyCompactList}\small\item\em ncurses установки. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a3fc593adf848e4420ff95c00556fd9bb}{remove\+Cli}} (\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}cli)
+\begin{DoxyCompactList}\small\item\em Удаление элемент структуры \doxylink{structcli_tetris}{cli\+Tetris}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a3ebfd13ad57ad1d675aee45a746eff9f}{crt\+Win}} (WINDOW \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{structcoordinate}{coordinate}} window\+\_\+size, \mbox{\hyperlink{structcoordinate}{coordinate}} window\+\_\+pos)
+\item 
+\mbox{\hyperlink{struct_user_input__t}{User\+Input\+\_\+t}} \mbox{\hyperlink{tetris_8h_ae2239c58a5ff0db3330a0472a67076a6}{get\+User\+Input}} (void)
+\begin{DoxyCompactList}\small\item\em Нажатие игрока. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a8eaf38a823706a9d44c3ec5855d1ed0a}{print\+Current\+State}} (\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} game\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Отрисовка текущего состояния игры. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a8237cbda1783b9a3bad52bcd8222d748}{stat\+Win\+Print}} (\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}cli, \mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} \texorpdfstring{$\ast$}{*}game\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Окно Статитстики \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a9bcae211345c73e1d1222410cc599781}{sli\+Info\+Storage}} (\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}cli, bool remove)
+\begin{DoxyCompactList}\small\item\em Является хранилищем для структуры \doxylink{structcli_tetris}{cli\+Tetris}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_aee4c437eeecaa43a4c0c0700c7c84796}{print\+Field\+Ceil}} (WINDOW \texorpdfstring{$\ast$}{*}win, chtype symbol)
+\begin{DoxyCompactList}\small\item\em Прорисовка одной ячейки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_aa5ab3a2de5e1c9eff67a54a00c6ed4bf}{print\+Start\+Preview}} ()
+\begin{DoxyCompactList}\small\item\em Отрисовка старотового окна \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a6afa947ba8c86daf80a33ad11f3943db}{print\+End\+Preview}} ()
+\begin{DoxyCompactList}\small\item\em Прорисовка Конца игры \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a33b28f2fc189f3b61dc6d11c67141da6}{print\+Pause\+Preview}} ()
+\begin{DoxyCompactList}\small\item\em Экран Паузы \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{tetris_8h_a15a259e1e7c39c33946f7e1fb1561c10}{main\+\_\+loop}} (\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{main_8cc_a56df6c8c4fc0ab752fc8b0595a15a2c3}{tetris}})
+\item 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{tetris_8h_ae524c14ca2862ebb4d57aa3e2ff2be20}{create\+\_\+matrix}} (int rows, int cols)
+\item 
+void \mbox{\hyperlink{tetris_8h_a11ee6f8f8084403bd350b97504d15c15}{generate\+\_\+next\+\_\+figure}} (\mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} \texorpdfstring{$\ast$}{*}game\+Info)
+\item 
+void \mbox{\hyperlink{tetris_8h_aaa63376b05de214a6b83cd75d9754540}{move\+\_\+figure\+\_\+down}} (\mbox{\hyperlink{struct_figure}{Figure}} \texorpdfstring{$\ast$}{*}figure, \mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} \texorpdfstring{$\ast$}{*}game\+Info)
+\item 
+bool \mbox{\hyperlink{tetris_8h_a641bdd269acaec73beebf42866082ee8}{is\+\_\+figure\+\_\+collide}} (\mbox{\hyperlink{struct_figure}{Figure}} \texorpdfstring{$\ast$}{*}figure, \mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} \texorpdfstring{$\ast$}{*}game\+Info)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{tetris_8h_a8b7771bbb0e029e9200b3a7ec9816204}\index{tetris.h@{tetris.h}!BLOCK\_COUNT@{BLOCK\_COUNT}}
+\index{BLOCK\_COUNT@{BLOCK\_COUNT}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{BLOCK\_COUNT}{BLOCK\_COUNT}}
+{\footnotesize\ttfamily \label{tetris_8h_a8b7771bbb0e029e9200b3a7ec9816204} 
+\#define BLOCK\+\_\+\+COUNT~7}
+
+\Hypertarget{tetris_8h_ad51ded0bbd705f02f73fc60c0b721ced}\index{tetris.h@{tetris.h}!BLOCK\_SIZE@{BLOCK\_SIZE}}
+\index{BLOCK\_SIZE@{BLOCK\_SIZE}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{BLOCK\_SIZE}{BLOCK\_SIZE}}
+{\footnotesize\ttfamily \label{tetris_8h_ad51ded0bbd705f02f73fc60c0b721ced} 
+\#define BLOCK\+\_\+\+SIZE~4}
+
+\Hypertarget{tetris_8h_aa77a610c14c42cb392f6f3a677f86898}\index{tetris.h@{tetris.h}!COLUMNS\_WIN@{COLUMNS\_WIN}}
+\index{COLUMNS\_WIN@{COLUMNS\_WIN}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{COLUMNS\_WIN}{COLUMNS\_WIN}}
+{\footnotesize\ttfamily \label{tetris_8h_aa77a610c14c42cb392f6f3a677f86898} 
+\#define COLUMNS\+\_\+\+WIN~10}
+
+\Hypertarget{tetris_8h_a2a6a55a8cbf516dd0fa8a95565c66a08}\index{tetris.h@{tetris.h}!DEFAULT\_FALL\_TIME\_MS@{DEFAULT\_FALL\_TIME\_MS}}
+\index{DEFAULT\_FALL\_TIME\_MS@{DEFAULT\_FALL\_TIME\_MS}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{DEFAULT\_FALL\_TIME\_MS}{DEFAULT\_FALL\_TIME\_MS}}
+{\footnotesize\ttfamily \label{tetris_8h_a2a6a55a8cbf516dd0fa8a95565c66a08} 
+\#define DEFAULT\+\_\+\+FALL\+\_\+\+TIME\+\_\+\+MS~1070}
+
+\Hypertarget{tetris_8h_ac215a1e069ad8fe687a0dd8d24b62c23}\index{tetris.h@{tetris.h}!EMPTY\_SYMBOL@{EMPTY\_SYMBOL}}
+\index{EMPTY\_SYMBOL@{EMPTY\_SYMBOL}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{EMPTY\_SYMBOL}{EMPTY\_SYMBOL}}
+{\footnotesize\ttfamily \label{tetris_8h_ac215a1e069ad8fe687a0dd8d24b62c23} 
+\#define EMPTY\+\_\+\+SYMBOL~\textquotesingle{} \textquotesingle{}}
+
+\Hypertarget{tetris_8h_a46479693f2577b28ecbb7a585da3eef2}\index{tetris.h@{tetris.h}!FULL\_SYMBOL@{FULL\_SYMBOL}}
+\index{FULL\_SYMBOL@{FULL\_SYMBOL}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{FULL\_SYMBOL}{FULL\_SYMBOL}}
+{\footnotesize\ttfamily \label{tetris_8h_a46479693f2577b28ecbb7a585da3eef2} 
+\#define FULL\+\_\+\+SYMBOL~\textquotesingle{}\texorpdfstring{$\vert$}{|}\textquotesingle{}}
+
+\Hypertarget{tetris_8h_a8be8721552485041a329fac9a28c3ab7}\index{tetris.h@{tetris.h}!LEVEL\_END@{LEVEL\_END}}
+\index{LEVEL\_END@{LEVEL\_END}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{LEVEL\_END}{LEVEL\_END}}
+{\footnotesize\ttfamily \label{tetris_8h_a8be8721552485041a329fac9a28c3ab7} 
+\#define LEVEL\+\_\+\+END~-\/2}
+
+\Hypertarget{tetris_8h_a46bad0e9a40ff7107f7b5504499b62eb}\index{tetris.h@{tetris.h}!LEVEL\_MIN@{LEVEL\_MIN}}
+\index{LEVEL\_MIN@{LEVEL\_MIN}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{LEVEL\_MIN}{LEVEL\_MIN}}
+{\footnotesize\ttfamily \label{tetris_8h_a46bad0e9a40ff7107f7b5504499b62eb} 
+\#define LEVEL\+\_\+\+MIN~1}
+
+
+
+Уровни и "{}скорость"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em LEVEL\+\_\+\+MIN} & -\/ минимальный уровень \\
+\hline
+{\em LEVEL\+\_\+\+START} & -\/ для фронтенда, чтобы показать загрузочное окно \\
+\hline
+{\em LEVEL\+\_\+\+END} & -\/ уровень для фронденда, чтобы показать конец игры \\
+\hline
+{\em DEFAULT\+\_\+\+FALL\+\_\+\+TIME\+\_\+\+MS} & -\/ Стандартное время падения блока \\
+\hline
+{\em SPEED\+\_\+\+STEP\+\_\+\+TIME\+\_\+\+MS} & -\/ Шаг увеличения скорости с каждым уровнем \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_acd6016e0a67f465c8a444e1e50209760}\index{tetris.h@{tetris.h}!LEVEL\_START@{LEVEL\_START}}
+\index{LEVEL\_START@{LEVEL\_START}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{LEVEL\_START}{LEVEL\_START}}
+{\footnotesize\ttfamily \label{tetris_8h_acd6016e0a67f465c8a444e1e50209760} 
+\#define LEVEL\+\_\+\+START~-\/1}
+
+\Hypertarget{tetris_8h_a73fd59bc0dfba50598e8ccec6e08a3cf}\index{tetris.h@{tetris.h}!LEVEL\_STEP@{LEVEL\_STEP}}
+\index{LEVEL\_STEP@{LEVEL\_STEP}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{LEVEL\_STEP}{LEVEL\_STEP}}
+{\footnotesize\ttfamily \label{tetris_8h_a73fd59bc0dfba50598e8ccec6e08a3cf} 
+\#define LEVEL\+\_\+\+STEP~600}
+
+\Hypertarget{tetris_8h_a5bb4257ca9fa4bfcf9391b7895b97761}\index{tetris.h@{tetris.h}!MAX\_LEVEL@{MAX\_LEVEL}}
+\index{MAX\_LEVEL@{MAX\_LEVEL}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_LEVEL}{MAX\_LEVEL}}
+{\footnotesize\ttfamily \label{tetris_8h_a5bb4257ca9fa4bfcf9391b7895b97761} 
+\#define MAX\+\_\+\+LEVEL~10}
+
+\Hypertarget{tetris_8h_ace9c05193722c184ca29a33af08660b1}\index{tetris.h@{tetris.h}!ROWS\_WIN@{ROWS\_WIN}}
+\index{ROWS\_WIN@{ROWS\_WIN}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{ROWS\_WIN}{ROWS\_WIN}}
+{\footnotesize\ttfamily \label{tetris_8h_ace9c05193722c184ca29a33af08660b1} 
+\#define ROWS\+\_\+\+WIN~20}
+
+
+
+Общие константы 
+
+\Hypertarget{tetris_8h_a1253961de0491d22804fd53ca1e7c271}\index{tetris.h@{tetris.h}!SPAWN\_X@{SPAWN\_X}}
+\index{SPAWN\_X@{SPAWN\_X}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{SPAWN\_X}{SPAWN\_X}}
+{\footnotesize\ttfamily \label{tetris_8h_a1253961de0491d22804fd53ca1e7c271} 
+\#define SPAWN\+\_\+X~(\mbox{\hyperlink{tetris_8h_aa77a610c14c42cb392f6f3a677f86898}{COLUMNS\+\_\+\+WIN}} / 2 -\/ \mbox{\hyperlink{tetris_8h_ad51ded0bbd705f02f73fc60c0b721ced}{BLOCK\+\_\+\+SIZE}} / 2)}
+
+
+
+Бекенд константы 
+
+
+\begin{DoxyParams}{Parameters}
+{\em SPAWN\+\_\+X} & -\/ Координата появление фигуры сверху \\
+\hline
+{\em SPAWN\+\_\+Y} & -\/ Координата появление фигуры сверху \\
+\hline
+{\em LEVEL\+\_\+\+STEP} & -\/ необходимый счёт, чтобы перейти на след. уровень \\
+\hline
+{\em MAX\+\_\+\+LEVEL} & -\/ максимальный уровень сложности \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a1fc0ea64f68d1d6840aaff196221cb9c}\index{tetris.h@{tetris.h}!SPAWN\_Y@{SPAWN\_Y}}
+\index{SPAWN\_Y@{SPAWN\_Y}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{SPAWN\_Y}{SPAWN\_Y}}
+{\footnotesize\ttfamily \label{tetris_8h_a1fc0ea64f68d1d6840aaff196221cb9c} 
+\#define SPAWN\+\_\+Y~-\/2}
+
+\Hypertarget{tetris_8h_acb28d93fc50acc7641a89dc07ca9b96c}\index{tetris.h@{tetris.h}!SPEED\_STEP\_TIME\_MS@{SPEED\_STEP\_TIME\_MS}}
+\index{SPEED\_STEP\_TIME\_MS@{SPEED\_STEP\_TIME\_MS}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{SPEED\_STEP\_TIME\_MS}{SPEED\_STEP\_TIME\_MS}}
+{\footnotesize\ttfamily \label{tetris_8h_acb28d93fc50acc7641a89dc07ca9b96c} 
+\#define SPEED\+\_\+\+STEP\+\_\+\+TIME\+\_\+\+MS~70}
+
+\Hypertarget{tetris_8h_ab0b039a9d52b7a662e4417de74c8a2a8}\index{tetris.h@{tetris.h}!VIEW\_CHAR\_SIZE\_X@{VIEW\_CHAR\_SIZE\_X}}
+\index{VIEW\_CHAR\_SIZE\_X@{VIEW\_CHAR\_SIZE\_X}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{VIEW\_CHAR\_SIZE\_X}{VIEW\_CHAR\_SIZE\_X}}
+{\footnotesize\ttfamily \label{tetris_8h_ab0b039a9d52b7a662e4417de74c8a2a8} 
+\#define VIEW\+\_\+\+CHAR\+\_\+\+SIZE\+\_\+X~2}
+
+\Hypertarget{tetris_8h_a8fb59bee2b5fb8052b975d34cadccd9a}\index{tetris.h@{tetris.h}!VIEW\_CHAR\_SIZE\_Y@{VIEW\_CHAR\_SIZE\_Y}}
+\index{VIEW\_CHAR\_SIZE\_Y@{VIEW\_CHAR\_SIZE\_Y}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{VIEW\_CHAR\_SIZE\_Y}{VIEW\_CHAR\_SIZE\_Y}}
+{\footnotesize\ttfamily \label{tetris_8h_a8fb59bee2b5fb8052b975d34cadccd9a} 
+\#define VIEW\+\_\+\+CHAR\+\_\+\+SIZE\+\_\+Y~1}
+
+\Hypertarget{tetris_8h_a538d23e952af8ba2faa29e3e6975ca7e}\index{tetris.h@{tetris.h}!WIN\_X@{WIN\_X}}
+\index{WIN\_X@{WIN\_X}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{WIN\_X}{WIN\_X}}
+{\footnotesize\ttfamily \label{tetris_8h_a538d23e952af8ba2faa29e3e6975ca7e} 
+\#define WIN\+\_\+X~1}
+
+
+
+Фронтенд константы 
+
+
+\begin{DoxyParams}{Parameters}
+{\em WIN\+\_\+X} & -\/ размер границы \\
+\hline
+{\em WIN\+\_\+Y} & -\/ размер границы \\
+\hline
+{\em VIEW\+\_\+\+CHAR\+\_\+\+SIZE\+\_\+X} & -\/ корректировка для отображение \\
+\hline
+{\em VIEW\+\_\+\+CHAR\+\_\+\+SIZE\+\_\+Y} & -\/ отображение Y символов \\
+\hline
+{\em EMPTY\+\_\+\+SYMBOL} & -\/ пустой символ \\
+\hline
+{\em FULL\+\_\+\+SYMBOL} & -\/ заполненный символ для отрисовки границ \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a00eaa0048bb26f71afeb47ebe20cd656}\index{tetris.h@{tetris.h}!WIN\_Y@{WIN\_Y}}
+\index{WIN\_Y@{WIN\_Y}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{WIN\_Y}{WIN\_Y}}
+{\footnotesize\ttfamily \label{tetris_8h_a00eaa0048bb26f71afeb47ebe20cd656} 
+\#define WIN\+\_\+Y~1}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b}\index{tetris.h@{tetris.h}!cageTetis@{cageTetis}}
+\index{cageTetis@{cageTetis}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{cageTetis}{cageTetis}}
+{\footnotesize\ttfamily \label{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b} 
+enum \mbox{\hyperlink{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b}{cage\+Tetis}}}
+
+
+
+Структура для заполнения тетрамино случайным паттерном 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ZERO@{ZERO}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!ZERO@{ZERO}}}\Hypertarget{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763bae117e3533122c80b262257b49b21cddf}\label{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b} 
+ZERO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FULL@{FULL}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!FULL@{FULL}}}\Hypertarget{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763bad08f8ac0aa8dfb59589824359772459e}\label{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b} 
+FULL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IBLOCK@{IBLOCK}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!IBLOCK@{IBLOCK}}}\Hypertarget{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763ba6860b2fc1668a0d82051434456b2e792}\label{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b} 
+IBLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OBLOCK@{OBLOCK}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!OBLOCK@{OBLOCK}}}\Hypertarget{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763ba2c669ef14f018fc72bbcfe46759e67c1}\label{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b} 
+OBLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TBLOCK@{TBLOCK}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!TBLOCK@{TBLOCK}}}\Hypertarget{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763bacdb67a61cd04dec706bc9963eaa26488}\label{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b} 
+TBLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JBLOCK@{JBLOCK}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!JBLOCK@{JBLOCK}}}\Hypertarget{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763ba6a3c1a793b5c58144ca92fa4123d3d29}\label{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b} 
+JBLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LBLOCK@{LBLOCK}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!LBLOCK@{LBLOCK}}}\Hypertarget{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763ba392bd9f404d0d5141af0fe0ba073261d}\label{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b} 
+LBLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ZBLOCK@{ZBLOCK}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!ZBLOCK@{ZBLOCK}}}\Hypertarget{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763ba8c180fe33e7808398e8a56f9fa519134}\label{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b} 
+ZBLOCK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SBLOCK@{SBLOCK}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!SBLOCK@{SBLOCK}}}\Hypertarget{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763babfd7a6688860fc3780c97190540d74ae}\label{tetris_8h_a2ef8324ef5c1106efe2ab3b088bd763b} 
+SBLOCK&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0}\index{tetris.h@{tetris.h}!cli\_colors\_t@{cli\_colors\_t}}
+\index{cli\_colors\_t@{cli\_colors\_t}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{cli\_colors\_t}{cli\_colors\_t}}
+{\footnotesize\ttfamily \label{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0} 
+enum \mbox{\hyperlink{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0}{cli\+\_\+colors\+\_\+t}}}
+
+
+
+Эта структура хранит всю информацию о отображении игры в консоли. WINDOW \texorpdfstring{$\ast$}{*}game\+\_\+win -\/ окно игрового поля WINDOW \texorpdfstring{$\ast$}{*}stat\+\_\+win -\/ окно статистики игры 
+
+Цвета, Цвета для ncurses; \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ColorGray@{ColorGray}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!ColorGray@{ColorGray}}}\Hypertarget{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0a491083eeb6f91a4030a7bd42d3a92e9d}\label{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0} 
+Color\+Gray&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ColorRed@{ColorRed}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!ColorRed@{ColorRed}}}\Hypertarget{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0a84b1843b445ff9b931d0a00de3f8b704}\label{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0} 
+Color\+Red&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ColorOrange@{ColorOrange}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!ColorOrange@{ColorOrange}}}\Hypertarget{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0aa9484cb2286fdda662d12c3db43957b6}\label{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0} 
+Color\+Orange&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ColorYellow@{ColorYellow}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!ColorYellow@{ColorYellow}}}\Hypertarget{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0aefc715d025222e25494198273082c13e}\label{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0} 
+Color\+Yellow&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ColorPink@{ColorPink}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!ColorPink@{ColorPink}}}\Hypertarget{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0aae1cbbb23e34a7ff6f5df69bc99244cf}\label{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0} 
+Color\+Pink&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ColorGreen@{ColorGreen}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!ColorGreen@{ColorGreen}}}\Hypertarget{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0a8922c082778fd71bfb48d16964ce9be9}\label{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0} 
+Color\+Green&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ColorBlue@{ColorBlue}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!ColorBlue@{ColorBlue}}}\Hypertarget{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0a1989ed448afc76bc56051028bcc0c3d0}\label{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0} 
+Color\+Blue&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ColorPurple@{ColorPurple}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!ColorPurple@{ColorPurple}}}\Hypertarget{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0a87ab026dbb20110d2c17d5a06dd936fc}\label{tetris_8h_a3e6612ee9b372510dbd4a277824e41a0} 
+Color\+Purple&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}\index{tetris.h@{tetris.h}!GameState\_t@{GameState\_t}}
+\index{GameState\_t@{GameState\_t}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{GameState\_t}{GameState\_t}}
+{\footnotesize\ttfamily \label{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2} 
+enum \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_PRESTART@{GAME\_PRESTART}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!GAME\_PRESTART@{GAME\_PRESTART}}}\Hypertarget{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2a9cab5e790d8514f5bb96f1935d9005a3}\label{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2} 
+GAME\+\_\+\+PRESTART&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_START@{GAME\_START}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!GAME\_START@{GAME\_START}}}\Hypertarget{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2a06dc2c041ca25d7638a9a74e181800f2}\label{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2} 
+GAME\+\_\+\+START&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_SPAWN@{GAME\_SPAWN}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!GAME\_SPAWN@{GAME\_SPAWN}}}\Hypertarget{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2ab79efe9354d80471419df79c197ed424}\label{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2} 
+GAME\+\_\+\+SPAWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_MOVING@{GAME\_MOVING}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!GAME\_MOVING@{GAME\_MOVING}}}\Hypertarget{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2ab39e2e7ffd9bc983560c5dfc5d6bbfc6}\label{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2} 
+GAME\+\_\+\+MOVING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_ATTACHING@{GAME\_ATTACHING}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!GAME\_ATTACHING@{GAME\_ATTACHING}}}\Hypertarget{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2acb6fd8e7ebfd00b8bbdf6ece79d6d729}\label{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2} 
+GAME\+\_\+\+ATTACHING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_OVER@{GAME\_OVER}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!GAME\_OVER@{GAME\_OVER}}}\Hypertarget{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2a871723195985a4ae22d7e10d99bf8a00}\label{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2} 
+GAME\+\_\+\+OVER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_PAUSED@{GAME\_PAUSED}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!GAME\_PAUSED@{GAME\_PAUSED}}}\Hypertarget{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2a263d613b5188d0c835659517bccbde72}\label{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2} 
+GAME\+\_\+\+PAUSED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_EXIT@{GAME\_EXIT}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!GAME\_EXIT@{GAME\_EXIT}}}\Hypertarget{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2ae601d1e9c9e0ba93d00a18048fa19feb}\label{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2} 
+GAME\+\_\+\+EXIT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GAME\_WON@{GAME\_WON}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!GAME\_WON@{GAME\_WON}}}\Hypertarget{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2a31fcc94800fd6d897c76e7c37da13c40}\label{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2} 
+GAME\+\_\+\+WON&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6a}\index{tetris.h@{tetris.h}!tetrisError@{tetrisError}}
+\index{tetrisError@{tetrisError}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{tetrisError}{tetrisError}}
+{\footnotesize\ttfamily \label{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6a} 
+enum \mbox{\hyperlink{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6a}{tetris\+Error}}}
+
+
+
+Все виды ошибок. SUCCESS -\/ успех FAIL -\/ ошибка MEMORYFAIL -\/ ошибка памяти 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SUCCESS@{SUCCESS}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!SUCCESS@{SUCCESS}}}\Hypertarget{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6aac7f69f7c9e5aea9b8f54cf02870e2bf8}\label{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6a} 
+SUCCESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAIL@{FAIL}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!FAIL@{FAIL}}}\Hypertarget{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6aa936c4a5547a9360243178f726f6b2715}\label{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6a} 
+FAIL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MEMORYFAIL@{MEMORYFAIL}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!MEMORYFAIL@{MEMORYFAIL}}}\Hypertarget{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6aaa9a85b9773cd7cc1af624d61c300186e}\label{tetris_8h_ac2c640134ea95ca5bb7a7d6e621b9d6a} 
+MEMORYFAIL&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d}\index{tetris.h@{tetris.h}!tetrisState@{tetrisState}}
+\index{tetrisState@{tetrisState}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{tetrisState}{tetrisState}}
+{\footnotesize\ttfamily \label{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d} 
+enum \mbox{\hyperlink{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d}{tetris\+State}}}
+
+
+
+Все состояния игры. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{START\_STATE@{START\_STATE}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!START\_STATE@{START\_STATE}}}\Hypertarget{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22da399c982a0c65189d8b619a10443b9a8e}\label{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d} 
+START\+\_\+\+STATE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPAWN\_STATE@{SPAWN\_STATE}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!SPAWN\_STATE@{SPAWN\_STATE}}}\Hypertarget{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22da865093318e5b0cac88dfb63850e23f8e}\label{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d} 
+SPAWN\+\_\+\+STATE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVING\_STATE@{MOVING\_STATE}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!MOVING\_STATE@{MOVING\_STATE}}}\Hypertarget{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22dacc99279eba28194518feed99218cbd53}\label{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d} 
+MOVING\+\_\+\+STATE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ATTACHING\_STATE@{ATTACHING\_STATE}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!ATTACHING\_STATE@{ATTACHING\_STATE}}}\Hypertarget{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22daa602190587a569272033e96c70a99958}\label{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d} 
+ATTACHING\+\_\+\+STATE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{END\_GAME\_STATE@{END\_GAME\_STATE}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!END\_GAME\_STATE@{END\_GAME\_STATE}}}\Hypertarget{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22dab1b4c5b053c27001ea6cdef722769b58}\label{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d} 
+END\+\_\+\+GAME\+\_\+\+STATE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TERMINATE\_STATE@{TERMINATE\_STATE}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!TERMINATE\_STATE@{TERMINATE\_STATE}}}\Hypertarget{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22daa6273910c7ec35335e9abb4f4ef65c9c}\label{tetris_8h_ae837e42a19d0e4a28e5b3f60fb81d22d} 
+TERMINATE\+\_\+\+STATE&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e}\index{tetris.h@{tetris.h}!UserActionButton@{UserActionButton}}
+\index{UserActionButton@{UserActionButton}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{UserActionButton}{UserActionButton}}
+{\footnotesize\ttfamily \label{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e} 
+enum \mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e}{User\+Action\+Button}}}
+
+
+
+Все кнопки через которые происходит взаимодействия игрока с программой 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Start@{Start}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!Start@{Start}}}\Hypertarget{tetris_8h_a3a828fa966cd03c6b431f82c942fe58eabd5f9c956752ce4dc707b4624b3a36f7}\label{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e} 
+Start&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Pause@{Pause}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!Pause@{Pause}}}\Hypertarget{tetris_8h_a3a828fa966cd03c6b431f82c942fe58eadaba8aa0fcd8a87c25fec7d916c789e7}\label{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e} 
+Pause&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Terminate@{Terminate}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!Terminate@{Terminate}}}\Hypertarget{tetris_8h_a3a828fa966cd03c6b431f82c942fe58eaaf166713f3d14b30bee8f0ad5a09c4cb}\label{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e} 
+Terminate&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Left@{Left}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!Left@{Left}}}\Hypertarget{tetris_8h_a3a828fa966cd03c6b431f82c942fe58ea9d4d8b0b72fc2659da772d761a3c5ecb}\label{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e} 
+Left&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Right@{Right}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!Right@{Right}}}\Hypertarget{tetris_8h_a3a828fa966cd03c6b431f82c942fe58ead48f7af8c070184f3774c8e85854eb66}\label{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e} 
+Right&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Up@{Up}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!Up@{Up}}}\Hypertarget{tetris_8h_a3a828fa966cd03c6b431f82c942fe58ea57a7edcbc04d6175683383cad5c3e0a2}\label{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e} 
+Up&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Down@{Down}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!Down@{Down}}}\Hypertarget{tetris_8h_a3a828fa966cd03c6b431f82c942fe58eabcf8c79e9a5f5f9d606fb35645a0fb27}\label{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e} 
+Down&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Action@{Action}!tetris.h@{tetris.h}}\index{tetris.h@{tetris.h}!Action@{Action}}}\Hypertarget{tetris_8h_a3a828fa966cd03c6b431f82c942fe58ea3887649be5130f60dd3e7a6eb8e9f142}\label{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e} 
+Action&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tetris_8h_a75f95b5f595f3229d182898b644e0e3c}\index{tetris.h@{tetris.h}!addBlockInField@{addBlockInField}}
+\index{addBlockInField@{addBlockInField}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{addBlockInField()}{addBlockInField()}}
+{\footnotesize\ttfamily \label{tetris_8h_a75f95b5f595f3229d182898b644e0e3c} 
+void add\+Block\+In\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{, }\item[{\mbox{\hyperlink{structcoordinate}{coordinate}}}]{block\+\_\+pos}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})}
+
+
+
+Вставляет блок внутрь игрового поля. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Указатель на двумерный массив(матрицу) тетрамино \\
+\hline
+{\em field} & Указатель на двумерный массив(матрицу) поле \\
+\hline
+{\em block\+\_\+pos} & -\/ координаты тетрмины x,y \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a8679c2bca82258ab076b9347b691dbda}\index{tetris.h@{tetris.h}!attachingState@{attachingState}}
+\index{attachingState@{attachingState}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{attachingState()}{attachingState()}}
+{\footnotesize\ttfamily \label{tetris_8h_a8679c2bca82258ab076b9347b691dbda} 
+void attaching\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+ATTACHING\+\_\+\+STATE = Закрепление блока. Блок упал вниз насколько возможно. 
+
+Блок \textquotesingle{}вставляется\textquotesingle{} внутрь игрового поля. Поле обновляется и убираются заполненные строки. Прибавляются очки \textquotesingle{}score\textquotesingle{} и, если необходимо, обновляется \textquotesingle{}High\+Score\textquotesingle{}. Обновляется уровень по \textquotesingle{}score\textquotesingle{}.
+
+
+\begin{DoxyItemize}
+\item Переход возможен в \textquotesingle{}SPAWN\+\_\+\+STATE\textquotesingle{} или \textquotesingle{}END\+\_\+\+GAME\+\_\+\+STATE\textquotesingle{} Переход в следущее состояние НЕ обязателен. Если блок находился за верхней линией то состояние переходит в \textquotesingle{}END\+\_\+\+GAME\+\_\+\+STATE\textquotesingle{}, если нет, то в \textquotesingle{}SPAWN\+\_\+\+STATE\textquotesingle{}.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Экземпляр стуктуры логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a4ffe46c7901aa5e2209e7bb53995596f}\index{tetris.h@{tetris.h}!checkingBlockCollisionWithField@{checkingBlockCollisionWithField}}
+\index{checkingBlockCollisionWithField@{checkingBlockCollisionWithField}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{checkingBlockCollisionWithField()}{checkingBlockCollisionWithField()}}
+{\footnotesize\ttfamily \label{tetris_8h_a4ffe46c7901aa5e2209e7bb53995596f} 
+char checking\+Block\+Collision\+With\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{, }\item[{\mbox{\hyperlink{structcoordinate}{coordinate}}}]{block\+\_\+pos}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})}
+
+
+
+Проверяет коллизию блока с игровым полем(с его границами и с внутренними блоками). В зависимости от того, с чем столкнулся блок, возвращает положительное число. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Указатель на двумерный массив(матрицу) тетрамино \\
+\hline
+{\em field} & Указатель на двумерный массив(матрицу) поле \\
+\hline
+{\em block\+\_\+pos} & -\/ координаты тетрмины x,y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 == false / 1 == true, 2 == left\+Board, 3 == right\+Board, 4 == buttom\+Board. 
+\end{DoxyReturn}
+\Hypertarget{tetris_8h_a3f99bb458c2f224a283e9662eaf830ff}\index{tetris.h@{tetris.h}!completeLineInField@{completeLineInField}}
+\index{completeLineInField@{completeLineInField}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{completeLineInField()}{completeLineInField()}}
+{\footnotesize\ttfamily \label{tetris_8h_a3f99bb458c2f224a283e9662eaf830ff} 
+int complete\+Line\+In\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})}
+
+
+
+Считает количество заполненных строк на игровом поле. Если строка была заполнена то она обнуляется и все строки сверху сдвигаются на неё. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & Указатель на двумерный массив(матрицу) поле \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+количество строк. 
+\end{DoxyReturn}
+\Hypertarget{tetris_8h_a78c5257fc0f0770c93fc24f81c244d3b}\index{tetris.h@{tetris.h}!copyField@{copyField}}
+\index{copyField@{copyField}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{copyField()}{copyField()}}
+{\footnotesize\ttfamily \label{tetris_8h_a78c5257fc0f0770c93fc24f81c244d3b} 
+void copy\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field\+\_\+copy}{}\end{DoxyParamCaption})}
+
+
+
+Делает копию \textquotesingle{}field\textquotesingle{} и возвращает эту копию в \textquotesingle{}field\+\_\+copy\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & Оригинальное игровое поле. \\
+\hline
+{\em field\+\_\+copy} & Копия игрового поля. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_ad8b274feaa362413eedf251c8105a2e4}\index{tetris.h@{tetris.h}!cpTetramino@{cpTetramino}}
+\index{cpTetramino@{cpTetramino}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{cpTetramino()}{cpTetramino()}}
+{\footnotesize\ttfamily \label{tetris_8h_ad8b274feaa362413eedf251c8105a2e4} 
+void cp\+Tetramino (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{, }\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block\+\_\+copy}{}\end{DoxyParamCaption})}
+
+
+
+Копирование блока. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Указатель на двумерный массив(матрицу), который копируем. \\
+\hline
+{\em block\+\_\+copy} & Указатель на двумерный массив(матрицу), куда копируем. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_ae524c14ca2862ebb4d57aa3e2ff2be20}\index{tetris.h@{tetris.h}!create\_matrix@{create\_matrix}}
+\index{create\_matrix@{create\_matrix}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{create\_matrix()}{create\_matrix()}}
+{\footnotesize\ttfamily \label{tetris_8h_ae524c14ca2862ebb4d57aa3e2ff2be20} 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} create\+\_\+matrix (\begin{DoxyParamCaption}\item[{int}]{rows}{, }\item[{int}]{cols}{}\end{DoxyParamCaption})}
+
+\Hypertarget{tetris_8h_ac1065b96f74a43cc7b1e7e87b92970f5}\index{tetris.h@{tetris.h}!crtField@{crtField}}
+\index{crtField@{crtField}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{crtField()}{crtField()}}
+{\footnotesize\ttfamily \label{tetris_8h_ac1065b96f74a43cc7b1e7e87b92970f5} 
+int crt\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})}
+
+
+
+Cоздание игрового поля. Выделяем память для массива строк, затем выделяем память для строки. Проверяем на выделение 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & Указатель на двумерный массив(матрицу). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris_8h_ad87815d213b39f9ab531cb8c55f62188}\index{tetris.h@{tetris.h}!crtGameInfoTetris@{crtGameInfoTetris}}
+\index{crtGameInfoTetris@{crtGameInfoTetris}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{crtGameInfoTetris()}{crtGameInfoTetris()}}
+{\footnotesize\ttfamily \label{tetris_8h_ad87815d213b39f9ab531cb8c55f62188} 
+\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} crt\+Game\+Info\+Tetris (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Создание/составление структуры \doxylink{struct_game_info__tetris}{Game\+Info\+\_\+tetris} c помощью главной структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Перенос необходимой информации из одной структуры в другую. Является частью функции \textquotesingle{}upd\+Curr\+State\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Главная структура логики игры. Хранит всю необходимую информацию. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_aa0107255a66f54654ac5f32d3e926f54}\index{tetris.h@{tetris.h}!crtTetramino@{crtTetramino}}
+\index{crtTetramino@{crtTetramino}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{crtTetramino()}{crtTetramino()}}
+{\footnotesize\ttfamily \label{tetris_8h_aa0107255a66f54654ac5f32d3e926f54} 
+int crt\+Tetramino (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{}\end{DoxyParamCaption})}
+
+
+
+Создание блока. Выделяем память для массива строк, затем выделяем память для строки. Проверяем на выделение памяти, если ошибка, то освобождаем память 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & В данном случае -\/ указатель на двумерный массив(матрицу). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris_8h_a3ebfd13ad57ad1d675aee45a746eff9f}\index{tetris.h@{tetris.h}!crtWin@{crtWin}}
+\index{crtWin@{crtWin}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{crtWin()}{crtWin()}}
+{\footnotesize\ttfamily \label{tetris_8h_a3ebfd13ad57ad1d675aee45a746eff9f} 
+void crt\+Win (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{window}{, }\item[{\mbox{\hyperlink{structcoordinate}{coordinate}}}]{window\+\_\+size}{, }\item[{\mbox{\hyperlink{structcoordinate}{coordinate}}}]{window\+\_\+pos}{}\end{DoxyParamCaption})}
+
+\Hypertarget{tetris_8h_a42238787f7de0f585976c34d937cc665}\index{tetris.h@{tetris.h}!endGameState@{endGameState}}
+\index{endGameState@{endGameState}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{endGameState()}{endGameState()}}
+{\footnotesize\ttfamily \label{tetris_8h_a42238787f7de0f585976c34d937cc665} 
+void end\+Game\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+END\+\_\+\+GAME\+\_\+\+STATE = Игра окончена. Игровое поле было заполнено до верхней линии. 
+
+
+\begin{DoxyItemize}
+\item Переход возможен в \textquotesingle{}START\+\_\+\+STATE\textquotesingle{} или \textquotesingle{}TERMINATE\+\_\+\+STATE\textquotesingle{} 
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Экземпляр стуктуры логики тетриса. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{tetris_8h_a155abc56eef030dbc8106d86fa2e0e27}\index{tetris.h@{tetris.h}!gameStart@{gameStart}}
+\index{gameStart@{gameStart}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{gameStart()}{gameStart()}}
+{\footnotesize\ttfamily \label{tetris_8h_a155abc56eef030dbc8106d86fa2e0e27} 
+void game\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Иницилизация начало игры. 
+
+\Hypertarget{tetris_8h_a11ee6f8f8084403bd350b97504d15c15}\index{tetris.h@{tetris.h}!generate\_next\_figure@{generate\_next\_figure}}
+\index{generate\_next\_figure@{generate\_next\_figure}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{generate\_next\_figure()}{generate\_next\_figure()}}
+{\footnotesize\ttfamily \label{tetris_8h_a11ee6f8f8084403bd350b97504d15c15} 
+void generate\+\_\+next\+\_\+figure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game\+Info}{}\end{DoxyParamCaption})}
+
+\Hypertarget{tetris_8h_afd0b7cde40ecfc40568d0c28396806ee}\index{tetris.h@{tetris.h}!getAllTetramino@{getAllTetramino}}
+\index{getAllTetramino@{getAllTetramino}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{getAllTetramino()}{getAllTetramino()}}
+{\footnotesize\ttfamily \label{tetris_8h_afd0b7cde40ecfc40568d0c28396806ee} 
+void get\+All\+Tetramino (\begin{DoxyParamCaption}\item[{int}]{blocks}{\mbox{[}\+BLOCK\+\_\+\+COUNT\mbox{]}\mbox{[}\+BLOCK\+\_\+\+SIZE\mbox{]}\mbox{[}\+BLOCK\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Хранит в себе все виды блоков(Тетромино) и возвращает их при необходимости. Для того, чтобы различать фигуры в фронтенде \textquotesingle{}заполнение\textquotesingle{} фигур отличается НО всегда является положительным числом. mem\+\_\+cpy Копирование из одного массива в другой всех блоков. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blocks} & Массив двумерных фигур(блоков) тетромино. Используется для возвращения в него из функции всех блоков. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a7459f3202963cea60e744efcedf0404b}\index{tetris.h@{tetris.h}!getHighScore@{getHighScore}}
+\index{getHighScore@{getHighScore}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{getHighScore()}{getHighScore()}}
+{\footnotesize\ttfamily \label{tetris_8h_a7459f3202963cea60e744efcedf0404b} 
+int get\+High\+Score (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Работа с рекордом 
+
+\Hypertarget{tetris_8h_a1fe6401b323a9b773e312acffe5a1639}\index{tetris.h@{tetris.h}!getRandomTetramino@{getRandomTetramino}}
+\index{getRandomTetramino@{getRandomTetramino}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{getRandomTetramino()}{getRandomTetramino()}}
+{\footnotesize\ttfamily \label{tetris_8h_a1fe6401b323a9b773e312acffe5a1639} 
+int get\+Random\+Tetramino (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{}\end{DoxyParamCaption})}
+
+
+
+Возвращает случайный блок из доступных в функции \textquotesingle{}get\+All\+Tetramino\textquotesingle{}. НЕ выделяет память. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Используется для возвращения случайно выбранного блока. Не должно быть NULL. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris_8h_aa669174071419620564eec9e7302373d}\index{tetris.h@{tetris.h}!getRewardByCompleteLines@{getRewardByCompleteLines}}
+\index{getRewardByCompleteLines@{getRewardByCompleteLines}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{getRewardByCompleteLines()}{getRewardByCompleteLines()}}
+{\footnotesize\ttfamily \label{tetris_8h_aa669174071419620564eec9e7302373d} 
+int get\+Reward\+By\+Complete\+Lines (\begin{DoxyParamCaption}\item[{int}]{number\+\_\+lines}{}\end{DoxyParamCaption})}
+
+
+
+Вычисляет необходимую награду по заполненным строкам. 
+
+Вычисляет количество очков (reward), зависящее от количества уничтоженных линий.
+
+
+\begin{DoxyParams}{Parameters}
+{\em number\+\_\+lines} & Количество уничтоженных линий. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Количество очков (reward). 
+\end{DoxyReturn}
+\Hypertarget{tetris_8h_ae2239c58a5ff0db3330a0472a67076a6}\index{tetris.h@{tetris.h}!getUserInput@{getUserInput}}
+\index{getUserInput@{getUserInput}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{getUserInput()}{getUserInput()}}
+{\footnotesize\ttfamily \label{tetris_8h_ae2239c58a5ff0db3330a0472a67076a6} 
+\mbox{\hyperlink{struct_user_input__t}{User\+Input\+\_\+t}} get\+User\+Input (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Нажатие игрока. 
+
+\Hypertarget{tetris_8h_a48ea59a5184c52a1ccc91bcc37390aa6}\index{tetris.h@{tetris.h}!InitCli@{InitCli}}
+\index{InitCli@{InitCli}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{InitCli()}{InitCli()}}
+{\footnotesize\ttfamily \label{tetris_8h_a48ea59a5184c52a1ccc91bcc37390aa6} 
+void Init\+Cli (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}}]{cli}{}\end{DoxyParamCaption})}
+
+
+
+Создание экземпляра структуры \doxylink{structcli_tetris}{cli\+Tetris}. Существует только один элемент и обращение происходит по ссылке на него. 
+
+\Hypertarget{tetris_8h_af5d6593fd1d811199f32059f1f3f16f1}\index{tetris.h@{tetris.h}!initCurses@{initCurses}}
+\index{initCurses@{initCurses}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{initCurses()}{initCurses()}}
+{\footnotesize\ttfamily \label{tetris_8h_af5d6593fd1d811199f32059f1f3f16f1} 
+void init\+Curses (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+ncurses установки. 
+
+\Hypertarget{tetris_8h_a6f25b707f2158d21946584887d27c959}\index{tetris.h@{tetris.h}!initTetris@{initTetris}}
+\index{initTetris@{initTetris}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{initTetris()}{initTetris()}}
+{\footnotesize\ttfamily \label{tetris_8h_a6f25b707f2158d21946584887d27c959} 
+int init\+Tetris (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Создание экземпляра структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Инициализируем rand() В программе может быть ТОЛЬКО один инициализированный экземпляр \doxylink{structtetris__t}{tetris\+\_\+t}. Так как во время инициализации указатель на данный экземпляр сохраняется \textquotesingle{}глобально\textquotesingle{} и используется во всех функциях, где необходимо. 
+
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris_8h_a641bdd269acaec73beebf42866082ee8}\index{tetris.h@{tetris.h}!is\_figure\_collide@{is\_figure\_collide}}
+\index{is\_figure\_collide@{is\_figure\_collide}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{is\_figure\_collide()}{is\_figure\_collide()}}
+{\footnotesize\ttfamily \label{tetris_8h_a641bdd269acaec73beebf42866082ee8} 
+bool is\+\_\+figure\+\_\+collide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_figure}{Figure}} \texorpdfstring{$\ast$}{*}}]{figure}{, }\item[{\mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game\+Info}{}\end{DoxyParamCaption})}
+
+\Hypertarget{tetris_8h_ad0f71eeaf9afee93fa35d4848dd17997}\index{tetris.h@{tetris.h}!isBlockBeyondLimit@{isBlockBeyondLimit}}
+\index{isBlockBeyondLimit@{isBlockBeyondLimit}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{isBlockBeyondLimit()}{isBlockBeyondLimit()}}
+{\footnotesize\ttfamily \label{tetris_8h_ad0f71eeaf9afee93fa35d4848dd17997} 
+bool is\+Block\+Beyond\+Limit (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{, }\item[{\mbox{\hyperlink{structcoordinate}{coordinate}}}]{block\+\_\+pos}{}\end{DoxyParamCaption})}
+
+
+
+Проверяет, находится ли блок за верхней границей игрового поля. 
+
+Проверяет, находится ли блок за пределами верхней границы игрового поля.
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Указатель на двумерный массив (матрицу) тетрамино. \\
+\hline
+{\em block\+\_\+pos} & Координаты x,y тетрамино. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, если блок находится за верхней границей, false в противном случае. 
+\end{DoxyReturn}
+\Hypertarget{tetris_8h_a4231a60db7d0820c8d9683998b17bd03}\index{tetris.h@{tetris.h}!isGameEnd@{isGameEnd}}
+\index{isGameEnd@{isGameEnd}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{isGameEnd()}{isGameEnd()}}
+{\footnotesize\ttfamily \label{tetris_8h_a4231a60db7d0820c8d9683998b17bd03} 
+bool is\+Game\+End (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Проверка на конец игры 
+
+\Hypertarget{tetris_8h_a03c9ab792457e6dc47c9e11ff957d195}\index{tetris.h@{tetris.h}!isPause@{isPause}}
+\index{isPause@{isPause}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{isPause()}{isPause()}}
+{\footnotesize\ttfamily \label{tetris_8h_a03c9ab792457e6dc47c9e11ff957d195} 
+bool is\+Pause (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+pause true\textbackslash{}false 
+
+\Hypertarget{tetris_8h_a15a259e1e7c39c33946f7e1fb1561c10}\index{tetris.h@{tetris.h}!main\_loop@{main\_loop}}
+\index{main\_loop@{main\_loop}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{main\_loop()}{main\_loop()}}
+{\footnotesize\ttfamily \label{tetris_8h_a15a259e1e7c39c33946f7e1fb1561c10} 
+void main\+\_\+loop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+\Hypertarget{tetris_8h_aaa63376b05de214a6b83cd75d9754540}\index{tetris.h@{tetris.h}!move\_figure\_down@{move\_figure\_down}}
+\index{move\_figure\_down@{move\_figure\_down}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{move\_figure\_down()}{move\_figure\_down()}}
+{\footnotesize\ttfamily \label{tetris_8h_aaa63376b05de214a6b83cd75d9754540} 
+void move\+\_\+figure\+\_\+down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_figure}{Figure}} \texorpdfstring{$\ast$}{*}}]{figure}{, }\item[{\mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game\+Info}{}\end{DoxyParamCaption})}
+
+\Hypertarget{tetris_8h_ad5aca1a56b64397a8fb63111c73f60e7}\index{tetris.h@{tetris.h}!movingState@{movingState}}
+\index{movingState@{movingState}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{movingState()}{movingState()}}
+{\footnotesize\ttfamily \label{tetris_8h_ad5aca1a56b64397a8fb63111c73f60e7} 
+void moving\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+MOVING\+\_\+\+STATE = Перемещение блока по игровому полю а также считывание пользовательских действий. Если блок не может упасть то он закрепляется -\/ переносится внутрь игрового поля и игра либо заканчивается либо спавнится новый блок. 
+
+
+\begin{DoxyItemize}
+\item Переход возможен в \textquotesingle{}ATTACHING\+\_\+\+STATE\textquotesingle{} или \textquotesingle{}TERMINATE\+\_\+\+STATE\textquotesingle{} Переход в следущее состояние НЕ обязателен. Если блок упал вниз насколько возможно то состояние переходит в \textquotesingle{}ATTACHING\+\_\+\+STATE\textquotesingle{}. Если пользователь нажал \textquotesingle{}Terminate\textquotesingle{} то состояние переходит в \textquotesingle{}TERMINATE\+\_\+\+STATE\textquotesingle{}. 
+\begin{DoxyParams}{Parameters}
+{\em tetris} & основная стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{tetris_8h_ae1c80bd76fe989e545d3f0a9c18cdd54}\index{tetris.h@{tetris.h}!mvAction@{mvAction}}
+\index{mvAction@{mvAction}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{mvAction()}{mvAction()}}
+{\footnotesize\ttfamily \label{tetris_8h_ae1c80bd76fe989e545d3f0a9c18cdd54} 
+void mv\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+В зависимости от return checking\+Block\+Collision\+With\+Field перемещает блок вправо, влево, вниз или поворачивает 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & основная стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_ae2e23982a596ed4e68b7bfea7ccd2824}\index{tetris.h@{tetris.h}!mvDown@{mvDown}}
+\index{mvDown@{mvDown}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{mvDown()}{mvDown()}}
+{\footnotesize\ttfamily \label{tetris_8h_ae2e23982a596ed4e68b7bfea7ccd2824} 
+void mv\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Если is\+\_\+fall\+\_\+time = true, двигает блок вниз 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & основная стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a6985a0b0f46fe0cde8366f9df3f84186}\index{tetris.h@{tetris.h}!mvLeft@{mvLeft}}
+\index{mvLeft@{mvLeft}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{mvLeft()}{mvLeft()}}
+{\footnotesize\ttfamily \label{tetris_8h_a6985a0b0f46fe0cde8366f9df3f84186} 
+void mv\+Left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Сдвгигает Блок по оси X влево. Далее проверяет на столкновение с с границами поля. Если было касание -\/ обратно сдвигает блок по X вправо 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & основная стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a4694b38ce8ad86d71e2f6ba89df5cf78}\index{tetris.h@{tetris.h}!mvRight@{mvRight}}
+\index{mvRight@{mvRight}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{mvRight()}{mvRight()}}
+{\footnotesize\ttfamily \label{tetris_8h_a4694b38ce8ad86d71e2f6ba89df5cf78} 
+void mv\+Right (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Сдвгигает Блок по оси X вправо. Далее проверяет на столкновение с с границами поля. Если было касание -\/ обратно сдвигает блок по X влево 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & основная стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a8eaf38a823706a9d44c3ec5855d1ed0a}\index{tetris.h@{tetris.h}!printCurrentState@{printCurrentState}}
+\index{printCurrentState@{printCurrentState}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{printCurrentState()}{printCurrentState()}}
+{\footnotesize\ttfamily \label{tetris_8h_a8eaf38a823706a9d44c3ec5855d1ed0a} 
+void print\+Current\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}}}]{game\+\_\+info}{}\end{DoxyParamCaption})}
+
+
+
+Отрисовка текущего состояния игры. 
+
+\Hypertarget{tetris_8h_a6afa947ba8c86daf80a33ad11f3943db}\index{tetris.h@{tetris.h}!printEndPreview@{printEndPreview}}
+\index{printEndPreview@{printEndPreview}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{printEndPreview()}{printEndPreview()}}
+{\footnotesize\ttfamily \label{tetris_8h_a6afa947ba8c86daf80a33ad11f3943db} 
+void print\+End\+Preview (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Прорисовка Конца игры 
+
+\Hypertarget{tetris_8h_aee4c437eeecaa43a4c0c0700c7c84796}\index{tetris.h@{tetris.h}!printFieldCeil@{printFieldCeil}}
+\index{printFieldCeil@{printFieldCeil}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{printFieldCeil()}{printFieldCeil()}}
+{\footnotesize\ttfamily \label{tetris_8h_aee4c437eeecaa43a4c0c0700c7c84796} 
+void print\+Field\+Ceil (\begin{DoxyParamCaption}\item[{WINDOW \texorpdfstring{$\ast$}{*}}]{win}{, }\item[{chtype}]{symbol}{}\end{DoxyParamCaption})}
+
+
+
+Прорисовка одной ячейки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em win} & Окно в котором нужно вывести. \\
+\hline
+{\em symbol} & Символ, которым будет заполнена ячейка. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a33b28f2fc189f3b61dc6d11c67141da6}\index{tetris.h@{tetris.h}!printPausePreview@{printPausePreview}}
+\index{printPausePreview@{printPausePreview}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{printPausePreview()}{printPausePreview()}}
+{\footnotesize\ttfamily \label{tetris_8h_a33b28f2fc189f3b61dc6d11c67141da6} 
+void print\+Pause\+Preview (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Экран Паузы 
+
+\Hypertarget{tetris_8h_aa5ab3a2de5e1c9eff67a54a00c6ed4bf}\index{tetris.h@{tetris.h}!printStartPreview@{printStartPreview}}
+\index{printStartPreview@{printStartPreview}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{printStartPreview()}{printStartPreview()}}
+{\footnotesize\ttfamily \label{tetris_8h_aa5ab3a2de5e1c9eff67a54a00c6ed4bf} 
+void print\+Start\+Preview (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Отрисовка старотового окна 
+
+\Hypertarget{tetris_8h_a3fc593adf848e4420ff95c00556fd9bb}\index{tetris.h@{tetris.h}!removeCli@{removeCli}}
+\index{removeCli@{removeCli}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{removeCli()}{removeCli()}}
+{\footnotesize\ttfamily \label{tetris_8h_a3fc593adf848e4420ff95c00556fd9bb} 
+void remove\+Cli (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}}]{cli}{}\end{DoxyParamCaption})}
+
+
+
+Удаление элемент структуры \doxylink{structcli_tetris}{cli\+Tetris}. 
+
+\Hypertarget{tetris_8h_a23e59dfdec59cc8374f27d64eedd9e2c}\index{tetris.h@{tetris.h}!removeTetris@{removeTetris}}
+\index{removeTetris@{removeTetris}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{removeTetris()}{removeTetris()}}
+{\footnotesize\ttfamily \label{tetris_8h_a23e59dfdec59cc8374f27d64eedd9e2c} 
+void remove\+Tetris (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Удаление экземпляра структуры \doxylink{structtetris__t}{tetris\+\_\+t}. Заносим в хранилище 
+
+\Hypertarget{tetris_8h_a64973bd823955a41cdb5ad29639c10c5}\index{tetris.h@{tetris.h}!rmvField@{rmvField}}
+\index{rmvField@{rmvField}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{rmvField()}{rmvField()}}
+{\footnotesize\ttfamily \label{tetris_8h_a64973bd823955a41cdb5ad29639c10c5} 
+void rmv\+Field (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{field}{}\end{DoxyParamCaption})}
+
+
+
+свобождение памяти, выделенное под поле 
+
+
+\begin{DoxyParams}{Parameters}
+{\em field} & Указатель на двумерный массив(матрицу). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a67f544c1b8f0ded48916f84180072c2b}\index{tetris.h@{tetris.h}!rmvTetramino@{rmvTetramino}}
+\index{rmvTetramino@{rmvTetramino}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{rmvTetramino()}{rmvTetramino()}}
+{\footnotesize\ttfamily \label{tetris_8h_a67f544c1b8f0ded48916f84180072c2b} 
+void rmv\+Tetramino (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{}\end{DoxyParamCaption})}
+
+
+
+Освобождение памяти, выделенной под тетрамино. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block} & Указатель на двумерный массив(матрицу). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_aee59c0e75399082cda60abe9d106467c}\index{tetris.h@{tetris.h}!rotate\_figure@{rotate\_figure}}
+\index{rotate\_figure@{rotate\_figure}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{rotate\_figure()}{rotate\_figure()}}
+{\footnotesize\ttfamily \label{tetris_8h_aee59c0e75399082cda60abe9d106467c} 
+void rotate\+\_\+figure (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_figure}{Figure}} \texorpdfstring{$\ast$}{*}}]{figure}{, }\item[{\mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{game\+Info}{}\end{DoxyParamCaption})}
+
+\Hypertarget{tetris_8h_a173891a9231d3d6aab82c4a5d70208a2}\index{tetris.h@{tetris.h}!rotateTetramino@{rotateTetramino}}
+\index{rotateTetramino@{rotateTetramino}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{rotateTetramino()}{rotateTetramino()}}
+{\footnotesize\ttfamily \label{tetris_8h_a173891a9231d3d6aab82c4a5d70208a2} 
+int rotate\+Tetramino (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{block}{, }\item[{char}]{left}{}\end{DoxyParamCaption})}
+
+
+
+Поворот блока. Проверяем на != NULL. Через буферный блок поворочиваем блок 
+
+
+\begin{DoxyParams}{Parameters}
+{\em left} & Если == true то влево. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris_8h_a2ede2ed4c8bc8648c70b36a8fcdcfb78}\index{tetris.h@{tetris.h}!selectNextState@{selectNextState}}
+\index{selectNextState@{selectNextState}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{selectNextState()}{selectNextState()}}
+{\footnotesize\ttfamily \label{tetris_8h_a2ede2ed4c8bc8648c70b36a8fcdcfb78} 
+int select\+Next\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+Вычисляет следующее состояние игры. Главная функция, в которой происходят все процессы. Каждая стадия вынесена в отдельную функцию. Вычисление последующих состояний происходит внутри этих функций. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Главная структура логики игры. Хранит всю необходимую информацию. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tetris\+Error 
+\end{DoxyReturn}
+\Hypertarget{tetris_8h_a14c79875545bcfb6fb8f0dd320e7a8a0}\index{tetris.h@{tetris.h}!setHighScore@{setHighScore}}
+\index{setHighScore@{setHighScore}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{setHighScore()}{setHighScore()}}
+{\footnotesize\ttfamily \label{tetris_8h_a14c79875545bcfb6fb8f0dd320e7a8a0} 
+void set\+High\+Score (\begin{DoxyParamCaption}\item[{int}]{score}{}\end{DoxyParamCaption})}
+
+
+
+Обновление рекорда 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score} & если рекорд не обновлён то ничего не делает \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a9bcae211345c73e1d1222410cc599781}\index{tetris.h@{tetris.h}!sliInfoStorage@{sliInfoStorage}}
+\index{sliInfoStorage@{sliInfoStorage}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{sliInfoStorage()}{sliInfoStorage()}}
+{\footnotesize\ttfamily \label{tetris_8h_a9bcae211345c73e1d1222410cc599781} 
+void sli\+Info\+Storage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{cli}{, }\item[{bool}]{remove}{}\end{DoxyParamCaption})}
+
+
+
+Является хранилищем для структуры \doxylink{structcli_tetris}{cli\+Tetris}. 
+
+\Hypertarget{tetris_8h_ad8288fc80094ab482119cee783c08bc1}\index{tetris.h@{tetris.h}!spawnTetramino@{spawnTetramino}}
+\index{spawnTetramino@{spawnTetramino}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{spawnTetramino()}{spawnTetramino()}}
+{\footnotesize\ttfamily \label{tetris_8h_ad8288fc80094ab482119cee783c08bc1} 
+void spawn\+Tetramino (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+SPAWNTetramino = Создание нового блока. Перемещение нового блока в следующий(next), а следующий в нынешний\+: new -\/\texorpdfstring{$>$}{>} next -\/\texorpdfstring{$>$}{>} current. Обнуление всех действий. А также вычисление будущей скорости падения по уровню. Переход возможен в \textquotesingle{}MOVING\+\_\+\+STATE\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & стуктура логики тетриса. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a7286a28a5c74e2c99d93254ef6b4f91a}\index{tetris.h@{tetris.h}!startState@{startState}}
+\index{startState@{startState}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{startState()}{startState()}}
+{\footnotesize\ttfamily \label{tetris_8h_a7286a28a5c74e2c99d93254ef6b4f91a} 
+void start\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{tetris}{}\end{DoxyParamCaption})}
+
+
+
+START\+\_\+\+STATE = Подготовка к новой игре. Обнуление уровня и очков. Очистка игрового поля. Вычисление следующего блока. Переход возможен в \textquotesingle{}SPAWN\+\_\+\+STATE\textquotesingle{} Переход будет ТОЛЬКО после нажатия кнопки \textquotesingle{}Start\textquotesingle{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & структура логики игры. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_a8237cbda1783b9a3bad52bcd8222d748}\index{tetris.h@{tetris.h}!statWinPrint@{statWinPrint}}
+\index{statWinPrint@{statWinPrint}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{statWinPrint()}{statWinPrint()}}
+{\footnotesize\ttfamily \label{tetris_8h_a8237cbda1783b9a3bad52bcd8222d748} 
+void stat\+Win\+Print (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structcli_tetris}{cli\+Tetris}} \texorpdfstring{$\ast$}{*}}]{cli}{, }\item[{\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} \texorpdfstring{$\ast$}{*}}]{game\+\_\+info}{}\end{DoxyParamCaption})}
+
+
+
+Окно Статитстики 
+
+\Hypertarget{tetris_8h_a28fc86a867835082b95e5751d2894d86}\index{tetris.h@{tetris.h}!tetrisInfoStorage@{tetrisInfoStorage}}
+\index{tetrisInfoStorage@{tetrisInfoStorage}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{tetrisInfoStorage()}{tetrisInfoStorage()}}
+{\footnotesize\ttfamily \label{tetris_8h_a28fc86a867835082b95e5751d2894d86} 
+void tetris\+Info\+Storage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtetris__t}{tetris\+\_\+t}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{tetris}{, }\item[{bool}]{remove}{}\end{DoxyParamCaption})}
+
+
+
+Является хранилищем для структуры \doxylink{structtetris__t}{tetris\+\_\+t}. 
+
+При передаче НЕнулевого указателя структура сохраняется. А при передачи NULL сохранённая структура отдаётся. Функция необходима для передачи информации во фронтенд.
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Указатель на основную структуру логики игры. \\
+\hline
+{\em remove} & Параметр для удаления сохранённой структуры. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{tetris_8h_af98e285588d8be9f0a920efa781dc59f}\index{tetris.h@{tetris.h}!updCurrState@{updCurrState}}
+\index{updCurrState@{updCurrState}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{updCurrState()}{updCurrState()}}
+{\footnotesize\ttfamily \label{tetris_8h_af98e285588d8be9f0a920efa781dc59f} 
+\mbox{\hyperlink{struct_game_info__tetris}{Game\+Info\+\_\+tetris}} upd\+Curr\+State (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Обновление состаяния игры 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tetris} & Главная структура логики игры. Хранит всю необходимую информацию. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Структура, которая хранит краткое сведение об игре и необходима для отображения текущего состояния игры. 
+\end{DoxyReturn}
+\Hypertarget{tetris_8h_afddeb813ef98c12af777b5a3e1154b56}\index{tetris.h@{tetris.h}!userInput@{userInput}}
+\index{userInput@{userInput}!tetris.h@{tetris.h}}
+\doxysubsubsection{\texorpdfstring{userInput()}{userInput()}}
+{\footnotesize\ttfamily \label{tetris_8h_afddeb813ef98c12af777b5a3e1154b56} 
+void user\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetris_8h_a3a828fa966cd03c6b431f82c942fe58e}{User\+Action\+Button}}}]{action}{, }\item[{bool}]{hold}{}\end{DoxyParamCaption})}
+
+
+
+Принимается пользовательский ввод. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hold} & Нажата ли сейчас клавиша \\
+\hline
+\end{DoxyParams}

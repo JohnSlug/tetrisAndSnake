@@ -1,0 +1,102 @@
+\doxysection{Tetris\+Widget Class Reference}
+\hypertarget{class_tetris_widget}{}\label{class_tetris_widget}\index{TetrisWidget@{TetrisWidget}}
+
+
+Виджет для отображения игры "{}Тетрис"{} в Qt. Управляет логикой, отрисовкой фигур и интерфейсом.  
+
+
+
+
+{\ttfamily \#include $<$tetriswidget.\+h$>$}
+
+Inheritance diagram for Tetris\+Widget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_tetris_widget}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_tetris_widget_aba252ad3d96374baefc27321c0baa5b5}{game\+Over}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tetris_widget_af3e4b28e9383a245fdac30009c8f02c1}{Tetris\+Widget}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Конструктор виджета Tetris. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_tetris_widget_a60278a3195ac89e116014951b9182e95}{\texorpdfstring{$\sim$}{\string~}\+Tetris\+Widget}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор виджета Tetris. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_tetris_widget_ab25523f739348a21c0ad1537e8cea471}{paint\+Event}} (QPaint\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Отрисовывает текущую и следующую фигуру, поле. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tetris_widget_a8b7a53f66e92baaa6dacae68fc6081f5}{key\+Press\+Event}} (QKey\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Обрабатывает клавиши управления (поворот, перемещение). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Виджет для отображения игры "{}Тетрис"{} в Qt. Управляет логикой, отрисовкой фигур и интерфейсом. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_tetris_widget_af3e4b28e9383a245fdac30009c8f02c1}\index{TetrisWidget@{TetrisWidget}!TetrisWidget@{TetrisWidget}}
+\index{TetrisWidget@{TetrisWidget}!TetrisWidget@{TetrisWidget}}
+\doxysubsubsection{\texorpdfstring{TetrisWidget()}{TetrisWidget()}}
+{\footnotesize\ttfamily \label{class_tetris_widget_af3e4b28e9383a245fdac30009c8f02c1} 
+Tetris\+Widget\+::\+Tetris\+Widget (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Конструктор виджета Tetris. 
+
+Инициализирует таймер, структуру \doxylink{structtetris__t}{tetris\+\_\+t} и запускает игру. Связывает сигналы таймера с обновлением состояния. \Hypertarget{class_tetris_widget_a60278a3195ac89e116014951b9182e95}\index{TetrisWidget@{TetrisWidget}!````~TetrisWidget@{\texorpdfstring{$\sim$}{\string~}TetrisWidget}}
+\index{````~TetrisWidget@{\texorpdfstring{$\sim$}{\string~}TetrisWidget}!TetrisWidget@{TetrisWidget}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}TetrisWidget()}{\string~TetrisWidget()}}
+{\footnotesize\ttfamily \label{class_tetris_widget_a60278a3195ac89e116014951b9182e95} 
+Tetris\+Widget\+::\texorpdfstring{$\sim$}{\string~}\+Tetris\+Widget (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Деструктор виджета Tetris. 
+
+Освобождает ресурсы, связанные с структурой \doxylink{structtetris__t}{tetris\+\_\+t}, и останавливает таймер. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_tetris_widget_aba252ad3d96374baefc27321c0baa5b5}\index{TetrisWidget@{TetrisWidget}!gameOver@{gameOver}}
+\index{gameOver@{gameOver}!TetrisWidget@{TetrisWidget}}
+\doxysubsubsection{\texorpdfstring{gameOver}{gameOver}}
+{\footnotesize\ttfamily \label{class_tetris_widget_aba252ad3d96374baefc27321c0baa5b5} 
+void Tetris\+Widget\+::game\+Over (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+\Hypertarget{class_tetris_widget_a8b7a53f66e92baaa6dacae68fc6081f5}\index{TetrisWidget@{TetrisWidget}!keyPressEvent@{keyPressEvent}}
+\index{keyPressEvent@{keyPressEvent}!TetrisWidget@{TetrisWidget}}
+\doxysubsubsection{\texorpdfstring{keyPressEvent()}{keyPressEvent()}}
+{\footnotesize\ttfamily \label{class_tetris_widget_a8b7a53f66e92baaa6dacae68fc6081f5} 
+void Tetris\+Widget\+::key\+Press\+Event (\begin{DoxyParamCaption}\item[{QKey\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Обрабатывает клавиши управления (поворот, перемещение). 
+
+Обработчик нажатий клавиш.
+
+Управляет перемещением фигур (влево/вправо/вниз), поворотом, паузой и выходом из игры. Проверяет коллизии и обновляет состояние. \Hypertarget{class_tetris_widget_ab25523f739348a21c0ad1537e8cea471}\index{TetrisWidget@{TetrisWidget}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!TetrisWidget@{TetrisWidget}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}}
+{\footnotesize\ttfamily \label{class_tetris_widget_ab25523f739348a21c0ad1537e8cea471} 
+void Tetris\+Widget\+::paint\+Event (\begin{DoxyParamCaption}\item[{QPaint\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Отрисовывает текущую и следующую фигуру, поле. 
+
+Обработчик события отрисовки виджета.
+
+Рисует игровое поле, боковую панель, следующую фигуру и текущую фигуру. Отображает экраны паузы и завершения игры. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+gui/desktop/view/\mbox{\hyperlink{tetriswidget_8h}{tetriswidget.\+h}}\item 
+gui/desktop/view/build/view\+\_\+autogen/\+EWIEGA46\+WW/\mbox{\hyperlink{moc__tetriswidget_8cpp}{moc\+\_\+tetriswidget.\+cpp}}\item 
+gui/desktop/view/\mbox{\hyperlink{tetriswidget_8cpp}{tetriswidget.\+cpp}}\end{DoxyCompactItemize}

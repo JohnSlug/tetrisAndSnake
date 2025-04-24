@@ -1,0 +1,46 @@
+\doxysection{snakewidget.\+h}
+\hypertarget{snakewidget_8h_source}{}\label{snakewidget_8h_source}\index{gui/desktop/view/snakewidget.h@{gui/desktop/view/snakewidget.h}}
+\mbox{\hyperlink{snakewidget_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SNAKEWIDGET\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SNAKEWIDGET\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{mainwindow_8h}{mainwindow.h}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QDir>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QStandardPaths>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{controller_8h}{../../../brick\_game/snake/controller.h}}"{}}\ \ \textcolor{comment}{//\ Включаем\ контроллер\ змейки}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{snake__logic_8h}{../../../brick\_game/snake/snake\_logic.h}}"{}}\ \ \textcolor{comment}{//\ Включаем\ логику\ змейки}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_snake_widget}{SnakeWidget}}\ :\ \textcolor{keyword}{public}\ QWidget\ \{}
+\DoxyCodeLine{00016\ \ \ Q\_OBJECT}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_snake_widget_a17360db32a53d0dbf1f4151ba903e60f}{SnakeWidget}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00020\ \ \ \mbox{\hyperlink{class_snake_widget_aaa4dafc4f1964cad9ccd5f8e16faf741}{\string~SnakeWidget}}();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_snake_widget_afe22ff94c0e345398b253e508be40a5d}{paintEvent}}(QPaintEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_snake_widget_a093ca771aac8a9c11c75ed8bbeb02405}{keyPressEvent}}(QKeyEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_snake_widget_a0cede43e77c7dff6f0e5c3123f21167c}{updateGameState}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ signals:}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_snake_widget_a536f53e6f32760ebcb0d829179201cff}{gameOver}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{int}\ loadHighScore();}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{void}\ saveHighScore(\textcolor{keywordtype}{int}\ score);}
+\DoxyCodeLine{00037\ \ \ QString\ getHighScorePath();}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ initGame();}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{void}\ drawField(QPainter\ \&painter);}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{void}\ drawSidePanel(QPainter\ \&painter);}
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{classs21_1_1_snake_logic}{s21::SnakeLogic}}\ snakeLogic;}
+\DoxyCodeLine{00042\ \ \ QTimer\ *timer;}
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{GameState\_t}}\ gameState\_;}
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{int}\ interval;}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ SNAKEWIDGET\_H}}
+
+\end{DoxyCode}

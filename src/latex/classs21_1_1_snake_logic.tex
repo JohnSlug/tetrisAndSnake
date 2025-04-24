@@ -1,0 +1,352 @@
+\doxysection{s21\+::Snake\+Logic Class Reference}
+\hypertarget{classs21_1_1_snake_logic}{}\label{classs21_1_1_snake_logic}\index{s21::SnakeLogic@{s21::SnakeLogic}}
+
+
+Логика игры "{}Змейка"{}. Управляет состоянием игры, змейкой, яблоками, счетом и уровнями.  
+
+
+
+
+{\ttfamily \#include $<$snake\+\_\+logic.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classs21_1_1_snake_logic_ad285ffc2e22af34a8ef3c15a62469084}{Snake\+Logic}} ()
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{classs21_1_1_snake_logic}{Snake\+Logic}. Инициализирует состояние игры. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classs21_1_1_snake_logic_ad1d3bac90a0a9993227096a0575585a7}{\texorpdfstring{$\sim$}{\string~}\+Snake\+Logic}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор класса \doxylink{classs21_1_1_snake_logic}{Snake\+Logic}. Освобождает ресурсы. \end{DoxyCompactList}\item 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classs21_1_1_snake_logic_a30e8b93fc08473ff23fcf3696479f2fc}{create\+Matrix\+Field}} ()
+\begin{DoxyCompactList}\small\item\em Создает динамическое игровое поле. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_logic_a009fe0b543d4d427aa39045c5beeb0d2}{init\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Инициализирует игру (сброс параметров, генерация змейки и яблока). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_logic_a96b76cb9d7e544966360aa492687e1a4}{reset\+Matrix\+Field}} ()
+\begin{DoxyCompactList}\small\item\em Обнуляет игровое поле. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_logic_ae926fe5444bbdf3e35d3f9cad4a3797c}{move\+Snake}} ()
+\begin{DoxyCompactList}\small\item\em Перемещает змейку и обрабатывает коллизии. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_logic_a0a062a194a51cb44ed907192df0beb11}{rotate\+Direction}} (int)
+\begin{DoxyCompactList}\small\item\em Меняет направление движения змейки. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classs21_1_1_snake_logic_ac41778c148cdba19eeb2c28f3752b7b7}{check\+Collision}} ()
+\begin{DoxyCompactList}\small\item\em Проверяет столкновение головы змейки с телом. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}} \& \mbox{\hyperlink{classs21_1_1_snake_logic_a5127655a470de05c3fa9608b0ab7ca9b}{get\+Game\+State}} ()
+\begin{DoxyCompactList}\small\item\em Возвращает текущее состояние игры. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} \mbox{\hyperlink{classs21_1_1_snake_logic_a81f5c988d19125b9e38248d6140135a9}{get\+Game\+Info}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает игровую информацию. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_logic_a5704ccc09ba8409c131f6d0f9e1eea4a}{set\+Game\+State}} (\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}} state)
+\begin{DoxyCompactList}\small\item\em Устанавливает новое состояние игры. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structs21_1_1_coordinates}{Coordinates}} $>$ \& \mbox{\hyperlink{classs21_1_1_snake_logic_ad8e1c7ed776fd6cd77162ed323b030ba}{get\+Snake}} ()
+\item 
+\mbox{\hyperlink{structs21_1_1_coordinates}{Coordinates}} \mbox{\hyperlink{classs21_1_1_snake_logic_a10e12b982336b0ced58801164bef90df}{get\+Apple}} () const
+\item 
+void \mbox{\hyperlink{classs21_1_1_snake_logic_a2ab2f61c56b3c45d66eef6f734688f86}{generate\+Snake}} ()
+\begin{DoxyCompactList}\small\item\em Генерирует змейку в центре поля. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_logic_acbd40d77e615da0b3caa61f13b3b83e1}{generate\+Apple}} ()
+\begin{DoxyCompactList}\small\item\em Создает яблоко на свободной позиции. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_logic_a317121d382ca82db33ac77cbef0c20c1}{update\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Обновляет уровень на основе счета. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_logic_ab3ee2e42d15d857d62869b56634f24ea}{check\+Victory}} ()
+\begin{DoxyCompactList}\small\item\em Проверяет условие победы (длина змейки \texorpdfstring{$>$}{>}= 200). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classs21_1_1_snake_logic_a1e3e511ecb89f69e9b80e9bc786d0c8f}{save\+Game\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Сохраняет рекорд в файл "{}snake\+\_\+score.\+txt"{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classs21_1_1_snake_logic_a5f2d40a5786c58b30975a85d16b74e76}{read\+Game\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Загружает рекорд из файла "{}snake\+\_\+score.\+txt"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} \mbox{\hyperlink{classs21_1_1_snake_logic_a19aebf9f812e4cb85591eb7e2f0573a7}{game\+Info\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Информация об игре (счет, поле, уровень). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}} \mbox{\hyperlink{classs21_1_1_snake_logic_ad2ec08c1069be664aefc20c57642fb82}{game\+State\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Текущее состояние игры (пауза, игра и т.\+д.). \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structs21_1_1_coordinates}{Coordinates}} $>$ \mbox{\hyperlink{classs21_1_1_snake_logic_a11751ce390295bd690981b1b97b8026b}{body}}
+\item 
+\mbox{\hyperlink{structs21_1_1_coordinates}{Coordinates}} \mbox{\hyperlink{classs21_1_1_snake_logic_acf85302daf5ca59cef515271b53c198e}{apple}}
+\item 
+int \mbox{\hyperlink{classs21_1_1_snake_logic_a392761ce26527e4fc0a9df68ae91ff59}{direction\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Логика игры "{}Змейка"{}. Управляет состоянием игры, змейкой, яблоками, счетом и уровнями. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classs21_1_1_snake_logic_ad285ffc2e22af34a8ef3c15a62469084}\index{s21::SnakeLogic@{s21::SnakeLogic}!SnakeLogic@{SnakeLogic}}
+\index{SnakeLogic@{SnakeLogic}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{SnakeLogic()}{SnakeLogic()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_ad285ffc2e22af34a8ef3c15a62469084} 
+s21\+::\+Snake\+Logic\+::\+Snake\+Logic (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Конструктор класса \doxylink{classs21_1_1_snake_logic}{Snake\+Logic}. Инициализирует состояние игры. 
+
+Инициализирует структуру game\+State\+\_\+. \Hypertarget{classs21_1_1_snake_logic_ad1d3bac90a0a9993227096a0575585a7}\index{s21::SnakeLogic@{s21::SnakeLogic}!````~SnakeLogic@{\texorpdfstring{$\sim$}{\string~}SnakeLogic}}
+\index{````~SnakeLogic@{\texorpdfstring{$\sim$}{\string~}SnakeLogic}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}SnakeLogic()}{\string~SnakeLogic()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_ad1d3bac90a0a9993227096a0575585a7} 
+s21\+::\+Snake\+Logic\+::\texorpdfstring{$\sim$}{\string~}\+Snake\+Logic (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Деструктор класса \doxylink{classs21_1_1_snake_logic}{Snake\+Logic}. Освобождает ресурсы. 
+
+Удаляет динамически выделенную память для игрового поля. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classs21_1_1_snake_logic_ac41778c148cdba19eeb2c28f3752b7b7}\index{s21::SnakeLogic@{s21::SnakeLogic}!checkCollision@{checkCollision}}
+\index{checkCollision@{checkCollision}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{checkCollision()}{checkCollision()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_ac41778c148cdba19eeb2c28f3752b7b7} 
+bool s21\+::\+Snake\+Logic\+::check\+Collision (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Проверяет столкновение головы змейки с телом. 
+
+\begin{DoxyReturn}{Returns}
+true — столкновение, false — нет. 
+\end{DoxyReturn}
+\Hypertarget{classs21_1_1_snake_logic_ab3ee2e42d15d857d62869b56634f24ea}\index{s21::SnakeLogic@{s21::SnakeLogic}!checkVictory@{checkVictory}}
+\index{checkVictory@{checkVictory}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{checkVictory()}{checkVictory()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_ab3ee2e42d15d857d62869b56634f24ea} 
+void s21\+::\+Snake\+Logic\+::check\+Victory (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Проверяет условие победы (длина змейки \texorpdfstring{$>$}{>}= 200). 
+
+\begin{DoxyNote}{Note}
+При выполнении условия переводит игру в состояние GAME\+\_\+\+WON. 
+\end{DoxyNote}
+\Hypertarget{classs21_1_1_snake_logic_a30e8b93fc08473ff23fcf3696479f2fc}\index{s21::SnakeLogic@{s21::SnakeLogic}!createMatrixField@{createMatrixField}}
+\index{createMatrixField@{createMatrixField}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{createMatrixField()}{createMatrixField()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a30e8b93fc08473ff23fcf3696479f2fc} 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} s21\+::\+Snake\+Logic\+::create\+Matrix\+Field (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Создает динамическое игровое поле. 
+
+Создает динамическую матрицу для игрового поля.
+
+Выделяет память под двумерный массив размером FIELD\+\_\+\+HEIGHT x FIELD\+\_\+\+WIDTH. \begin{DoxyReturn}{Returns}
+Указатель на созданную матрицу. Если размеры некорректны — возвращает nullptr. 
+\end{DoxyReturn}
+\Hypertarget{classs21_1_1_snake_logic_acbd40d77e615da0b3caa61f13b3b83e1}\index{s21::SnakeLogic@{s21::SnakeLogic}!generateApple@{generateApple}}
+\index{generateApple@{generateApple}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{generateApple()}{generateApple()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_acbd40d77e615da0b3caa61f13b3b83e1} 
+void s21\+::\+Snake\+Logic\+::generate\+Apple (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Создает яблоко на свободной позиции. 
+
+Генерирует яблоко на случайной свободной позиции.
+
+Позиция выбирается до тех пор, пока не будет найдена пустая ячейка. \Hypertarget{classs21_1_1_snake_logic_a2ab2f61c56b3c45d66eef6f734688f86}\index{s21::SnakeLogic@{s21::SnakeLogic}!generateSnake@{generateSnake}}
+\index{generateSnake@{generateSnake}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{generateSnake()}{generateSnake()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a2ab2f61c56b3c45d66eef6f734688f86} 
+void s21\+::\+Snake\+Logic\+::generate\+Snake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Генерирует змейку в центре поля. 
+
+Создает змейку в центре поля.
+
+Начальная длина — 4 сегмента. Сегменты размещаются вертикально. \Hypertarget{classs21_1_1_snake_logic_a10e12b982336b0ced58801164bef90df}\index{s21::SnakeLogic@{s21::SnakeLogic}!getApple@{getApple}}
+\index{getApple@{getApple}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{getApple()}{getApple()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a10e12b982336b0ced58801164bef90df} 
+\mbox{\hyperlink{structs21_1_1_coordinates}{Coordinates}} s21\+::\+Snake\+Logic\+::get\+Apple (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classs21_1_1_snake_logic_a81f5c988d19125b9e38248d6140135a9}\index{s21::SnakeLogic@{s21::SnakeLogic}!getGameInfo@{getGameInfo}}
+\index{getGameInfo@{getGameInfo}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{getGameInfo()}{getGameInfo()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a81f5c988d19125b9e38248d6140135a9} 
+\mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} s21\+::\+Snake\+Logic\+::get\+Game\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Возвращает игровую информацию. 
+
+Возвращает игровую информацию (счет, поле, уровень и т.\+д.). \Hypertarget{classs21_1_1_snake_logic_a5127655a470de05c3fa9608b0ab7ca9b}\index{s21::SnakeLogic@{s21::SnakeLogic}!getGameState@{getGameState}}
+\index{getGameState@{getGameState}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{getGameState()}{getGameState()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a5127655a470de05c3fa9608b0ab7ca9b} 
+\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}} \& s21\+::\+Snake\+Logic\+::get\+Game\+State (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Возвращает текущее состояние игры. 
+
+Возвращает текущее состояние игры (пауза, игра, завершение и т.\+д.). \Hypertarget{classs21_1_1_snake_logic_ad8e1c7ed776fd6cd77162ed323b030ba}\index{s21::SnakeLogic@{s21::SnakeLogic}!getSnake@{getSnake}}
+\index{getSnake@{getSnake}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{getSnake()}{getSnake()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_ad8e1c7ed776fd6cd77162ed323b030ba} 
+std\+::vector$<$ \mbox{\hyperlink{structs21_1_1_coordinates}{Coordinates}} $>$ \& s21\+::\+Snake\+Logic\+::get\+Snake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classs21_1_1_snake_logic_a009fe0b543d4d427aa39045c5beeb0d2}\index{s21::SnakeLogic@{s21::SnakeLogic}!initGame@{initGame}}
+\index{initGame@{initGame}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{initGame()}{initGame()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a009fe0b543d4d427aa39045c5beeb0d2} 
+void s21\+::\+Snake\+Logic\+::init\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Инициализирует игру (сброс параметров, генерация змейки и яблока). 
+
+Инициализирует игровые параметры.
+
+
+\begin{DoxyItemize}
+\item Создает поле.
+\item Сбрасывает счет, уровень и скорость.
+\item Загружает рекорд из файла.
+\item Генерирует змейку и яблоко. 
+\end{DoxyItemize}\Hypertarget{classs21_1_1_snake_logic_ae926fe5444bbdf3e35d3f9cad4a3797c}\index{s21::SnakeLogic@{s21::SnakeLogic}!moveSnake@{moveSnake}}
+\index{moveSnake@{moveSnake}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{moveSnake()}{moveSnake()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_ae926fe5444bbdf3e35d3f9cad4a3797c} 
+void s21\+::\+Snake\+Logic\+::move\+Snake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Перемещает змейку и обрабатывает коллизии. 
+
+Перемещает змейку в текущем направлении.
+
+
+\begin{DoxyItemize}
+\item Проверяет выход за границы поля (GAME\+\_\+\+OVER).
+\item При съедании яблока увеличивает длину, обновляет счет и уровень.
+\item Обновляет состояние поля. 
+\end{DoxyItemize}\Hypertarget{classs21_1_1_snake_logic_a5f2d40a5786c58b30975a85d16b74e76}\index{s21::SnakeLogic@{s21::SnakeLogic}!readGameScore@{readGameScore}}
+\index{readGameScore@{readGameScore}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{readGameScore()}{readGameScore()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a5f2d40a5786c58b30975a85d16b74e76} 
+int s21\+::\+Snake\+Logic\+::read\+Game\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Загружает рекорд из файла "{}snake\+\_\+score.\+txt"{}. 
+
+\begin{DoxyReturn}{Returns}
+Загруженный рекорд. Если файла нет — возвращает 0. 
+\end{DoxyReturn}
+\Hypertarget{classs21_1_1_snake_logic_a96b76cb9d7e544966360aa492687e1a4}\index{s21::SnakeLogic@{s21::SnakeLogic}!resetMatrixField@{resetMatrixField}}
+\index{resetMatrixField@{resetMatrixField}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{resetMatrixField()}{resetMatrixField()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a96b76cb9d7e544966360aa492687e1a4} 
+void s21\+::\+Snake\+Logic\+::reset\+Matrix\+Field (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Обнуляет игровое поле. 
+
+Сбрасывает игровое поле в начальное состояние (все ячейки = 0). \Hypertarget{classs21_1_1_snake_logic_a0a062a194a51cb44ed907192df0beb11}\index{s21::SnakeLogic@{s21::SnakeLogic}!rotateDirection@{rotateDirection}}
+\index{rotateDirection@{rotateDirection}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{rotateDirection()}{rotateDirection()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a0a062a194a51cb44ed907192df0beb11} 
+void s21\+::\+Snake\+Logic\+::rotate\+Direction (\begin{DoxyParamCaption}\item[{int}]{new\+Direction}{}\end{DoxyParamCaption})}
+
+
+
+Меняет направление движения змейки. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Direction} & Новое направление (0-\/3\+: вверх, вправо, вниз, влево). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Запрещает разворот на 180 градусов (например, вверх → вниз). 
+\end{DoxyNote}
+\Hypertarget{classs21_1_1_snake_logic_a1e3e511ecb89f69e9b80e9bc786d0c8f}\index{s21::SnakeLogic@{s21::SnakeLogic}!saveGameScore@{saveGameScore}}
+\index{saveGameScore@{saveGameScore}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{saveGameScore()}{saveGameScore()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a1e3e511ecb89f69e9b80e9bc786d0c8f} 
+void s21\+::\+Snake\+Logic\+::save\+Game\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Сохраняет рекорд в файл "{}snake\+\_\+score.\+txt"{}. 
+
+\begin{DoxyNote}{Note}
+Сохранение происходит только если текущий счет превышает предыдущий рекорд. 
+\end{DoxyNote}
+\Hypertarget{classs21_1_1_snake_logic_a5704ccc09ba8409c131f6d0f9e1eea4a}\index{s21::SnakeLogic@{s21::SnakeLogic}!setGameState@{setGameState}}
+\index{setGameState@{setGameState}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{setGameState()}{setGameState()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a5704ccc09ba8409c131f6d0f9e1eea4a} 
+void s21\+::\+Snake\+Logic\+::set\+Game\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Устанавливает новое состояние игры. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Состояние (например, GAME\+\_\+\+PAUSED, GAME\+\_\+\+OVER). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classs21_1_1_snake_logic_a317121d382ca82db33ac77cbef0c20c1}\index{s21::SnakeLogic@{s21::SnakeLogic}!updateLevel@{updateLevel}}
+\index{updateLevel@{updateLevel}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{updateLevel()}{updateLevel()}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a317121d382ca82db33ac77cbef0c20c1} 
+void s21\+::\+Snake\+Logic\+::update\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Обновляет уровень на основе счета. 
+
+Уровень = (счет / 5) + 1. Максимальный уровень — 10. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classs21_1_1_snake_logic_acf85302daf5ca59cef515271b53c198e}\index{s21::SnakeLogic@{s21::SnakeLogic}!apple@{apple}}
+\index{apple@{apple}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{apple}{apple}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_acf85302daf5ca59cef515271b53c198e} 
+\mbox{\hyperlink{structs21_1_1_coordinates}{Coordinates}} s21\+::\+Snake\+Logic\+::apple}
+
+\Hypertarget{classs21_1_1_snake_logic_a11751ce390295bd690981b1b97b8026b}\index{s21::SnakeLogic@{s21::SnakeLogic}!body@{body}}
+\index{body@{body}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{body}{body}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a11751ce390295bd690981b1b97b8026b} 
+std\+::vector$<$\mbox{\hyperlink{structs21_1_1_coordinates}{Coordinates}}$>$ s21\+::\+Snake\+Logic\+::body}
+
+\Hypertarget{classs21_1_1_snake_logic_a392761ce26527e4fc0a9df68ae91ff59}\index{s21::SnakeLogic@{s21::SnakeLogic}!direction\_@{direction\_}}
+\index{direction\_@{direction\_}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{direction\_}{direction\_}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a392761ce26527e4fc0a9df68ae91ff59} 
+int s21\+::\+Snake\+Logic\+::direction\+\_\+}
+
+\Hypertarget{classs21_1_1_snake_logic_a19aebf9f812e4cb85591eb7e2f0573a7}\index{s21::SnakeLogic@{s21::SnakeLogic}!gameInfo\_@{gameInfo\_}}
+\index{gameInfo\_@{gameInfo\_}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{gameInfo\_}{gameInfo\_}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_a19aebf9f812e4cb85591eb7e2f0573a7} 
+\mbox{\hyperlink{struct_game_info__t}{Game\+Info\+\_\+t}} s21\+::\+Snake\+Logic\+::game\+Info\+\_\+}
+
+
+
+Информация об игре (счет, поле, уровень). 
+
+\Hypertarget{classs21_1_1_snake_logic_ad2ec08c1069be664aefc20c57642fb82}\index{s21::SnakeLogic@{s21::SnakeLogic}!gameState\_@{gameState\_}}
+\index{gameState\_@{gameState\_}!s21::SnakeLogic@{s21::SnakeLogic}}
+\doxysubsubsection{\texorpdfstring{gameState\_}{gameState\_}}
+{\footnotesize\ttfamily \label{classs21_1_1_snake_logic_ad2ec08c1069be664aefc20c57642fb82} 
+\mbox{\hyperlink{tetris_8h_a6678e2a28b2bccb9f0563b3d59e15aa2}{Game\+State\+\_\+t}} s21\+::\+Snake\+Logic\+::game\+State\+\_\+}
+
+
+
+Текущее состояние игры (пауза, игра и т.\+д.). 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+brick\+\_\+game/snake/\mbox{\hyperlink{snake__logic_8h}{snake\+\_\+logic.\+h}}\item 
+brick\+\_\+game/snake/\mbox{\hyperlink{snake__logic_8cc}{snake\+\_\+logic.\+cc}}\end{DoxyCompactItemize}
